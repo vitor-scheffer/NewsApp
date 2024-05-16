@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 public final class OARouter: NARouterProtocol {
+    
     // MARK: Properties
     
     public static var shared = OARouter()
@@ -20,6 +21,7 @@ public final class OARouter: NARouterProtocol {
     private init() { }
 
     // MARK: Methods
+    
     func showHome(navigator: UINavigationController?) {
         print("Hello World")
     }

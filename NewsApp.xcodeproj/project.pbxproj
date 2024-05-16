@@ -21,6 +21,15 @@
 		E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE43A2BF5A61D00A0EB6C /* Extensions.swift */; };
 		E5ECE43F2BF5A7C100A0EB6C /* NARouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE43E2BF5A7C100A0EB6C /* NARouter.swift */; };
 		E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4402BF5A93300A0EB6C /* NARouterProtocol.swift */; };
+		E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4422BF6820D00A0EB6C /* HomeCoordinator.swift */; };
+		E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4442BF6822100A0EB6C /* HomeViewController.swift */; };
+		E5ECE4472BF6824000A0EB6C /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4462BF6824000A0EB6C /* HomeProtocol.swift */; };
+		E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4482BF6824800A0EB6C /* HomePresenter.swift */; };
+		E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE44A2BF6825500A0EB6C /* HomeInteractor.swift */; };
+		E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE44D2BF682F100A0EB6C /* NewsOutput.swift */; };
+		E5ECE4512BF684FC00A0EB6C /* NewsApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */; };
+		E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */; };
+		E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +68,15 @@
 		E5ECE43A2BF5A61D00A0EB6C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E5ECE43E2BF5A7C100A0EB6C /* NARouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NARouter.swift; sourceTree = "<group>"; };
 		E5ECE4402BF5A93300A0EB6C /* NARouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NARouterProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4422BF6820D00A0EB6C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		E5ECE4442BF6822100A0EB6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E5ECE4462BF6824000A0EB6C /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4482BF6824800A0EB6C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		E5ECE44A2BF6825500A0EB6C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		E5ECE44D2BF682F100A0EB6C /* NewsOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsOutput.swift; sourceTree = "<group>"; };
+		E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
+		E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBaseUrl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +127,7 @@
 		E5ECE3FD2BF593E400A0EB6C /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE44F2BF684E300A0EB6C /* Networking */,
 				E5ECE4332BF5A41400A0EB6C /* Resources */,
 				E5ECE4302BF5A33D00A0EB6C /* Utils */,
 				E5ECE42F2BF5A33100A0EB6C /* Features */,
@@ -179,6 +198,12 @@
 		E5ECE43C2BF5A69F00A0EB6C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE44C2BF682E700A0EB6C /* Models */,
+				E5ECE4422BF6820D00A0EB6C /* HomeCoordinator.swift */,
+				E5ECE4442BF6822100A0EB6C /* HomeViewController.swift */,
+				E5ECE4462BF6824000A0EB6C /* HomeProtocol.swift */,
+				E5ECE4482BF6824800A0EB6C /* HomePresenter.swift */,
+				E5ECE44A2BF6825500A0EB6C /* HomeInteractor.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -188,6 +213,24 @@
 			children = (
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		E5ECE44C2BF682E700A0EB6C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5ECE44D2BF682F100A0EB6C /* NewsOutput.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5ECE44F2BF684E300A0EB6C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */,
+				E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */,
+				E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,13 +364,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5ECE4472BF6824000A0EB6C /* HomeProtocol.swift in Sources */,
 				E5ECE4032BF593E400A0EB6C /* ViewController.swift in Sources */,
 				E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */,
+				E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */,
+				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,
+				E5ECE4512BF684FC00A0EB6C /* NewsApiProtocol.swift in Sources */,
+				E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */,
+				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
+				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
 				E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */,
 				E5ECE43F2BF5A7C100A0EB6C /* NARouter.swift in Sources */,
+				E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */,
 				E5ECE4322BF5A37300A0EB6C /* ViewCode.swift in Sources */,
+				E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */,
 				E5ECE4392BF5A47E00A0EB6C /* I18n.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
