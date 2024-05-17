@@ -34,6 +34,7 @@ final class NAHomeInteractor: NAHomeInteractorInput {
 
             case .failure:
                 self?.output?.fetchNewsFailed()
+                
             case .apiRefuseWithMsg(message: let message):
                 print("Hello World")
             }

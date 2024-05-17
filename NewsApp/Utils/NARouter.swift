@@ -23,6 +23,11 @@ public final class NARouter: NARouterProtocol {
     // MARK: Methods
     
     func showHome(navigator: UINavigationController?) {
-        print("Hello World")
+        let coordinator = NAHomeCoordinator(navigator: navigator)
+        coordinator.start()
+    }
+    
+    func showNewsDetails(navigator: UINavigationController?) {
+        print("Hello news details")
     }
 }

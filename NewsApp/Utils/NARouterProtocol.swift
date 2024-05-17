@@ -10,4 +10,5 @@ import UIKit
 
 protocol NARouterProtocol: AnyObject {
     func showHome(navigator: UINavigationController?)
+    func showNewsDetails(navigator: UINavigationController?)
 }

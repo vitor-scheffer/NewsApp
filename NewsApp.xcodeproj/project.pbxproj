@@ -31,6 +31,8 @@
 		E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */; };
 		E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */; };
 		E5ECE4572BF6F08400A0EB6C /* NAPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */; };
+		E5ECE45A2BF6F83600A0EB6C /* NAConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4592BF6F83600A0EB6C /* NAConstraints.swift */; };
+		E5ECE45C2BF7017B00A0EB6C /* NABaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
 		E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBaseUrl.swift; sourceTree = "<group>"; };
 		E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPaths.swift; sourceTree = "<group>"; };
+		E5ECE4592BF6F83600A0EB6C /* NAConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAConstraints.swift; sourceTree = "<group>"; };
+		E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NABaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,11 +133,11 @@
 		E5ECE3FD2BF593E400A0EB6C /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE42E2BF5A32700A0EB6C /* Components */,
 				E5ECE44F2BF684E300A0EB6C /* Networking */,
 				E5ECE4332BF5A41400A0EB6C /* Resources */,
 				E5ECE4302BF5A33D00A0EB6C /* Utils */,
 				E5ECE42F2BF5A33100A0EB6C /* Features */,
-				E5ECE42E2BF5A32700A0EB6C /* Components */,
 				E5ECE3FE2BF593E400A0EB6C /* AppDelegate.swift */,
 				E5ECE4002BF593E400A0EB6C /* SceneDelegate.swift */,
 				E5ECE4022BF593E400A0EB6C /* ViewController.swift */,
@@ -185,6 +189,7 @@
 				E5ECE43A2BF5A61D00A0EB6C /* Extensions.swift */,
 				E5ECE43E2BF5A7C100A0EB6C /* NARouter.swift */,
 				E5ECE4402BF5A93300A0EB6C /* NARouterProtocol.swift */,
+				E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 		E5ECE4332BF5A41400A0EB6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4582BF6F81400A0EB6C /* Constraints */,
 				E5ECE4342BF5A42500A0EB6C /* Localizable.strings */,
 			);
 			path = Resources;
@@ -234,6 +240,14 @@
 				E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		E5ECE4582BF6F81400A0EB6C /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E5ECE4592BF6F83600A0EB6C /* NAConstraints.swift */,
+			);
+			path = Constraints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +388,7 @@
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,
+				E5ECE45A2BF6F83600A0EB6C /* NAConstraints.swift in Sources */,
 				E5ECE4512BF684FC00A0EB6C /* NewsApiProtocol.swift in Sources */,
 				E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */,
 				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
@@ -384,6 +399,7 @@
 				E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */,
 				E5ECE4322BF5A37300A0EB6C /* ViewCode.swift in Sources */,
 				E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */,
+				E5ECE45C2BF7017B00A0EB6C /* NABaseViewController.swift in Sources */,
 				E5ECE4392BF5A47E00A0EB6C /* I18n.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,7 +586,6 @@
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,7 +612,6 @@
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

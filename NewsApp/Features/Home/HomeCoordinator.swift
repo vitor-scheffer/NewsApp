@@ -32,12 +32,11 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
     func start() {
         let interactor = NAHomeInteractor()
         let presenter = NAHomePresenter(coordinator: self,
-                                        interactor: interactor,
-                                        configsInteractor: ConfigurationInteractor.shared)
+                                        interactor: interactor)
         let viewController = NAHomeViewController(presenter: presenter)
-        viewController.hidesBottomBarWhenPushed = false
+        viewController.modalPresentationStyle = .fullScreen
 
-        navigator?.pushViewController(viewController, animated: true)
+        navigator?.present(viewController, animated: true)
     }
     
     func navigateToDetails() {
