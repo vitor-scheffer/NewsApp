@@ -26,6 +26,19 @@ public final class I18n {
             String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
         }
     }
+    
+    public enum APIError: String, I18nProtocol {
+        case title = "NAerror.title"
+        case message = "NAerror.message"
+        case ok = "NAok.understood"
 
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
 }
 

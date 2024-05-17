@@ -7,4 +7,10 @@
 */
 
 "NAapp.name" = "NewsApp";
+
 "NAsecret.key" = "&apiKey=%@";
+
+"NAerror.title" = "Ops! Algo deu errado!";
+"NAerror.message" = "Não se preocupe! Já estamos tentando resolver esse problema, tente novamente mais tarde.";
+"NAok.understood" = "Ok, entendi";
+

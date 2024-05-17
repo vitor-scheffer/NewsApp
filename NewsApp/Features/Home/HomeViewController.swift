@@ -60,7 +60,7 @@ extension NAHomeViewController: NAHomeViewModel {
     }
     
     func setNewsFailed(error: String) {
-        print(error)
+        addAlert(title: I18n.APIError.title.text, message: error, cancelAction: I18n.APIError.ok.text)
     }
 }
 

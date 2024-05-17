@@ -32,7 +32,7 @@ public enum RequestError: Error {
         case .apiRefuseWithMsg(let apiMessage):
             return apiMessage
         default:
-            return "Ops! Algo deu errado! Já estamos tentando resolver esse problema, tente novamente mais tarde"
+            return I18n.APIError.message.text
         }
     }
 }
