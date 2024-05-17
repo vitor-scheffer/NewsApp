@@ -8,13 +8,19 @@
 import UIKit
 
 class NAHomeViewController: NABaseViewController {
-
+    
     // MARK: Properties
-
+    
     private let presenter: NAHomePresenterInterface
     
     private lazy var containerView = {
         let view = UIView()
+        return view
+    }()
+    
+    private lazy var imageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
         return view
     }()
 
@@ -45,9 +51,6 @@ class NAHomeViewController: NABaseViewController {
         setupView()
         presenter.setViewModel(self)
     }
-    
-    
-
 }
 
 extension NAHomeViewController: NAHomeViewModel {
@@ -66,7 +69,7 @@ extension NAHomeViewController: NAHomeViewModel {
 
 extension NAHomeViewController: ViewCode {
     func buildHierarchy() {
-        view.addSubview(containerView, constraints: true)
+        view.addSubviews([containerView, imageView], constraints: true)
     }
     
     func setupConstraints() {
@@ -75,6 +78,11 @@ extension NAHomeViewController: ViewCode {
             .leading(view.safeAreaLayoutGuide.leadingAnchor)
             .trailing(view.safeAreaLayoutGuide.trailingAnchor)
             .bottom(view.safeAreaLayoutGuide.bottomAnchor)
+        
+        imageView.nac
+            .centerX(containerView.centerXAnchor)
+            .centerY(containerView.centerYAnchor)
+            .width(containerView.widthAnchor)
     }
     
     func applyAdditionalChanges() {

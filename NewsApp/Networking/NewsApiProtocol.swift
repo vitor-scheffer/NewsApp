@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public typealias HttpHeaders = [String: String]
 
@@ -15,11 +16,19 @@ public protocol NewsApiProtocol: AnyObject {
                                      headers: HttpHeaders?,
                                      type: T.Type,
                                      completion: @escaping CompletionCallback<T>)
+    
+    func requestImage(endpoint: String,
+                      completion: @escaping CompletionCallbackImage<UIImage>)
 }
 
 public enum CompletionStatus<T> {
     case success(T)
     case failure(RequestError)
+}
+
+public enum CompletionImage<UIImage> {
+    case success(UIImage)
+    case failure(UIImage)
 }
 
 public enum RequestError: Error {
@@ -46,3 +55,4 @@ public enum HttpMethod: String {
 }
 
 public typealias CompletionCallback<T: Decodable> = (CompletionStatus<T>) -> Void
+public typealias CompletionCallbackImage<UIImage> = (CompletionImage<UIImage>) -> Void

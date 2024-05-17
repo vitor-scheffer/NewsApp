@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct ApiError: Decodable {
     let status: String
@@ -18,52 +19,75 @@ final public class NewsApi: NewsApiProtocol {
     public init() { }
     
     public static let shared = NewsApi()
+    
+    public func requestObject<T: Decodable>(
+        endpoint: String,
+        method: HttpMethod,
+        headers: HttpHeaders?,
+        type: T.Type,
+        completion: @escaping CompletionCallback<T>) {
         
-        public func requestObject<T: Decodable>(
-            endpoint: String,
-            method: HttpMethod,
-            headers: HttpHeaders?,
-            type: T.Type,
-            completion: @escaping CompletionCallback<T>) {
+            guard let url = URL(string: NewsBaseUrl.baseUrl + endpoint + NewsBaseUrl.secretKey) else {
+            completion(.failure(.generic))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+            request.httpMethod = method.rawValue
             
-                guard let url = URL(string: NewsBaseUrl.baseUrl + endpoint + NewsBaseUrl.secretKey) else {
-                completion(.failure(.generic))
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, let httpResponse = response as? HTTPURLResponse, error == nil else {
+                    completion(.failure(.generic))
+                    return
+                }
+                
+                let statusCode = httpResponse.statusCode
+                
+                switch statusCode {
+                case 200...299:
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedObject = try decoder.decode(type.self, from: data)
+                        completion(.success(decodedObject))
+                    } catch {
+                        completion(.failure(.decodingFailed))
+                    }
+                case 400...499:
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedObject = try decoder.decode(ApiError.self, from: data)
+                        completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
+                    } catch {
+                        completion(.failure(.decodingFailed))
+                    }
+                default:
+                    completion(.failure(.generic))
+                }
+            }
+        
+        task.resume()
+    }
+    
+    public func requestImage(endpoint: String, completion: @escaping CompletionCallbackImage<UIImage>) {
+        guard let url = URL(string: endpoint) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                
+                if let genericImage = UIImage(systemName: "photo") {
+                    completion(.failure(genericImage))
+                }
                 return
             }
             
-            var request = URLRequest(url: url)
-                request.httpMethod = method.rawValue
-                
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, let httpResponse = response as? HTTPURLResponse, error == nil else {
-                        completion(.failure(.generic))
-                        return
-                    }
-                    
-                    let statusCode = httpResponse.statusCode
-                    
-                    switch statusCode {
-                    case 200...299:
-                        let decoder = JSONDecoder()
-                        do {
-                            let decodedObject = try decoder.decode(type.self, from: data)
-                            completion(.success(decodedObject))
-                        } catch {
-                            completion(.failure(.decodingFailed))
-                        }
-                    case 400...499:
-                        let decoder = JSONDecoder()
-                        do {
-                            let decodedObject = try decoder.decode(ApiError.self, from: data)
-                            completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
-                        } catch {
-                            completion(.failure(.decodingFailed))
-                        }
-                    default:
-                        completion(.failure(.generic))
-                    }
+            DispatchQueue.main.async {
+                if let image = UIImage(data: data) {
+                    completion(.success(image))
                 }
-            
-            task.resume()
+            }
         }
+        
+        task.resume()
+    }
+    
 }
