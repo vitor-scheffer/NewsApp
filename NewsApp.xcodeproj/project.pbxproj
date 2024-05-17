@@ -30,6 +30,7 @@
 		E5ECE4512BF684FC00A0EB6C /* NewsApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */; };
 		E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */; };
 		E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */; };
+		E5ECE4572BF6F08400A0EB6C /* NAPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiProtocol.swift; sourceTree = "<group>"; };
 		E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
 		E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBaseUrl.swift; sourceTree = "<group>"; };
+		E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPaths.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				E5ECE4502BF684FC00A0EB6C /* NewsApiProtocol.swift */,
 				E5ECE4522BF68D6600A0EB6C /* NewsApi.swift */,
 				E5ECE4542BF698A200A0EB6C /* NewsBaseUrl.swift */,
+				E5ECE4562BF6F08400A0EB6C /* NAPaths.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
 				E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */,
 				E5ECE43F2BF5A7C100A0EB6C /* NARouter.swift in Sources */,
+				E5ECE4572BF6F08400A0EB6C /* NAPaths.swift in Sources */,
 				E5ECE4552BF698A200A0EB6C /* NewsBaseUrl.swift in Sources */,
 				E5ECE4322BF5A37300A0EB6C /* ViewCode.swift in Sources */,
 				E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */,
