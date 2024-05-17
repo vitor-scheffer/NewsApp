@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-public final class OARouter: NARouterProtocol {
+public final class NARouter: NARouterProtocol {
     
     // MARK: Properties
     
-    public static var shared = OARouter()
+    public static var shared = NARouter()
     
     public var navigator: UINavigationController?
     
