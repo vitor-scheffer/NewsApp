@@ -58,8 +58,8 @@ extension NAHomeViewController: NAHomeViewModel {
         
     }
     
-    func setNewsSuccess(news: NewsOutput) {
-        print(news.totalResults)
+    func setNewsSuccess(newsList: [NewsItem]) {
+        imageView.image = newsList[2].image
     }
     
     func setNewsFailed(error: String) {

@@ -9,6 +9,6 @@ import Foundation
 
 class NAPaths {
     static var urlTopHeadlines: String {
-        return "/top-headlines?country=br"
+        return "/top-headlines?country=us"
     }
 }

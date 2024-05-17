@@ -14,6 +14,23 @@ extension String {
     func localized(with arguments: String...) -> String {
         return String(format: self.localized, arguments: arguments)
     }
+    
+    func isoFormatter() -> String {
+        let formatter = ISO8601DateFormatter()
+        
+        guard let date = formatter.date(from: self) else {
+            return ""
+        }
+        
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd 'de' MMMM 'de' yyyy"
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+    
+        let formattedDate = dateFormatter.string(from: date)
+        
+        return formattedDate
+    }
 }
 
 public extension UIViewController {

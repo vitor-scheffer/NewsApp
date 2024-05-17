@@ -67,27 +67,4 @@ final public class NewsApi: NewsApiProtocol {
         
         task.resume()
     }
-    
-    public func requestImage(endpoint: String, completion: @escaping CompletionCallbackImage<UIImage>) {
-        guard let url = URL(string: endpoint) else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                
-                if let genericImage = UIImage(systemName: "photo") {
-                    completion(.failure(genericImage))
-                }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data) {
-                    completion(.success(image))
-                }
-            }
-        }
-        
-        task.resume()
-    }
-    
 }

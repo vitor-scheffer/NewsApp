@@ -34,6 +34,8 @@
 		E5ECE45A2BF6F83600A0EB6C /* NAConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4592BF6F83600A0EB6C /* NAConstraints.swift */; };
 		E5ECE45C2BF7017B00A0EB6C /* NABaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */; };
 		E5ECE45F2BF7A11300A0EB6C /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE45E2BF7A11300A0EB6C /* Article.swift */; };
+		E5ECE4632BF7C6B800A0EB6C /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */; };
+		E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NABaseViewController.swift; sourceTree = "<group>"; };
 		E5ECE45D2BF7974100A0EB6C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E5ECE45E2BF7A11300A0EB6C /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 				E5ECE43E2BF5A7C100A0EB6C /* NARouter.swift */,
 				E5ECE4402BF5A93300A0EB6C /* NARouterProtocol.swift */,
 				E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */,
+				E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 			children = (
 				E5ECE44D2BF682F100A0EB6C /* NewsOutput.swift */,
 				E5ECE45E2BF7A11300A0EB6C /* Article.swift */,
+				E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				E5ECE4032BF593E400A0EB6C /* ViewController.swift in Sources */,
 				E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */,
 				E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */,
+				E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */,
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,
@@ -399,6 +406,7 @@
 				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
 				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
 				E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */,
+				E5ECE4632BF7C6B800A0EB6C /* NewsItem.swift in Sources */,
 				E5ECE43F2BF5A7C100A0EB6C /* NARouter.swift in Sources */,
 				E5ECE45F2BF7A11300A0EB6C /* Article.swift in Sources */,
 				E5ECE4572BF6F08400A0EB6C /* NAPaths.swift in Sources */,

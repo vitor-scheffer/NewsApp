@@ -16,6 +16,8 @@ final class NAHomePresenter: NAHomePresenterInterface {
     let interactor: NAHomeInteractorInput
     weak var viewModel: NAHomeViewModel?
     
+    private var newsList: [NewsItem] = []
+    
     // MARK: Initalizer
     
     init(
@@ -52,8 +54,35 @@ final class NAHomePresenter: NAHomePresenterInterface {
 
 extension NAHomePresenter: NAHomeInteractorOutput {
     func fetchNewsSucceeded(_ output: NewsOutput) {
-        viewModel?.setNewsSuccess(news: output)
+        let group = DispatchGroup()
+        
+        output.articles.forEach { article in
+            group.enter()
+            ImageManager().fetchImage(url: article.urlToImage) { [weak self] image in
+                guard let self = self else { return }
+                
+                let formattedDate = article.publishedAt.isoFormatter()
+                
+                let news = NewsItem(
+                    id: article.source.id,
+                    author: article.author,
+                    title: article.title,
+                    description: article.description,
+                    image: image!,
+                    publishedAt: formattedDate,
+                    content: article.content
+                )
+                
+                self.newsList.append(news)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.viewModel?.setNewsSuccess(newsList: self.newsList)
+        }
     }
+    
     
     func fetchNewsFailed(_ output: String) {
         DispatchQueue.main.async {

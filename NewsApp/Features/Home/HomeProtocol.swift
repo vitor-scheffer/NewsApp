@@ -9,7 +9,7 @@ import UIKit
 
 protocol NAHomeViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
-    func setNewsSuccess(news: NewsOutput)
+    func setNewsSuccess(newsList: [NewsItem])
     func setNewsFailed(error: String)
 }
 
