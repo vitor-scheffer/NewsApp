@@ -7,3 +7,4 @@
 */
 
 "NAapp.name" = "NewsApp";
+"NAsecret.key" = "&apiKey=%@";

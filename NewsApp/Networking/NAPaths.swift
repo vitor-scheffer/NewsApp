@@ -8,7 +8,7 @@
 import Foundation
 
 class NAPaths {
-    static var urlGetNews: String {
-        return "/news"
+    static var urlTopHeadlines: String {
+        return "/top-headlines?country=br"
     }
 }

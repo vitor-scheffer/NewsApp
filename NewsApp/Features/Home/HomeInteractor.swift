@@ -8,35 +8,32 @@
 import Foundation
 
 final class NAHomeInteractor: NAHomeInteractorInput {
-
+    
     // MARK: Properties
     
     var api: NewsApiProtocol?
     weak var output: NAHomeInteractorOutput?
-
+    
     // MARK: Initializer
-
+    
     init(api: NewsApiProtocol = NewsApi.shared, output: NAHomeInteractorOutput? = nil) {
         self.api = api
         self.output = output
     }
-
+    
     // MARK: Methods
-
+    
     func fetchNews() {
-        api?.requestObject(endpoint: NAPaths.urlGetNews,
+        api?.requestObject(endpoint: NAPaths.urlTopHeadlines,
                            method: .get,
                            headers: nil,
                            type: NewsOutput.self) { [weak self] result in
             switch result {
             case .success(let result):
-                self?.output?.fetchNewsSucceeded(_output: result)
-
-            case .failure:
-                self?.output?.fetchNewsFailed()
+                self?.output?.fetchNewsSucceeded(result)
                 
-            case .apiRefuseWithMsg(message: let message):
-                print("Hello World")
+            case .failure(let result):
+                self?.output?.fetchNewsFailed(result.message)
             }
         }
     }

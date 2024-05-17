@@ -51,12 +51,12 @@ final class NAHomePresenter: NAHomePresenterInterface {
 // MARK: - NAHomeInteractorOutput
 
 extension NAHomePresenter: NAHomeInteractorOutput {
-    func fetchNewsSucceeded(_output: NewsOutput) {
-        viewModel?.setNewsSuccess(remuneration: 0)
+    func fetchNewsSucceeded(_ output: NewsOutput) {
+        viewModel?.setNewsSuccess(news: output)
     }
     
-    func fetchNewsFailed() {
-        viewModel?.setNewsFailed()
+    func fetchNewsFailed(_ output: String) {
+        viewModel?.setNewsFailed(error: output)
     }
 }
 

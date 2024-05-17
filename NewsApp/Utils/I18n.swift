@@ -16,6 +16,7 @@ public protocol I18nProtocol {
 public final class I18n {
     public enum General: String, I18nProtocol {
         case appName = "NAapp.name"
+        case secretKey = "NAsecret.key"
 
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")

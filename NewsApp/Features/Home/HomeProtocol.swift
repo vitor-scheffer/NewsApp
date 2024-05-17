@@ -9,8 +9,8 @@ import UIKit
 
 protocol NAHomeViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
-    func setNewsSuccess(remuneration: Double)
-    func setNewsFailed()
+    func setNewsSuccess(news: NewsOutput)
+    func setNewsFailed(error: String)
 }
 
 protocol NAHomePresenterInterface: AnyObject {
@@ -24,8 +24,8 @@ protocol NAHomePresenterInterface: AnyObject {
 }
 
 protocol NAHomeInteractorOutput: AnyObject {
-    func fetchNewsSucceeded(_output: NewsOutput)
-    func fetchNewsFailed()
+    func fetchNewsSucceeded(_ output: NewsOutput)
+    func fetchNewsFailed(_ output: String)
 }
 
 protocol NAHomeInteractorInput: AnyObject {

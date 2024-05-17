@@ -8,11 +8,9 @@
 import Foundation
 
 struct ApiError: Decodable {
-    let errorCode: String
-    let title: String?
+    let status: String
+    let code: String
     let message: String
-    let info: String?
-    let origin: String
 }
 
 final public class NewsApi: NewsApiProtocol {
@@ -28,7 +26,7 @@ final public class NewsApi: NewsApiProtocol {
             type: T.Type,
             completion: @escaping CompletionCallback<T>) {
             
-            guard let url = URL(string: NewsBaseUrl.baseUrl + endpoint) else {
+                guard let url = URL(string: NewsBaseUrl.baseUrl + endpoint + NewsBaseUrl.secretKey) else {
                 completion(.failure(.generic))
                 return
             }
@@ -53,11 +51,11 @@ final public class NewsApi: NewsApiProtocol {
                         } catch {
                             completion(.failure(.decodingFailed))
                         }
-                    case 400, 402...499:
+                    case 400...499:
                         let decoder = JSONDecoder()
                         do {
                             let decodedObject = try decoder.decode(ApiError.self, from: data)
-                            completion(.apiRefuseWithMsg(message: decodedObject.message))
+                            completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
                         } catch {
                             completion(.failure(.decodingFailed))
                         }

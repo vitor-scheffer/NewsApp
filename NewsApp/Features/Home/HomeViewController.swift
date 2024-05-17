@@ -44,7 +44,6 @@ class NAHomeViewController: NABaseViewController {
         
         setupView()
         presenter.setViewModel(self)
-        print("HELLOOOOOOOOO")
     }
     
     
@@ -56,12 +55,12 @@ extension NAHomeViewController: NAHomeViewModel {
         
     }
     
-    func setNewsSuccess(remuneration: Double) {
-        print("Success")
+    func setNewsSuccess(news: NewsOutput) {
+        print(news.totalResults)
     }
     
-    func setNewsFailed() {
-        print("Success")
+    func setNewsFailed(error: String) {
+        print(error)
     }
 }
 

@@ -20,12 +20,21 @@ public protocol NewsApiProtocol: AnyObject {
 public enum CompletionStatus<T> {
     case success(T)
     case failure(RequestError)
-    case apiRefuseWithMsg(message: String?)
 }
 
 public enum RequestError: Error {
     case generic
     case decodingFailed
+    case apiRefuseWithMsg(message: String)
+    
+    public var message: String {
+        switch self {
+        case .apiRefuseWithMsg(let apiMessage):
+            return apiMessage
+        default:
+            return "Ops! Algo deu errado! Já estamos tentando resolver esse problema, tente novamente mais tarde"
+        }
+    }
 }
 
 public enum HttpMethod: String {
