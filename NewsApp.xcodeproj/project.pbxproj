@@ -36,6 +36,8 @@
 		E5ECE45F2BF7A11300A0EB6C /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE45E2BF7A11300A0EB6C /* Article.swift */; };
 		E5ECE4632BF7C6B800A0EB6C /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */; };
 		E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */; };
+		E5ECE4672BF8288600A0EB6C /* NALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4662BF8288600A0EB6C /* NALabel.swift */; };
+		E5ECE4692BF833FF00A0EB6C /* NANewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		E5ECE45E2BF7A11300A0EB6C /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		E5ECE4662BF8288600A0EB6C /* NALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NALabel.swift; sourceTree = "<group>"; };
+		E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANewsViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 		E5ECE42E2BF5A32700A0EB6C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4662BF8288600A0EB6C /* NALabel.swift */,
+				E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
 				E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */,
 				E5ECE4632BF7C6B800A0EB6C /* NewsItem.swift in Sources */,
+				E5ECE4672BF8288600A0EB6C /* NALabel.swift in Sources */,
 				E5ECE43F2BF5A7C100A0EB6C /* NARouter.swift in Sources */,
 				E5ECE45F2BF7A11300A0EB6C /* Article.swift in Sources */,
 				E5ECE4572BF6F08400A0EB6C /* NAPaths.swift in Sources */,
@@ -414,6 +421,7 @@
 				E5ECE4322BF5A37300A0EB6C /* ViewCode.swift in Sources */,
 				E5ECE4532BF68D6600A0EB6C /* NewsApi.swift in Sources */,
 				E5ECE45C2BF7017B00A0EB6C /* NABaseViewController.swift in Sources */,
+				E5ECE4692BF833FF00A0EB6C /* NANewsViewCell.swift in Sources */,
 				E5ECE4392BF5A47E00A0EB6C /* I18n.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

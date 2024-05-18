@@ -13,14 +13,19 @@ class NAHomeViewController: NABaseViewController {
     
     private let presenter: NAHomePresenterInterface
     
-    private lazy var containerView = {
-        let view = UIView()
+    private var newsList: [NewsItem] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private lazy var titleLabel = {
+        let view = NALabel(.title)
         return view
     }()
     
-    private lazy var imageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+    private lazy var tableView = {
+        let view = UITableView()
         return view
     }()
 
@@ -55,11 +60,11 @@ class NAHomeViewController: NABaseViewController {
 
 extension NAHomeViewController: NAHomeViewModel {
     func setHeaderTitle(_ text: String) {
-        
+        titleLabel.text = text
     }
     
     func setNewsSuccess(newsList: [NewsItem]) {
-        imageView.image = newsList[2].image
+        self.newsList = newsList
     }
     
     func setNewsFailed(error: String) {
@@ -67,25 +72,60 @@ extension NAHomeViewController: NAHomeViewModel {
     }
 }
 
+extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NANewsViewCell.reuseIdentifier,
+                                                       for: indexPath) as? NANewsViewCell else {
+            return UITableViewCell()
+        }
+
+        cell.delegate = self
+        cell.setup(news: newsList[indexPath.row], indexPath: indexPath)
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
+extension NAHomeViewController: NANewsViewCellDelegate {
+    func didTapView(row: Int) {
+        presenter.navigateToDetails(newsList[row])
+    }
+}
+
+
 extension NAHomeViewController: ViewCode {
     func buildHierarchy() {
-        view.addSubviews([containerView, imageView], constraints: true)
+        view.addSubviews([titleLabel, tableView], constraints: true)
     }
     
     func setupConstraints() {
-        containerView.nac
+        titleLabel.nac
             .top(view.safeAreaLayoutGuide.topAnchor)
-            .leading(view.safeAreaLayoutGuide.leadingAnchor)
-            .trailing(view.safeAreaLayoutGuide.trailingAnchor)
-            .bottom(view.safeAreaLayoutGuide.bottomAnchor)
+            .leading(24)
+            .trailing(24)
         
-        imageView.nac
-            .centerX(containerView.centerXAnchor)
-            .centerY(containerView.centerYAnchor)
-            .width(containerView.widthAnchor)
+        tableView.nac
+            .top(titleLabel.bottomAnchor)
+            .leading()
+            .trailing()
+            .bottom()
     }
     
     func applyAdditionalChanges() {
-        containerView.backgroundColor = .magenta
+        self.view.backgroundColor = UIColor(red: 230, green: 230, blue: 230, alpha: 255)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(NANewsViewCell.self, forCellReuseIdentifier: NANewsViewCell.reuseIdentifier)
     }
 }

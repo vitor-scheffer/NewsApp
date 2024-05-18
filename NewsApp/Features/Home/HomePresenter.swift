@@ -45,7 +45,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
         interactor.fetchNews()
     }
     
-    func navigateToDetails() {
+    func navigateToDetails(_ input: NewsItem) {
         coordinator.navigateToDetails()
     }
 }
