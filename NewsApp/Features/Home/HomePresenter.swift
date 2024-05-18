@@ -38,6 +38,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
     }
     
     func viewWillAppear(_ animated: Bool) {
+        viewModel?.setLoading()
         coordinator.navigator?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -80,6 +81,7 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         
         group.notify(queue: .main) {
             self.viewModel?.setNewsSuccess(newsList: self.newsList)
+            self.viewModel?.removeLoading()
         }
     }
     

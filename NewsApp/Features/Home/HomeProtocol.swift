@@ -11,6 +11,8 @@ protocol NAHomeViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
     func setNewsSuccess(newsList: [NewsItem])
     func setNewsFailed(error: String)
+    func setLoading()
+    func removeLoading()
 }
 
 protocol NAHomePresenterInterface: AnyObject {

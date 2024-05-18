@@ -42,6 +42,8 @@
 		E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE46C2BF864FC00A0EB6C /* DetailsCoordinator.swift */; };
 		E5ECE4712BF8653E00A0EB6C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4702BF8653E00A0EB6C /* DetailsViewController.swift */; };
 		E5ECE4732BF8658400A0EB6C /* DetailsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4722BF8658400A0EB6C /* DetailsProtocol.swift */; };
+		E5ECE4752BF9047800A0EB6C /* NABaseSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4742BF9047800A0EB6C /* NABaseSkeleton.swift */; };
+		E5ECE4772BF9051100A0EB6C /* NASkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4762BF9051100A0EB6C /* NASkeletonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		E5ECE46C2BF864FC00A0EB6C /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 		E5ECE4702BF8653E00A0EB6C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E5ECE4722BF8658400A0EB6C /* DetailsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4742BF9047800A0EB6C /* NABaseSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NABaseSkeleton.swift; sourceTree = "<group>"; };
+		E5ECE4762BF9051100A0EB6C /* NASkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASkeletonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 			children = (
 				E5ECE4662BF8288600A0EB6C /* NALabel.swift */,
 				E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */,
+				E5ECE4742BF9047800A0EB6C /* NABaseSkeleton.swift */,
+				E5ECE4762BF9051100A0EB6C /* NASkeletonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -426,6 +432,8 @@
 				E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */,
 				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
 				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
+				E5ECE4752BF9047800A0EB6C /* NABaseSkeleton.swift in Sources */,
+				E5ECE4772BF9051100A0EB6C /* NASkeletonView.swift in Sources */,
 				E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */,
 				E5ECE4632BF7C6B800A0EB6C /* NewsItem.swift in Sources */,
 				E5ECE4672BF8288600A0EB6C /* NALabel.swift in Sources */,
