@@ -10,7 +10,6 @@
 
 "NAsecret.key" = "&apiKey=%@";
 
-"NAerror.title" = "Ops! Algo deu errado!";
-"NAerror.message" = "Não se preocupe! Já estamos tentando resolver esse problema, tente novamente mais tarde.";
-"NAok.understood" = "Ok, entendi";
-
+"NAerror.title" = "Oh! Something went wrong!";
+"NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later.";
+"NAok.understood" = "Ok";

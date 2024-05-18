@@ -132,7 +132,7 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension NAHomeViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
-        presenter.navigateToDetails(newsList[row])
+        presenter.newsSelected(newsList[row])
     }
 }
 

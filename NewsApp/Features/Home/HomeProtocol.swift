@@ -21,7 +21,7 @@ protocol NAHomePresenterInterface: AnyObject {
     var viewModel: NAHomeViewModel? { get }
     func setViewModel(_ viewModel: NAHomeViewModel)
     func viewWillAppear(_ animated: Bool)
-    func navigateToDetails(_ input: NewsItem)
+    func newsSelected(_ input: NewsItem)
 }
 
 protocol NAHomeInteractorOutput: AnyObject {

@@ -9,7 +9,7 @@ import UIKit
 import Dispatch
 
 final class NAHomePresenter: NAHomePresenterInterface {
-   
+    
     // MARK: Properties
     
     let coordinator: NAHomeCoordinatorInterface
@@ -46,7 +46,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
         interactor.fetchNews()
     }
     
-    func navigateToDetails(_ input: NewsItem) {
+    func newsSelected(_ input: NewsItem) {
         coordinator.navigateToDetails(news: input)
     }
 }
