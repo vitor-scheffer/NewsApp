@@ -19,25 +19,20 @@ final class NANewsViewCell: UITableViewCell {
     
     private lazy var newsView = {
         let view = UIView()
-        return view
-    }()
-    
-    private lazy var stackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.alignment = .center
-        view.spacing = 10
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
         return view
     }()
     
     private lazy var viewImage = {
         let view = UIImageView()
+        view.backgroundColor = .black
         view.contentMode = .scaleAspectFit
         return view
     }()
     
     private lazy var titleLabel = {
-        let view = NALabel(.title)
+        let view = NALabel(.title2)
         return view
     }()
     
@@ -62,6 +57,8 @@ final class NANewsViewCell: UITableViewCell {
     func setup(news: NewsItem, indexPath: IndexPath) {
         setupView()
         
+        viewImage.backgroundColor = news.image == UIImage(systemName: "photo") ? .white : .black
+        viewImage.image = news.image
         titleLabel.text = news.title
         descriptionLabel.text = news.description
         authorLabel.text = news.author
@@ -81,22 +78,33 @@ extension NANewsViewCell: ViewCode {
         contentStackView.addArrangedSubview(titleLabel)
         contentStackView.addArrangedSubview(descriptionLabel)
         contentStackView.addArrangedSubview(authorLabel)
-        stackView.addArrangedSubview(viewImage)
-        stackView.addArrangedSubview(contentStackView)
-        newsView.addSubviews([stackView], constraints: true)
+        newsView.addSubviews([viewImage, contentStackView], constraints: true)
         contentView.addSubview(newsView, constraints: true)
     }
     
     func setupConstraints() {
         newsView.nac
-            .top(contentView.topAnchor)
+            .top()
             .leading(24)
             .trailing(24)
-            .bottom(contentView.bottomAnchor)
+            .bottom(24)
+        
+        viewImage.nac
+            .top()
+            .leading()
+            .trailing()
+            .height(160)
+        
+        contentStackView.nac
+            .top(viewImage.bottomAnchor, 18)
+            .leading(8)
+            .trailing(8)
+            .bottom(8)
     }
     
     func applyAdditionalChanges() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(hex: "#f4f4f4")
+        newsView.backgroundColor = .white
         selectionStyle = .none
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))

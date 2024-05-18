@@ -9,6 +9,7 @@ import UIKit
 
 public enum NAStyle {
     case title
+    case title2
     case description
     case footnote
 }
@@ -36,10 +37,12 @@ class NALabel: UILabel {
         switch style {
         case .title:
             self.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        case .title2:
+            self.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         case .description:
-            self.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            self.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         case .footnote:
-            self.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            self.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         }
     }
 }

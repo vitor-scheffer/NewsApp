@@ -114,18 +114,19 @@ extension NAHomeViewController: ViewCode {
             .trailing(24)
         
         tableView.nac
-            .top(titleLabel.bottomAnchor)
+            .top(titleLabel.bottomAnchor, 32)
             .leading()
             .trailing()
             .bottom()
     }
     
     func applyAdditionalChanges() {
-        self.view.backgroundColor = UIColor(red: 230, green: 230, blue: 230, alpha: 255)
+        self.view.backgroundColor = UIColor(hex: "#f4f4f4")
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(NANewsViewCell.self, forCellReuseIdentifier: NANewsViewCell.reuseIdentifier)
+        tableView.backgroundColor = UIColor(hex: "#f4f4f4")
     }
 }
