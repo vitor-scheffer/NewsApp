@@ -85,8 +85,8 @@ extension NANewsViewCell: ViewCode {
     func setupConstraints() {
         newsView.nac
             .top()
-            .leading(24)
-            .trailing(24)
+            .leading(16)
+            .trailing(16)
             .bottom(24)
         
         viewImage.nac

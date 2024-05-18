@@ -39,7 +39,7 @@ class NAHomeViewController: NABaseViewController {
 
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .darkContent
     }
 
     // MARK: Life Cycle
@@ -110,8 +110,8 @@ extension NAHomeViewController: ViewCode {
     func setupConstraints() {
         titleLabel.nac
             .top(view.safeAreaLayoutGuide.topAnchor)
-            .leading(24)
-            .trailing(24)
+            .leading(16)
+            .trailing(16)
         
         tableView.nac
             .top(titleLabel.bottomAnchor, 32)

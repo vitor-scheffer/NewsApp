@@ -38,6 +38,10 @@
 		E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */; };
 		E5ECE4672BF8288600A0EB6C /* NALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4662BF8288600A0EB6C /* NALabel.swift */; };
 		E5ECE4692BF833FF00A0EB6C /* NANewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */; };
+		E5ECE46B2BF864E400A0EB6C /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE46A2BF864E400A0EB6C /* DetailsPresenter.swift */; };
+		E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE46C2BF864FC00A0EB6C /* DetailsCoordinator.swift */; };
+		E5ECE4712BF8653E00A0EB6C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4702BF8653E00A0EB6C /* DetailsViewController.swift */; };
+		E5ECE4732BF8658400A0EB6C /* DetailsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4722BF8658400A0EB6C /* DetailsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,10 @@
 		E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		E5ECE4662BF8288600A0EB6C /* NALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NALabel.swift; sourceTree = "<group>"; };
 		E5ECE4682BF833FF00A0EB6C /* NANewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANewsViewCell.swift; sourceTree = "<group>"; };
+		E5ECE46A2BF864E400A0EB6C /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		E5ECE46C2BF864FC00A0EB6C /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		E5ECE4702BF8653E00A0EB6C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E5ECE4722BF8658400A0EB6C /* DetailsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +242,10 @@
 		E5ECE43D2BF5A6A400A0EB6C /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE46A2BF864E400A0EB6C /* DetailsPresenter.swift */,
+				E5ECE46C2BF864FC00A0EB6C /* DetailsCoordinator.swift */,
+				E5ECE4702BF8653E00A0EB6C /* DetailsViewController.swift */,
+				E5ECE4722BF8658400A0EB6C /* DetailsProtocol.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -400,13 +412,16 @@
 			files = (
 				E5ECE4472BF6824000A0EB6C /* HomeProtocol.swift in Sources */,
 				E5ECE4032BF593E400A0EB6C /* ViewController.swift in Sources */,
+				E5ECE46B2BF864E400A0EB6C /* DetailsPresenter.swift in Sources */,
 				E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */,
 				E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */,
 				E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */,
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
+				E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,
 				E5ECE45A2BF6F83600A0EB6C /* NAConstraints.swift in Sources */,
+				E5ECE4712BF8653E00A0EB6C /* DetailsViewController.swift in Sources */,
 				E5ECE4512BF684FC00A0EB6C /* NewsApiProtocol.swift in Sources */,
 				E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */,
 				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
@@ -423,6 +438,7 @@
 				E5ECE45C2BF7017B00A0EB6C /* NABaseViewController.swift in Sources */,
 				E5ECE4692BF833FF00A0EB6C /* NANewsViewCell.swift in Sources */,
 				E5ECE4392BF5A47E00A0EB6C /* I18n.swift in Sources */,
+				E5ECE4732BF8658400A0EB6C /* DetailsProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

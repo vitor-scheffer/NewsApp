@@ -27,7 +27,8 @@ public final class NARouter: NARouterProtocol {
         coordinator.start()
     }
     
-    func showNewsDetails(navigator: UINavigationController?) {
-        print("Hello news details")
+    func showNewsDetails(navigator: UINavigationController?, newsDetails: NewsItem) {
+        let coordinator = NADetailsCoordinator(navigator: navigator, news: newsDetails)
+        coordinator.start()
     }
 }
