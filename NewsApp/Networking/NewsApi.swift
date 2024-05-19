@@ -38,7 +38,9 @@ final public class NewsApi: NewsApiProtocol {
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, let httpResponse = response as? HTTPURLResponse, error == nil else {
                     NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
-                    completion(.failure(.generic))
+                    DispatchQueue.main.async {
+                        completion(.failure(.generic))
+                    }
                     return
                 }
                 
@@ -52,20 +54,26 @@ final public class NewsApi: NewsApiProtocol {
                         NALogger.log(.success(url: NewsBaseUrl.baseUrl + endpoint))
                         completion(.success(decodedObject))
                     } catch {
-                        completion(.failure(.decodingFailed))
+                        DispatchQueue.main.async {
+                            completion(.failure(.decodingFailed))
+                        }
                     }
                 case 400...499:
                     let decoder = JSONDecoder()
                     do {
                         let decodedObject = try decoder.decode(ApiError.self, from: data)
                         NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
-                        completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
+                        DispatchQueue.main.async {
+                            completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
+                        }
                     } catch {
                         completion(.failure(.decodingFailed))
                     }
                 default:
                     NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
-                    completion(.failure(.generic))
+                    DispatchQueue.main.async {
+                        completion(.failure(.generic))
+                    }
                 }
             }
         

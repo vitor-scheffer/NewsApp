@@ -15,6 +15,17 @@ final class NADetailsPresenterTests: XCTestCase {
         XCTAssertFalse(viewModelSpy.setLoadingCalled)
         XCTAssertNil(viewModelSpy.newsDetails)
     }
+    
+    func testSetViewModelShouldSetValuesCorrectly() {
+        let (sut, _, viewModelSpy) = makeSUT()
+        let expected = anyNewsDetails()
+
+        sut.setViewModel(viewModelSpy)
+
+        XCTAssertTrue(viewModelSpy.setupLayoutCalled)
+        XCTAssertNotNil(viewModelSpy.newsDetails)
+        XCTAssertEqual(viewModelSpy.newsDetails, expected)
+    }
 }
 
 // MARK: - Helpers

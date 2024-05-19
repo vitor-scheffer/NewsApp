@@ -9,7 +9,7 @@ import XCTest
 @testable import NewsApp
 
 final class NAHomeInteractorTests: XCTestCase {
-    func testFetchBalanceWhenReturnsSuccess() {
+    func testFetchNewsWhenReturnsSuccess() {
         let expected = anyNewsOutput()
         let (sut, apiStub, outputSpy) = makeSUT(status: .success(expected))
 
@@ -20,8 +20,7 @@ final class NAHomeInteractorTests: XCTestCase {
         XCTAssertEqual(apiStub.method, .get)
     }
     
-    func testFetchBalanceWhenReturnsRemunerationError() {
-        let balance = RequestError.generic
+    func testFetchNewsWhenReturnsError() {
         let (sut, apiStub, outputSpy) = makeSUT(status: .failure(.generic))
         
         sut.fetchNews()

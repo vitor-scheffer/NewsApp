@@ -87,8 +87,6 @@ extension NAHomePresenter: NAHomeInteractorOutput {
     
     
     func fetchNewsFailed(_ output: String) {
-        DispatchQueue.main.async {
-            self.viewModel?.setNewsFailed(error: output)
-        }
+        self.viewModel?.setNewsFailed(error: output)
     }
 }

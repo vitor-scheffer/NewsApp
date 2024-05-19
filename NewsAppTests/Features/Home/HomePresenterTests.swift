@@ -26,6 +26,34 @@ final class NAHomePresenterTests: XCTestCase {
         XCTAssertEqual(viewModelSpy.headerText, "NewsApp")
         XCTAssertTrue(interactorSpy.fetchNewsCalled)
     }
+    
+    func testFetchNewsShouldFetchNews() {
+        let (sut, _, interactorSpy, _) = makeSUT()
+
+        sut.fetchNews()
+        
+        XCTAssertTrue(interactorSpy.fetchNewsCalled)
+    }
+    
+    func testFetchNewsFailedShouldSetNewsFailed() {
+        let (sut, _, _, viewModelSpy) = makeSUT()
+
+        sut.setViewModel(viewModelSpy)
+        sut.fetchNewsFailed("any")
+
+        XCTAssertTrue(viewModelSpy.setNewsFailedCalled)
+        XCTAssertEqual(viewModelSpy.messageError, "any")
+    }
+    
+    func testNewsSelectedShouldNavigateToDetails() {
+        let (sut, coordinator, _, _) = makeSUT()
+        var expected = anyNewsDetails()
+
+        sut.newsSelected(expected)
+
+        XCTAssertTrue(coordinator.navigateToDetailsCalled)
+        XCTAssertEqual(coordinator.news, expected)
+    }
 }
 
 // MARK: - Helpers

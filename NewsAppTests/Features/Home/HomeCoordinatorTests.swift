@@ -23,7 +23,7 @@ final class NAHomeCoordinatorTests: XCTestCase {
         XCTAssertNotNil(sut.navigator?.viewControllers.first as? NAHomeViewController)
     }
 
-    func testShowTransactionsShouldCallTransactions() {
+    func testNavigateToDetailsShouldCallShowNewsDetails() {
         let (sut, fakeNavigator, routerSpy) = makeSUT()
         let expected = anyNewsDetails()
 
