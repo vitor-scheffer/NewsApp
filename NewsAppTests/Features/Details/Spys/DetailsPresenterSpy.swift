@@ -28,5 +28,3 @@ final class NADetailsPresenterSpy: NADetailsPresenterInterface {
         self.navigateToHomeCalled = true
     }
 }
-
-

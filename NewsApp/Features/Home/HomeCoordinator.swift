@@ -38,4 +38,3 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
         router.showNewsDetails(navigator: navigator, newsDetails: news)
     }
 }
-

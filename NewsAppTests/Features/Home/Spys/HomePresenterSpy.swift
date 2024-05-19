@@ -31,4 +31,3 @@ final class NAHomePresenterSpy: NAHomePresenterInterface {
         self.news = input
     }
 }
-

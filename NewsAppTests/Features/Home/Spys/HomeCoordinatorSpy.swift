@@ -23,6 +23,4 @@ final class NAHomeCoordinatorSpy: NAHomeCoordinatorInterface {
         self.navigateToDetailsCalled = true
         self.news = news
     }
-    
-    
 }

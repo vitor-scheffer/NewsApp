@@ -30,4 +30,3 @@ extension NADetailsPresenterTests {
         return (sut, coordinatorSpy, viewModelSpy)
     }
 }
-

@@ -26,6 +26,4 @@ final class NARouterSpy: NARouterProtocol {
         self.showNewsDetailsCalled = true
         self.newsDetails = newsDetails
     }
-    
-    
 }

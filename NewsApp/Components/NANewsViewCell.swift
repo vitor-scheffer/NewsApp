@@ -57,7 +57,7 @@ final class NANewsViewCell: UITableViewCell {
     func setup(news: NewsItem, indexPath: IndexPath) {
         setupView()
         
-        viewImage.backgroundColor = news.image == UIImage(systemName: "photo") ? NAColor.white.uiColor : NAColor.black.uiColor
+        viewImage.backgroundColor = NAColor.black.uiColor
         viewImage.image = news.image
         titleLabel.text = news.title
         descriptionLabel.text = news.description
@@ -110,6 +110,4 @@ extension NANewsViewCell: ViewCode {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         newsView.addGestureRecognizer(gesture)
     }
-    
-    
 }

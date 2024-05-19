@@ -92,4 +92,3 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         }
     }
 }
-

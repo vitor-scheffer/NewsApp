@@ -37,4 +37,3 @@ extension NADetailsCoordinatorTests {
         return (sut, fakeNavigator, routerSpy)
     }
 }
-

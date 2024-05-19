@@ -40,4 +40,3 @@ final class NAHomeViewModelSpy: NAHomeViewModel {
         self.removeLoadingCalled = true
     }
 }
-

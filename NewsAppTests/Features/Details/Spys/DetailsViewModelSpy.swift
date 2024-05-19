@@ -26,5 +26,3 @@ final class NADetailsViewModelSpy: NADetailsViewModel {
         self.newsDetails = newsDetails
     }
 }
-
-

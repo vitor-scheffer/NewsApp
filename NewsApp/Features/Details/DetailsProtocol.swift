@@ -24,4 +24,3 @@ protocol NADetailsCoordinatorInterface: AnyObject {
     func start()
     func navigateToHome()
 }
-

@@ -41,5 +41,3 @@ public final class NADetailsCoordinator: NADetailsCoordinatorInterface {
         navigator?.popViewController(animated: true)
     }
 }
-
-
