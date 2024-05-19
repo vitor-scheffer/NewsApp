@@ -58,6 +58,7 @@
 		E5ECE49C2BF9612D00A0EB6C /* DetailsCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE49B2BF9612D00A0EB6C /* DetailsCoordinatorTests.swift */; };
 		E5ECE49E2BF9613900A0EB6C /* DetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE49D2BF9613900A0EB6C /* DetailsPresenterTests.swift */; };
 		E5ECE4A42BFA6F2B00A0EB6C /* NAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4A32BFA6F2B00A0EB6C /* NAColor.swift */; };
+		E5ECE4A62BFA8A7300A0EB6C /* NALogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4A52BFA8A7300A0EB6C /* NALogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		E5ECE49B2BF9612D00A0EB6C /* DetailsCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinatorTests.swift; sourceTree = "<group>"; };
 		E5ECE49D2BF9613900A0EB6C /* DetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterTests.swift; sourceTree = "<group>"; };
 		E5ECE4A32BFA6F2B00A0EB6C /* NAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAColor.swift; sourceTree = "<group>"; };
+		E5ECE4A52BFA8A7300A0EB6C /* NALogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NALogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				E5ECE4402BF5A93300A0EB6C /* NARouterProtocol.swift */,
 				E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */,
 				E5ECE4642BF7CE8A00A0EB6C /* ImageManager.swift */,
+				E5ECE4A52BFA8A7300A0EB6C /* NALogger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				E5ECE4A42BFA6F2B00A0EB6C /* NAColor.swift in Sources */,
 				E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */,
 				E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */,
+				E5ECE4A62BFA8A7300A0EB6C /* NALogger.swift in Sources */,
 				E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */,
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */,

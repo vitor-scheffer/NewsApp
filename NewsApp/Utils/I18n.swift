@@ -40,5 +40,18 @@ public final class I18n {
             String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
         }
     }
+    
+    public enum Logger: String, I18nProtocol {
+        case succeeded = "NAlogger.succeeded"
+        case failed = "NAlogger.failed"
+
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
 }
 

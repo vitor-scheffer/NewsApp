@@ -37,6 +37,7 @@ final public class NewsApi: NewsApiProtocol {
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, let httpResponse = response as? HTTPURLResponse, error == nil else {
+                    NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
                     completion(.failure(.generic))
                     return
                 }
@@ -48,6 +49,7 @@ final public class NewsApi: NewsApiProtocol {
                     let decoder = JSONDecoder()
                     do {
                         let decodedObject = try decoder.decode(type.self, from: data)
+                        NALogger.log(.success(url: NewsBaseUrl.baseUrl + endpoint))
                         completion(.success(decodedObject))
                     } catch {
                         completion(.failure(.decodingFailed))
@@ -56,11 +58,13 @@ final public class NewsApi: NewsApiProtocol {
                     let decoder = JSONDecoder()
                     do {
                         let decodedObject = try decoder.decode(ApiError.self, from: data)
+                        NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
                         completion(.failure(.apiRefuseWithMsg(message: decodedObject.message)))
                     } catch {
                         completion(.failure(.decodingFailed))
                     }
                 default:
+                    NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
                     completion(.failure(.generic))
                 }
             }

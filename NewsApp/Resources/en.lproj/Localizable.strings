@@ -13,3 +13,6 @@
 "NAerror.title" = "Oh! Something went wrong!";
 "NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later.";
 "NAok.understood" = "Ok";
+
+"NAlogger.succeeded" = "\n ***** 🟢 SUCCEEDED: 🌐 URL: %@ 🌐 *****";
+"NAlogger.failed" = "\n ***** 🔴 FAILED: 🌐 URL: %@ 🌐 *****";
