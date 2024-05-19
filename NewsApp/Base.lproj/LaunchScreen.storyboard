@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Launching" translatesAutoresizingMaskIntoConstraints="NO" id="rem-VM-E64">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launching" translatesAutoresizingMaskIntoConstraints="NO" id="rem-VM-E64">
                                 <rect key="frame" x="121" y="301" width="150" height="250"/>
                             </imageView>
                         </subviews>
@@ -33,6 +33,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Launching" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="launching" width="341.33334350585938" height="341.33334350585938"/>
     </resources>
 </document>

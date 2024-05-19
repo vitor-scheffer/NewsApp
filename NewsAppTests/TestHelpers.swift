@@ -29,7 +29,7 @@ func anyNewsDetails() -> NewsItem {
                     author: "any-author",
                     title: "any-title",
                     description: "any-description",
-                    image: UIImage(named: "RandomNews")!,
+                    image: UIImage(named: "randomNews")!,
                     publishedAt: "any_date",
                     content: "any-content")
 }
