@@ -8,12 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let router = NARouter.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+        router.showHome(navigator: navigationController)
     }
-
-
 }
 

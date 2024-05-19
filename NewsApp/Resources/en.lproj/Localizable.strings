@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  NewsApp
+
+  Created by Vitor Boff on 15/05/24.
+  
+*/
+
+"NAapp.name" = "NewsApp";
+
+"NAsecret.key" = "&apiKey=%@";
+
+"NAerror.title" = "Oh! Something went wrong!";
+"NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later.";
+"NAok.understood" = "Ok";
+
+"NAlogger.succeeded" = "\n ***** 🟢 SUCCEEDED: 🌐 URL: %@ 🌐 *****";
+"NAlogger.failed" = "\n ***** 🔴 FAILED: 🌐 URL: %@ 🌐 *****";
