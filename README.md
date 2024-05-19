@@ -1,7 +1,7 @@
 <h1 align="center">News App</h1>
 
 <div style="display: flex">
-  <img style="width: 40px" src="https://github.com/vitor-scheffer/NewsApp/assets/103120313/07ecc4ca-cd2f-4d42-8c8d-bd00b4e5cc5e" />
+  <img align="center" style="width: 60px" src="https://github.com/vitor-scheffer/NewsApp/assets/103120313/07ecc4ca-cd2f-4d42-8c8d-bd00b4e5cc5e" />
 </div>
 
 <h1 align="center">Cenário sucesso home</h1>
