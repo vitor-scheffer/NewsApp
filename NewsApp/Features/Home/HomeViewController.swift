@@ -65,8 +65,8 @@ extension NAHomeViewController: NAHomeViewModel {
         titleLabel.isHidden = true
         tableView.isHidden = true
         
-        let skeletonTitleView = NASkeletonView([.singleLine], color: UIColor(hex: "#a9a9a9", alpha: 1), height: 30)
-        let skeletonTableView = NASkeletonView([.newsList], color: UIColor(hex: "#a9a9a9", alpha: 1), quantity: 4)
+        let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
+        let skeletonTableView = NASkeletonView([.newsList], quantity: 4)
         
         view.addSubviews([skeletonTitleView, skeletonTableView], constraints: true)
         
@@ -160,6 +160,6 @@ extension NAHomeViewController: ViewCode {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(NANewsViewCell.self, forCellReuseIdentifier: NANewsViewCell.reuseIdentifier)
-        tableView.backgroundColor = UIColor(hex: "#f4f4f4")
+        tableView.backgroundColor = NAColor.body1.uiColor
     }
 }

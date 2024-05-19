@@ -9,7 +9,7 @@ import UIKit
 
 class ODBaseSkeletonView: UIView {
 
-    init(_ height: CGFloat? = nil, color: UIColor = UIColor(red: 244, green: 244, blue: 244, alpha: 1)) {
+    init(_ height: CGFloat? = nil, color: UIColor = NAColor.gray.uiColor) {
         super.init(frame: .zero)
         if let height = height {
             heightAnchor.constraint(equalToConstant: height).isActive = true

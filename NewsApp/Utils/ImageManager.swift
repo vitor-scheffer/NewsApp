@@ -10,7 +10,7 @@ import UIKit
 
 final public class ImageManager {
     
-    let genericImage = UIImage(systemName: "photo")!
+    let genericImage = UIImage(named: "randomNews")
     
     init() { }
     

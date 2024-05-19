@@ -26,7 +26,7 @@ final class NANewsViewCell: UITableViewCell {
     
     private lazy var viewImage = {
         let view = UIImageView()
-        view.backgroundColor = .black
+        view.backgroundColor = NAColor.black.uiColor
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -57,7 +57,7 @@ final class NANewsViewCell: UITableViewCell {
     func setup(news: NewsItem, indexPath: IndexPath) {
         setupView()
         
-        viewImage.backgroundColor = news.image == UIImage(systemName: "photo") ? .white : .black
+        viewImage.backgroundColor = news.image == UIImage(systemName: "photo") ? NAColor.white.uiColor : NAColor.black.uiColor
         viewImage.image = news.image
         titleLabel.text = news.title
         descriptionLabel.text = news.description
@@ -103,8 +103,8 @@ extension NANewsViewCell: ViewCode {
     }
     
     func applyAdditionalChanges() {
-        contentView.backgroundColor = UIColor(hex: "#f4f4f4")
-        newsView.backgroundColor = .white
+        contentView.backgroundColor = NAColor.body1.uiColor
+        newsView.backgroundColor = NAColor.white.uiColor
         selectionStyle = .none
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))

@@ -105,7 +105,7 @@ public extension UIView {
         if elevation == .none { return }
         layer.masksToBounds = false
         layer.cornerRadius = cornerRadius
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = NAColor.black.cgColor
         layer.shadowOffset = .init(width: .zero, height: elevation.shadowOffset)
         layer.shadowOpacity = elevation.shadowOpacity/2
         layer.shadowRadius = elevation.shawdowRadius/4

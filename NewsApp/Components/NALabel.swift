@@ -18,7 +18,7 @@ class NALabel: UILabel {
     
     public init(
         _ fontType: NAStyle = .description,
-        textColor: UIColor = .black,
+        textColor: UIColor = NAColor.black.uiColor,
         alignment: NSTextAlignment = .left,
         numberOfLines: Int = 0
     ) {

@@ -14,11 +14,7 @@ final class NADetailsPresenter: NADetailsPresenterInterface {
     let coordinator: NADetailsCoordinatorInterface
     weak var viewModel: NADetailsViewModel?
     
-    private var news: NewsItem {
-        didSet {
-            viewModel?.setupLayout(newsDetails: news)
-        }
-    }
+    private var news: NewsItem
     
     // MARK: Initalizer
     
@@ -34,6 +30,7 @@ final class NADetailsPresenter: NADetailsPresenterInterface {
     
     func setViewModel(_ viewModel: NADetailsViewModel) {
         self.viewModel = viewModel
+        viewModel.setupLayout(newsDetails: news)
     }
     
     func viewWillAppear(_ animated: Bool) {

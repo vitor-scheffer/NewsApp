@@ -24,7 +24,7 @@ open class NABaseViewController: UIViewController {
         super.loadView()
         view = UIView()
         
-        view.backgroundColor = UIColor(hex: "#f4f4f4")
+        view.backgroundColor = NAColor.body1.uiColor
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,7 @@ open class NABaseViewController: UIViewController {
     }
     
     private func setPrimaryNavigationStyle(style: NavigationStyle) {
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = NAColor.white.uiColor
         if #available(iOS 13.0, *) {
             if navigationController?.navigationBar.standardAppearance == nil {
                 navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance()
@@ -60,13 +60,13 @@ open class NABaseViewController: UIViewController {
                 
                 appearance.titleTextAttributes =
                 [
-                    .foregroundColor: UIColor.white,
+                    .foregroundColor: NAColor.white.uiColor,
                     .font: UIFont.systemFont(ofSize: 16)
                 ]
                 
                 appearance.largeTitleTextAttributes =
                 [
-                    .foregroundColor: UIColor.white,
+                    .foregroundColor: NAColor.white.uiColor,
                     .font: UIFont.systemFont(ofSize: 20)
                 ]
                 
@@ -84,13 +84,13 @@ open class NABaseViewController: UIViewController {
                 
                 navigationController?.navigationBar.titleTextAttributes =
                 [
-                    .foregroundColor: UIColor.white,
+                    .foregroundColor: NAColor.white.uiColor,
                     .font: UIFont.systemFont(ofSize: 16)
                 ]
                 
                 navigationController?.navigationBar.largeTitleTextAttributes =
                 [
-                    .foregroundColor: UIColor.white,
+                    .foregroundColor: NAColor.white.uiColor,
                     .font:  UIFont.systemFont(ofSize: 20)
                 ]
             }

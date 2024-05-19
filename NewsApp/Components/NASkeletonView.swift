@@ -21,7 +21,7 @@ public final class NASkeletonView: UIView {
     
     public init(
         _ types: [NASkeletonType],
-        color: UIColor = UIColor(red: 244, green: 244, blue: 244, alpha: 1),
+        color: UIColor = NAColor.gray.uiColor,
         height: CGFloat = 20,
         quantity: Int = 1
     ) {

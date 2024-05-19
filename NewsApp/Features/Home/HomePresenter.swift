@@ -34,12 +34,11 @@ final class NAHomePresenter: NAHomePresenterInterface {
     func setViewModel(_ viewModel: NAHomeViewModel) {
         self.viewModel = viewModel
         viewModel.setHeaderTitle(I18n.General.appName.text)
+        viewModel.setLoading()
         fetchNews()
     }
     
     func viewWillAppear(_ animated: Bool) {
-        viewModel?.setLoading()
-        fetchNews()
         coordinator.navigator?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -75,7 +74,7 @@ extension NAHomePresenter: NAHomeInteractorOutput {
                     content: article.content
                 )
                 
-                self.newsList.append(news)
+                if !news.title.contains("[Removed]") { self.newsList.append(news) }
                 group.leave()
             }
         }
