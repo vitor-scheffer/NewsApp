@@ -136,6 +136,7 @@ extension NAHomeViewController: NANewsViewCellDelegate {
     }
 }
 
+// MARK: ViewCode
 
 extension NAHomeViewController: ViewCode {
     func buildHierarchy() {

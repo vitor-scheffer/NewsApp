@@ -94,6 +94,8 @@ extension NADetailsViewController: NADetailsViewModel {
     
 }
 
+// MARK: ViewCode
+
 extension NADetailsViewController: ViewCode {
     func buildHierarchy() {
         view.addSubviews([bannerView, scrollView], constraints: true)
