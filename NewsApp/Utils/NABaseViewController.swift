@@ -21,11 +21,10 @@ open class NABaseViewController: UIViewController {
     // MARK: Life Cycle
     
     open override func loadView() {
-        setupNavigationView()
         super.loadView()
         view = UIView()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: "#f4f4f4")
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -45,10 +44,6 @@ open class NABaseViewController: UIViewController {
         if #available(iOS 13.0, *) {
             navigationItem.setValue(true, forKey: "__largeTitleTwoLineMode")
         }
-    }
-    
-    private func setupNavigationView() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func setPrimaryNavigationStyle(style: NavigationStyle) {

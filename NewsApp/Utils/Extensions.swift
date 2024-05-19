@@ -44,6 +44,44 @@ public extension UIViewController {
     }
 }
 
+public enum NAElevation {
+    case none
+    case level1
+    case level2
+    case level3
+    case level4
+    
+    var shadowOpacity: Float {
+        switch self {
+        case .none: return .zero
+        case .level1: return 0.16
+        case .level2: return 0.08
+        case .level3: return 0.08
+        case .level4: return 0.08
+        }
+    }
+    
+    var shadowOffset: CGFloat {
+        switch self {
+        case .none: return 0
+        case .level1: return 4
+        case .level2: return 4
+        case .level3: return 8
+        case .level4: return 16
+        }
+    }
+    
+    var shawdowRadius: CGFloat {
+        switch self {
+        case .none: return 0
+        case .level1: return 8
+        case .level2: return 16
+        case .level3: return 24
+        case .level4: return 32
+        }
+    }
+}
+
 public extension UIView {
     func addSubviews(_ subviews: UIView...) {
         addSubviews(subviews, constraints: true)
@@ -61,6 +99,18 @@ public extension UIView {
             subview.translatesAutoresizingMaskIntoConstraints = !constraints
             addSubview(subview)
         }
+    }
+    
+    func addElevation(elevation: NAElevation, cornerRadius: CGFloat = 0) {
+        if elevation == .none { return }
+        layer.masksToBounds = false
+        layer.cornerRadius = cornerRadius
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .init(width: .zero, height: elevation.shadowOffset)
+        layer.shadowOpacity = elevation.shadowOpacity/2
+        layer.shadowRadius = elevation.shawdowRadius/4
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
     
     @discardableResult

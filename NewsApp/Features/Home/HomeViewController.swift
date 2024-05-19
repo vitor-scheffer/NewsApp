@@ -156,8 +156,6 @@ extension NAHomeViewController: ViewCode {
     }
     
     func applyAdditionalChanges() {
-        self.view.backgroundColor = UIColor(hex: "#f4f4f4")
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none

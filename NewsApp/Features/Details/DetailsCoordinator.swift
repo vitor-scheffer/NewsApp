@@ -33,7 +33,7 @@ public final class NADetailsCoordinator: NADetailsCoordinatorInterface {
     func start() {
         let presenter = NADetailsPresenter(coordinator: self, news: news)
         let viewController = NADetailsViewController(presenter: presenter)
-
+        
         navigator?.pushViewController(viewController, animated: true)
     }
     

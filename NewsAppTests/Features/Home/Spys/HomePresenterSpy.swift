@@ -19,6 +19,7 @@ final class NAHomePresenterSpy: NAHomePresenterInterface {
     
     func setViewModel(_ viewModel: any NAHomeViewModel) {
         self.setViewModelCalled = true
+        self.viewModel = viewModel
     }
     
     func viewWillAppear(_ animated: Bool) {

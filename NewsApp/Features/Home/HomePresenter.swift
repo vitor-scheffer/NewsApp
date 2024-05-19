@@ -39,7 +39,8 @@ final class NAHomePresenter: NAHomePresenterInterface {
     
     func viewWillAppear(_ animated: Bool) {
         viewModel?.setLoading()
-        coordinator.navigator?.setNavigationBarHidden(false, animated: true)
+        fetchNews()
+        coordinator.navigator?.setNavigationBarHidden(true, animated: true)
     }
     
     func fetchNews() {

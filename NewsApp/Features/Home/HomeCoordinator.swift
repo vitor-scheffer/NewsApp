@@ -30,7 +30,7 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
         let viewController = NAHomeViewController(presenter: presenter)
         viewController.modalPresentationStyle = .fullScreen
 
-        navigator?.present(viewController, animated: true)
+        navigator?.pushViewController(viewController, animated: true)
     }
     
     func navigateToDetails(news: NewsItem) {
