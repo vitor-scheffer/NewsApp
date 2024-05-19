@@ -175,7 +175,6 @@
 				E5ECE3FE2BF593E400A0EB6C /* AppDelegate.swift */,
 				E5ECE4002BF593E400A0EB6C /* SceneDelegate.swift */,
 				E5ECE4022BF593E400A0EB6C /* ViewController.swift */,
-				E5ECE4072BF593E700A0EB6C /* Assets.xcassets */,
 				E5ECE4092BF593E700A0EB6C /* LaunchScreen.storyboard */,
 				E5ECE40C2BF593E700A0EB6C /* Info.plist */,
 				E5ECE45D2BF7974100A0EB6C /* Config.xcconfig */,
@@ -231,6 +230,7 @@
 		E5ECE4332BF5A41400A0EB6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4072BF593E700A0EB6C /* Assets.xcassets */,
 				E5ECE4582BF6F81400A0EB6C /* Constraints */,
 				E5ECE4342BF5A42500A0EB6C /* Localizable.strings */,
 				E5ECE4A32BFA6F2B00A0EB6C /* NAColor.swift */,
