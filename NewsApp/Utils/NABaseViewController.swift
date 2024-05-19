@@ -21,6 +21,7 @@ open class NABaseViewController: UIViewController {
     // MARK: Life Cycle
     
     open override func loadView() {
+        setupNavigationView()
         super.loadView()
         view = UIView()
         
@@ -44,6 +45,10 @@ open class NABaseViewController: UIViewController {
         if #available(iOS 13.0, *) {
             navigationItem.setValue(true, forKey: "__largeTitleTwoLineMode")
         }
+    }
+    
+    private func setupNavigationView() {
+        self.navigationController?.navigationBar.tintColor = NAColor.white.uiColor
     }
 }
 
