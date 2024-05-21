@@ -59,6 +59,18 @@
 		E5ECE49E2BF9613900A0EB6C /* DetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE49D2BF9613900A0EB6C /* DetailsPresenterTests.swift */; };
 		E5ECE4A42BFA6F2B00A0EB6C /* NAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4A32BFA6F2B00A0EB6C /* NAColor.swift */; };
 		E5ECE4A62BFA8A7300A0EB6C /* NALogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4A52BFA8A7300A0EB6C /* NALogger.swift */; };
+		E5ECE4B12BFCDA2B00A0EB6C /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4A82BFCDA2B00A0EB6C /* Inter-Thin.ttf */; };
+		E5ECE4B22BFCDA2B00A0EB6C /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4A92BFCDA2B00A0EB6C /* Inter-Medium.ttf */; };
+		E5ECE4B32BFCDA2B00A0EB6C /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4AA2BFCDA2B00A0EB6C /* Inter-SemiBold.ttf */; };
+		E5ECE4B42BFCDA2B00A0EB6C /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4AB2BFCDA2B00A0EB6C /* Inter-Light.ttf */; };
+		E5ECE4B62BFCDA2B00A0EB6C /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4AD2BFCDA2B00A0EB6C /* Inter-ExtraLight.ttf */; };
+		E5ECE4B82BFCDA2B00A0EB6C /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4AF2BFCDA2B00A0EB6C /* Inter-Bold.ttf */; };
+		E5ECE4B92BFCDA2B00A0EB6C /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4B02BFCDA2B00A0EB6C /* Inter-Regular.ttf */; };
+		E5ECE4BF2BFCDA4700A0EB6C /* Rajdhani-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4BA2BFCDA4700A0EB6C /* Rajdhani-Bold.ttf */; };
+		E5ECE4C02BFCDA4700A0EB6C /* Rajdhani-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4BB2BFCDA4700A0EB6C /* Rajdhani-Light.ttf */; };
+		E5ECE4C12BFCDA4700A0EB6C /* Rajdhani-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4BC2BFCDA4700A0EB6C /* Rajdhani-Regular.ttf */; };
+		E5ECE4C22BFCDA4700A0EB6C /* Rajdhani-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4BD2BFCDA4700A0EB6C /* Rajdhani-Medium.ttf */; };
+		E5ECE4C32BFCDA4700A0EB6C /* Rajdhani-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5ECE4BE2BFCDA4700A0EB6C /* Rajdhani-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +140,18 @@
 		E5ECE49D2BF9613900A0EB6C /* DetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterTests.swift; sourceTree = "<group>"; };
 		E5ECE4A32BFA6F2B00A0EB6C /* NAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAColor.swift; sourceTree = "<group>"; };
 		E5ECE4A52BFA8A7300A0EB6C /* NALogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NALogger.swift; sourceTree = "<group>"; };
+		E5ECE4A82BFCDA2B00A0EB6C /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		E5ECE4A92BFCDA2B00A0EB6C /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		E5ECE4AA2BFCDA2B00A0EB6C /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		E5ECE4AB2BFCDA2B00A0EB6C /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		E5ECE4AD2BFCDA2B00A0EB6C /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E5ECE4AF2BFCDA2B00A0EB6C /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		E5ECE4B02BFCDA2B00A0EB6C /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		E5ECE4BA2BFCDA4700A0EB6C /* Rajdhani-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rajdhani-Bold.ttf"; sourceTree = "<group>"; };
+		E5ECE4BB2BFCDA4700A0EB6C /* Rajdhani-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rajdhani-Light.ttf"; sourceTree = "<group>"; };
+		E5ECE4BC2BFCDA4700A0EB6C /* Rajdhani-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rajdhani-Regular.ttf"; sourceTree = "<group>"; };
+		E5ECE4BD2BFCDA4700A0EB6C /* Rajdhani-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rajdhani-Medium.ttf"; sourceTree = "<group>"; };
+		E5ECE4BE2BFCDA4700A0EB6C /* Rajdhani-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rajdhani-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +257,7 @@
 		E5ECE4332BF5A41400A0EB6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4A72BFCD9C100A0EB6C /* Fonts */,
 				E5ECE4072BF593E700A0EB6C /* Assets.xcassets */,
 				E5ECE4582BF6F81400A0EB6C /* Constraints */,
 				E5ECE4342BF5A42500A0EB6C /* Localizable.strings */,
@@ -346,6 +371,25 @@
 			path = Spys;
 			sourceTree = "<group>";
 		};
+		E5ECE4A72BFCD9C100A0EB6C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E5ECE4BA2BFCDA4700A0EB6C /* Rajdhani-Bold.ttf */,
+				E5ECE4BB2BFCDA4700A0EB6C /* Rajdhani-Light.ttf */,
+				E5ECE4BD2BFCDA4700A0EB6C /* Rajdhani-Medium.ttf */,
+				E5ECE4BC2BFCDA4700A0EB6C /* Rajdhani-Regular.ttf */,
+				E5ECE4BE2BFCDA4700A0EB6C /* Rajdhani-SemiBold.ttf */,
+				E5ECE4AF2BFCDA2B00A0EB6C /* Inter-Bold.ttf */,
+				E5ECE4AD2BFCDA2B00A0EB6C /* Inter-ExtraLight.ttf */,
+				E5ECE4AB2BFCDA2B00A0EB6C /* Inter-Light.ttf */,
+				E5ECE4A92BFCDA2B00A0EB6C /* Inter-Medium.ttf */,
+				E5ECE4B02BFCDA2B00A0EB6C /* Inter-Regular.ttf */,
+				E5ECE4AA2BFCDA2B00A0EB6C /* Inter-SemiBold.ttf */,
+				E5ECE4A82BFCDA2B00A0EB6C /* Inter-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,9 +471,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5ECE4B32BFCDA2B00A0EB6C /* Inter-SemiBold.ttf in Resources */,
+				E5ECE4B12BFCDA2B00A0EB6C /* Inter-Thin.ttf in Resources */,
+				E5ECE4B82BFCDA2B00A0EB6C /* Inter-Bold.ttf in Resources */,
 				E5ECE4082BF593E700A0EB6C /* Assets.xcassets in Resources */,
+				E5ECE4BF2BFCDA4700A0EB6C /* Rajdhani-Bold.ttf in Resources */,
 				E5ECE4362BF5A42500A0EB6C /* Localizable.strings in Resources */,
+				E5ECE4B22BFCDA2B00A0EB6C /* Inter-Medium.ttf in Resources */,
+				E5ECE4C02BFCDA4700A0EB6C /* Rajdhani-Light.ttf in Resources */,
 				E5ECE40B2BF593E700A0EB6C /* Base in Resources */,
+				E5ECE4B42BFCDA2B00A0EB6C /* Inter-Light.ttf in Resources */,
+				E5ECE4C32BFCDA4700A0EB6C /* Rajdhani-SemiBold.ttf in Resources */,
+				E5ECE4B62BFCDA2B00A0EB6C /* Inter-ExtraLight.ttf in Resources */,
+				E5ECE4B92BFCDA2B00A0EB6C /* Inter-Regular.ttf in Resources */,
+				E5ECE4C22BFCDA4700A0EB6C /* Rajdhani-Medium.ttf in Resources */,
+				E5ECE4C12BFCDA4700A0EB6C /* Rajdhani-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +663,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -716,6 +773,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

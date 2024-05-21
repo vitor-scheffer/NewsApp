@@ -23,7 +23,7 @@ final public class ImageManager {
         let task = URLSession.shared.dataTask(with: urlObject) { data, _, _ in
             guard let data = data, let image = UIImage(data: data) else {
                 DispatchQueue.main.async {
-                    completion(nil)
+                    completion(self.genericImage)
                 }
                 return
             }

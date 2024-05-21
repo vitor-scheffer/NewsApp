@@ -24,8 +24,8 @@ extension String {
         
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd 'de' MMMM 'de' yyyy"
-        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.dateFormat = "MMMM dd',' yyyy"
+        dateFormatter.locale = Locale(identifier: "en-US")
     
         let formattedDate = dateFormatter.string(from: date)
         
