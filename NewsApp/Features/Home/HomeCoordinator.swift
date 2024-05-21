@@ -29,6 +29,7 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
                                         interactor: interactor)
         let viewController = NAHomeViewController(presenter: presenter)
         viewController.modalPresentationStyle = .fullScreen
+        viewController.title = I18n.General.appName.text
 
         navigator?.pushViewController(viewController, animated: true)
     }

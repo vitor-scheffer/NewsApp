@@ -39,6 +39,11 @@ class NADetailsViewController: NABaseViewController {
         return view
     }()
     
+    private lazy var authorLabel = {
+        let view = NALabel(.footnote)
+        return view
+    }()
+    
     private lazy var publishedDateLabel = {
         let view = NALabel(.footnote)
         return view
@@ -86,6 +91,7 @@ class NADetailsViewController: NABaseViewController {
 extension NADetailsViewController: NADetailsViewModel {
     func setupLayout(newsDetails: NewsItem) {
         bannerView.image = newsDetails.image
+        authorLabel.text = newsDetails.author
         publishedDateLabel.text = newsDetails.publishedAt
         titleLabel.text = newsDetails.title
         contentLabel.text = newsDetails.content
@@ -100,7 +106,7 @@ extension NADetailsViewController: ViewCode {
     func buildHierarchy() {
         view.addSubviews([bannerView, scrollView], constraints: true)
         bannerView.insertSubview(publishedDateView, at: .zero)
-        publishedDateView.addSubview(publishedDateLabel, constraints: true)
+        publishedDateView.addSubviews([authorLabel, publishedDateLabel], constraints: true)
         scrollView.addSubview(newsContentView, constraints: true)
         newsContentView.addSubviews([
             titleLabel,
@@ -109,9 +115,8 @@ extension NADetailsViewController: ViewCode {
     }
     
     func setupConstraints() {
-        let headerHeight = UIApplication.shared.statusBarFrame.height + 58
         bannerView.nac
-            .top(view.topAnchor, -headerHeight)
+            .top(view.safeAreaLayoutGuide.topAnchor, 8)
             .leading()
             .trailing()
             .height(UIScreen.main.bounds.height/2)
@@ -122,9 +127,13 @@ extension NADetailsViewController: ViewCode {
             .trailing()
             .height(60)
         
+        authorLabel.nac
+            .bottom(bannerView.bottomAnchor)
+            .leading(20)
+        
         publishedDateLabel.nac
             .bottom(bannerView.bottomAnchor)
-            .trailing(24)
+            .trailing(20)
         
         scrollView.nac
             .top(bannerView.bottomAnchor)

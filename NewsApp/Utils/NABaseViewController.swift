@@ -48,7 +48,7 @@ open class NABaseViewController: UIViewController {
     }
     
     private func setupNavigationView() {
-        self.navigationController?.navigationBar.tintColor = NAColor.white.uiColor
+        self.navigationController?.navigationBar.tintColor = NAColor.black.uiColor
     }
 }
 
