@@ -19,8 +19,9 @@ final class NANewsViewCell: UITableViewCell {
     
     private lazy var newsView = {
         let view = UIView()
+        view.backgroundColor = NAColor.white.uiColor
         view.layer.cornerRadius = 8
-        view.clipsToBounds = true
+        view.addElevation(elevation: .level1, cornerRadius: 8)
         return view
     }()
     
@@ -28,6 +29,7 @@ final class NANewsViewCell: UITableViewCell {
         let view = UIImageView()
         view.backgroundColor = NAColor.black.uiColor
         view.contentMode = .scaleAspectFit
+        view.layer.cornerRadius = 8
         return view
     }()
     
@@ -96,7 +98,7 @@ extension NANewsViewCell: ViewCode {
             .height(160)
         
         contentStackView.nac
-            .top(viewImage.bottomAnchor, 18)
+            .top(viewImage.bottomAnchor, 10)
             .leading(8)
             .trailing(8)
             .bottom(8)
@@ -104,10 +106,19 @@ extension NANewsViewCell: ViewCode {
     
     func applyAdditionalChanges() {
         contentView.backgroundColor = NAColor.body1.uiColor
-        newsView.backgroundColor = NAColor.white.uiColor
         selectionStyle = .none
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         newsView.addGestureRecognizer(gesture)
+        
+        let space = UIView()
+        space.backgroundColor = NAColor.white.uiColor
+        space.translatesAutoresizingMaskIntoConstraints = false
+        viewImage.insertSubview(space, at: 0)
+        space.nac
+            .bottom(viewImage.bottomAnchor)
+            .leading()
+            .trailing()
+            .height(8)
     }
 }

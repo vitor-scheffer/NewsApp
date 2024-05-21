@@ -36,13 +36,13 @@ class NALabel: UILabel {
     private func setupFont(style: NAStyle) {
         switch style {
         case .title:
-            self.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+            self.font = UIFont(name: "Rajdhani-SemiBold", size: 24)
         case .title2:
-            self.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            self.font = UIFont(name: "Rajdhani-SemiBold", size: 20)
         case .description:
-            self.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            self.font = UIFont(name: "Rajdhani-Regular", size: 14)
         case .footnote:
-            self.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+            self.font = UIFont(name: "Inter-Regular", size: 10)
         }
     }
 }

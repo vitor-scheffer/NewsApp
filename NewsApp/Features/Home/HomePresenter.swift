@@ -49,6 +49,13 @@ final class NAHomePresenter: NAHomePresenterInterface {
     func newsSelected(_ input: NewsItem) {
         coordinator.navigateToDetails(news: input)
     }
+    
+    private func isPresentable(article: Article) -> Bool {
+        return !article.title.contains("[Removed]")
+        && article.author != nil
+        && article.author != ""
+        && article.description != nil
+    }
 }
 
 // MARK: - NAHomeInteractorOutput
@@ -58,24 +65,27 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         let group = DispatchGroup()
         
         output.articles.forEach { article in
-            group.enter()
-            ImageManager().fetchImage(url: article.urlToImage) { [weak self] image in
-                guard let self = self else { return }
-                
-                let formattedDate = article.publishedAt.isoFormatter()
-                
-                let news = NewsItem(
-                    id: article.source.id,
-                    author: article.author,
-                    title: article.title,
-                    description: article.description,
-                    image: image!,
-                    publishedAt: formattedDate,
-                    content: article.content
-                )
-                
-                if !news.title.contains("[Removed]") { self.newsList.append(news) }
-                group.leave()
+            
+            if isPresentable(article: article) {
+                group.enter()
+                ImageManager().fetchImage(url: article.urlToImage) { [weak self] image in
+                    guard let self = self else { return }
+                    
+                    let formattedDate = article.publishedAt.isoFormatter()
+                    
+                    let news = NewsItem(
+                        id: article.source.id,
+                        author: I18n.Home.author.text(with: article.author!),
+                        title: article.title,
+                        description: article.description,
+                        image: image!,
+                        publishedAt: formattedDate,
+                        content: article.content
+                    )
+                    
+                    self.newsList.append(news)
+                    group.leave()
+                }
             }
         }
         
