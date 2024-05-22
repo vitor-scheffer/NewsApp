@@ -21,6 +21,6 @@ https://github.com/vitor-scheffer/NewsApp/assets/103120313/75f8c8ba-a685-452e-8b
   <li>XCTest</li>
   <li>ViewCode</li>
   <li>URLSession</li>
-  <li>Design Patterns</li>
   <li>Programação Orientada a Protocolos</li>
+  <li>Persistência de dados com CoreData e UserDefaults</li>
 </ul>
