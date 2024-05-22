@@ -71,6 +71,7 @@ class NADetailsViewController: NABaseViewController {
         self.presenter = presenter
 
         super.init()
+        self.hidesBottomBarWhenPushed = true
     }
 
     
@@ -115,15 +116,15 @@ extension NADetailsViewController: NADetailsViewModel {
     
     func setNewsSaveSucceeded(key: String) {
         presenter.verifyNewsIsSaved(key: key)
-        addAlert(title: "Saved",
-                 message: "News saved succesfully.",
+        addAlert(title: I18n.General.saved.text,
+                 message: I18n.Details.saveSucceeded.text,
                  cancelAction: I18n.APIError.ok.text)
     }
     
     func setNewsRemoveSucceeded(key: String) {
         presenter.verifyNewsIsSaved(key: key)
-        addAlert(title: "Removed",
-                 message: "News removed succesfully.",
+        addAlert(title: I18n.General.removed.text,
+                 message: I18n.Details.deleteSucceeded.text,
                  cancelAction: I18n.APIError.ok.text)
     }
     

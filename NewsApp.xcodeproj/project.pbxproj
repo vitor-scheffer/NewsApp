@@ -77,6 +77,11 @@
 		E5ECE4CF2BFE50EE00A0EB6C /* NATabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4CE2BFE50EE00A0EB6C /* NATabBarController.swift */; };
 		E5ECE4D22BFE535E00A0EB6C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4D12BFE535E00A0EB6C /* TabBarCoordinator.swift */; };
 		E5ECE4D42BFE537700A0EB6C /* TabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4D32BFE537700A0EB6C /* TabBarProtocol.swift */; };
+		E5ECE4D92BFE5ACD00A0EB6C /* SavedNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4D82BFE5ACD00A0EB6C /* SavedNewsInteractor.swift */; };
+		E5ECE4DB2BFE5ADA00A0EB6C /* SavedNewsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4DA2BFE5ADA00A0EB6C /* SavedNewsProtocol.swift */; };
+		E5ECE4DD2BFE5AE300A0EB6C /* SavedNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4DC2BFE5AE300A0EB6C /* SavedNewsPresenter.swift */; };
+		E5ECE4DF2BFE5AF300A0EB6C /* SavedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4DE2BFE5AF300A0EB6C /* SavedNewsViewController.swift */; };
+		E5ECE4E12BFE5B0800A0EB6C /* SavedNewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4E02BFE5B0800A0EB6C /* SavedNewsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +169,11 @@
 		E5ECE4CE2BFE50EE00A0EB6C /* NATabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NATabBarController.swift; sourceTree = "<group>"; };
 		E5ECE4D12BFE535E00A0EB6C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		E5ECE4D32BFE537700A0EB6C /* TabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4D82BFE5ACD00A0EB6C /* SavedNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsInteractor.swift; sourceTree = "<group>"; };
+		E5ECE4DA2BFE5ADA00A0EB6C /* SavedNewsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsProtocol.swift; sourceTree = "<group>"; };
+		E5ECE4DC2BFE5AE300A0EB6C /* SavedNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsPresenter.swift; sourceTree = "<group>"; };
+		E5ECE4DE2BFE5AF300A0EB6C /* SavedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsViewController.swift; sourceTree = "<group>"; };
+		E5ECE4E02BFE5B0800A0EB6C /* SavedNewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +257,7 @@
 		E5ECE42F2BF5A33100A0EB6C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4D72BFE5ABB00A0EB6C /* SavedNews */,
 				E5ECE4D02BFE534800A0EB6C /* TabBar */,
 				E5ECE43D2BF5A6A400A0EB6C /* Details */,
 				E5ECE43C2BF5A69F00A0EB6C /* Home */,
@@ -424,6 +435,18 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		E5ECE4D72BFE5ABB00A0EB6C /* SavedNews */ = {
+			isa = PBXGroup;
+			children = (
+				E5ECE4D82BFE5ACD00A0EB6C /* SavedNewsInteractor.swift */,
+				E5ECE4DA2BFE5ADA00A0EB6C /* SavedNewsProtocol.swift */,
+				E5ECE4DC2BFE5AE300A0EB6C /* SavedNewsPresenter.swift */,
+				E5ECE4DE2BFE5AF300A0EB6C /* SavedNewsViewController.swift */,
+				E5ECE4E02BFE5B0800A0EB6C /* SavedNewsCoordinator.swift */,
+			);
+			path = SavedNews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,9 +567,12 @@
 				E5ECE43B2BF5A61D00A0EB6C /* Extensions.swift in Sources */,
 				E5ECE4492BF6824800A0EB6C /* HomePresenter.swift in Sources */,
 				E5ECE4A62BFA8A7300A0EB6C /* NALogger.swift in Sources */,
+				E5ECE4D92BFE5ACD00A0EB6C /* SavedNewsInteractor.swift in Sources */,
 				E5ECE4652BF7CE8A00A0EB6C /* ImageManager.swift in Sources */,
+				E5ECE4E12BFE5B0800A0EB6C /* SavedNewsCoordinator.swift in Sources */,
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */,
+				E5ECE4DD2BFE5AE300A0EB6C /* SavedNewsPresenter.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,
 				E5ECE45A2BF6F83600A0EB6C /* NAConstraints.swift in Sources */,
@@ -555,7 +581,9 @@
 				E5ECE44E2BF682F100A0EB6C /* NewsOutput.swift in Sources */,
 				E5ECE4CF2BFE50EE00A0EB6C /* NATabBarController.swift in Sources */,
 				E5ECE44B2BF6825500A0EB6C /* HomeInteractor.swift in Sources */,
+				E5ECE4DB2BFE5ADA00A0EB6C /* SavedNewsProtocol.swift in Sources */,
 				E5ECE4452BF6822100A0EB6C /* HomeViewController.swift in Sources */,
+				E5ECE4DF2BFE5AF300A0EB6C /* SavedNewsViewController.swift in Sources */,
 				E5ECE4752BF9047800A0EB6C /* NABaseSkeleton.swift in Sources */,
 				E5ECE4772BF9051100A0EB6C /* NASkeletonView.swift in Sources */,
 				E5ECE4CD2BFD8C7E00A0EB6C /* CoreDataManagerProtocol.swift in Sources */,

@@ -17,6 +17,21 @@ public final class I18n {
     public enum General: String, I18nProtocol {
         case appName = "NAapp.name"
         case secretKey = "NAsecret.key"
+        case saved = "NAsaved"
+        case removed = "NAremoved"
+
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
+    
+    public enum TabBar: String, I18nProtocol {
+        case home = "NAtab.bar.home"
+        case saved = "NAtab.bar.saved"
 
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")
@@ -56,6 +71,7 @@ public final class I18n {
     
     public enum Home: String, I18nProtocol {
         case author = "NAhome.author"
+        case search = "NAhome.search.news"
 
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")
@@ -71,6 +87,32 @@ public final class I18n {
         case delete = "NAerror.core.data.delete"
         case fetch = "NAerror.core.data.fetch"
         case fetchByID = "NAerror.core.data.fetch.by.id"
+        
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+        
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
+    
+    public enum Details: String, I18nProtocol {
+        case saveSucceeded = "NAdetails.save.success"
+        case deleteSucceeded = "NAdetails.delete.success"
+        
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+        
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
+    
+    public enum NewsSaved: String, I18nProtocol {
+        case empty = "NAnews.saved.empty"
+        case search = "NAnews.saved.search.news"
         
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")

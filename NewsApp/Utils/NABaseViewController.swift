@@ -36,7 +36,7 @@ open class NABaseViewController: UIViewController {
     }
     
     open override func viewDidLoad() {
-        hidesBottomBarWhenPushed = true
+        hidesBottomBarWhenPushed = false
         
         super.viewDidLoad()
     }
@@ -49,5 +49,9 @@ open class NABaseViewController: UIViewController {
     
     private func setupNavigationView() {
         self.navigationController?.navigationBar.tintColor = NAColor.black.uiColor
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
     }
 }

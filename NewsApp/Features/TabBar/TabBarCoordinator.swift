@@ -12,6 +12,7 @@ final class NATabBarCoordinator: NATabBarCoordinatorInterface {
     // MARK: Properties
     var navigator: UINavigationController?
     var tabBar: NATabBarController?
+    let router = NARouter.shared
 
     // MARK: Methods
 
@@ -20,11 +21,18 @@ final class NATabBarCoordinator: NATabBarCoordinatorInterface {
         tabBar = mainHomeTabbar
         let homeCoordinator = NAHomeCoordinator()
         let firstViewController = homeCoordinator.initWithNewNavigator()
-        firstViewController.tabBarItem = UITabBarItem(title: "Home".localized,
+        firstViewController.tabBarItem = UITabBarItem(title: I18n.TabBar.home.text,
                                                       image: UIImage(systemName: "house"),
                                                       tag: 0)
         
-        var tabBarViewController = [firstViewController]
+        let savedNavigation = UINavigationController()
+        router.showSavedNews(navigator: savedNavigation)
+        router.tabBarNavigator = mainHomeTabbar
+        savedNavigation.tabBarItem = UITabBarItem(title: I18n.TabBar.saved.text,
+                                                    image: UIImage(systemName: "bookmark"),
+                                                    tag: 1)
+        
+        let tabBarViewController = [firstViewController, savedNavigation]
         
         tabBar?.viewControllers = tabBarViewController
         navigator?.pushViewController(mainHomeTabbar, animated: true)

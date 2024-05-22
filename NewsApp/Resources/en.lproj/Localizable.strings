@@ -7,12 +7,17 @@
 */
 
 "NAapp.name" = "NewsApp";
+"NAok.understood" = "Ok";
+"NAsaved" = "Saved";
+"NAremoved" = "Removed";
+
+"NAtab.bar.home" = "Home";
+"NAtab.bar.saved" = "Saved News";
 
 "NAsecret.key" = "&apiKey=%@";
 
 "NAerror.title" = "Oh! Something went wrong!";
 "NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later.";
-"NAok.understood" = "Ok";
 
 "NAerror.core.data.save" = "Failed to save news: %@";
 "NAerror.core.data.delete" = "Failed to delete news: %@";
@@ -24,3 +29,10 @@
 
 "NAhome.author" = "By: %@";
 "NAhome.publishedAt" = "published at: %@";
+"NAhome.search.news" = "Search for news";
+
+"NAdetails.save.success" = "News saved succesfully.";
+"NAdetails.delete.success" = "News removed succesfully.";
+
+"NAnews.saved.empty" = "You still don't have saved news.";
+"NAnews.saved.search.news" = "Search for saved news";

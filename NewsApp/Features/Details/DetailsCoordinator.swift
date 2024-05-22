@@ -38,6 +38,6 @@ public final class NADetailsCoordinator: NADetailsCoordinatorInterface {
     }
     
     func navigateToHome() {
-        navigator?.popViewController(animated: true)
+        router.showHome(navigator: navigator)
     }
 }

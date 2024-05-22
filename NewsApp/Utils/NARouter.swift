@@ -15,6 +15,7 @@ public final class NARouter: NARouterProtocol {
     public static var shared = NARouter()
     
     public var navigator: UINavigationController?
+    public var tabBarNavigator: UITabBarController?
     
     // MARK: Initializer
 
@@ -30,6 +31,12 @@ public final class NARouter: NARouterProtocol {
     
     func showNewsDetails(navigator: UINavigationController?, newsDetails: NewsItem) {
         let coordinator = NADetailsCoordinator(navigator: navigator, news: newsDetails)
+        coordinator.start()
+    }
+    
+    func showSavedNews(navigator: UINavigationController?) {
+        let coordinator = NASavedNewsCoordinator()
+        coordinator.navigator = navigator
         coordinator.start()
     }
 }

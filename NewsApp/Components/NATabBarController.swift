@@ -30,14 +30,11 @@ public class NATabBarController: UITabBarController {
             [NSAttributedString.Key.foregroundColor: NAColor.gray.uiColor]
             appearance.stackedLayoutAppearance.normal.iconColor = NAColor.gray.uiColor
             tabBar.standardAppearance = appearance
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         }
-        
-        setupNavigationView()
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -57,10 +54,6 @@ public class NATabBarController: UITabBarController {
                                        width: 48,
                                        height: 2)
         }
-    }
-    
-    private func setupNavigationView() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     public override var selectedIndex: Int {
