@@ -8,7 +8,7 @@
 
 <h1 align="center">Cenário sucesso home</h1>
 
-https://github.com/vitor-scheffer/NewsApp/assets/103120313/48309bb7-2fdc-495b-92d9-66882111d7b6
+https://github.com/vitor-scheffer/NewsApp/assets/103120313/fc28d151-5e3d-4051-a3b7-9dae43400250
 
 <h1 align="center">Cenário erro home</h1>
 
