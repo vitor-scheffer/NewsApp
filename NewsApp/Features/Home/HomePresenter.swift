@@ -56,6 +56,19 @@ final class NAHomePresenter: NAHomePresenterInterface {
         && article.author != ""
         && article.description != nil
     }
+    
+    private func generateID(forKey: String) -> String {
+        let source = UserDefaults.standard
+        
+        if let storageID = source.string(forKey: forKey) {
+            return storageID
+        }
+        
+        let generatedID = UUID().uuidString
+        source.set(generatedID, forKey: forKey)
+        
+        return generatedID
+    }
 }
 
 // MARK: - NAHomeInteractorOutput
@@ -74,7 +87,7 @@ extension NAHomePresenter: NAHomeInteractorOutput {
                     let formattedDate = article.publishedAt.isoFormatter()
                     
                     let news = NewsItem(
-                        id: article.source.id,
+                        id: generateID(forKey: article.title),
                         author: I18n.Home.author.text(with: article.author!),
                         title: article.title,
                         description: article.description,

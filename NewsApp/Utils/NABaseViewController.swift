@@ -8,7 +8,7 @@
 import UIKit
 
 open class NABaseViewController: UIViewController {
-    
+
     public var expandedNavigationTitle = false
     
     public init() {
@@ -51,4 +51,3 @@ open class NABaseViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = NAColor.black.uiColor
     }
 }
-

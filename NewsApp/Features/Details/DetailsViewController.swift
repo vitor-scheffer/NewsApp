@@ -13,7 +13,13 @@ class NADetailsViewController: NABaseViewController {
     
     private let presenter: NADetailsPresenterInterface
     
-    private var newsList: [NewsItem] = []
+    private lazy var saveBookmark = UIBarButtonItem(image: UIImage(systemName: "bookmark"),
+                                       style: .plain,
+                     target: self, action: #selector(didTapNavigationBookmark))
+    
+    private lazy var removeBookmark = UIBarButtonItem(image: UIImage(systemName: "bookmark.fill"),
+                                       style: .plain,
+                     target: self, action: #selector(didTapNavigationBookmark))
     
     private lazy var bannerView = {
         let view = UIImageView()
@@ -86,6 +92,10 @@ class NADetailsViewController: NABaseViewController {
         setupView()
         presenter.setViewModel(self)
     }
+    
+    @objc private func didTapNavigationBookmark(_ sender: UIBarButtonItem) {
+        presenter.bookmarkAction(sender)
+    }
 }
 
 extension NADetailsViewController: NADetailsViewModel {
@@ -95,9 +105,33 @@ extension NADetailsViewController: NADetailsViewModel {
         publishedDateLabel.text = newsDetails.publishedAt
         titleLabel.text = newsDetails.title
         contentLabel.text = newsDetails.content
+        
+        presenter.verifyNewsIsSaved(key: newsDetails.id)
     }
     
+    func setupNavigationView(_ isSaved: Bool) {
+        self.navigationItem.rightBarButtonItem = isSaved ? removeBookmark : saveBookmark
+    }
     
+    func setNewsSaveSucceeded(key: String) {
+        presenter.verifyNewsIsSaved(key: key)
+        addAlert(title: "Saved",
+                 message: "News saved succesfully.",
+                 cancelAction: I18n.APIError.ok.text)
+    }
+    
+    func setNewsRemoveSucceeded(key: String) {
+        presenter.verifyNewsIsSaved(key: key)
+        addAlert(title: "Removed",
+                 message: "News removed succesfully.",
+                 cancelAction: I18n.APIError.ok.text)
+    }
+    
+    func setErrorAlert(_ error: String) {
+        addAlert(title: I18n.APIError.title.text,
+                 message: error,
+                 cancelAction: I18n.APIError.ok.text)
+    }
 }
 
 // MARK: ViewCode

@@ -14,6 +14,11 @@
 "NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later.";
 "NAok.understood" = "Ok";
 
+"NAerror.core.data.save" = "Failed to save news: %@";
+"NAerror.core.data.delete" = "Failed to delete news: %@";
+"NAerror.core.data.fetch" = "Failed to fetch news: %@";
+"NAerror.core.data.fetch.by.id" = "Failed to fetch news by ID: %@";
+
 "NAlogger.succeeded" = "\n ***** 🟢 SUCCEEDED: 🌐 URL: %@ 🌐 *****";
 "NAlogger.failed" = "\n ***** 🔴 FAILED: 🌐 URL: %@ 🌐 *****";
 

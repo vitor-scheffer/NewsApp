@@ -65,5 +65,20 @@ public final class I18n {
             String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
         }
     }
+    
+    public enum CoreDataError: String, I18nProtocol {
+        case save = "NAerror.core.data.save"
+        case delete = "NAerror.core.data.delete"
+        case fetch = "NAerror.core.data.fetch"
+        case fetchByID = "NAerror.core.data.fetch.by.id"
+        
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+        
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
 }
 

@@ -26,6 +26,17 @@ class NAHomeViewController: NABaseViewController {
         return view
     }()
     
+    private var searchView = {
+        let view = UISearchBar()
+        view.barTintColor = NAColor.body1.uiColor
+        view.layer.borderWidth = 1
+        view.layer.borderColor = NAColor.body1.cgColor
+        view.placeholder = "Search for news"
+        view.searchTextField.backgroundColor = NAColor.white.uiColor
+        view.searchTextField.addElevation(elevation: .level1)
+        return view
+    }()
+    
     private lazy var tableView = {
         let view = UITableView()
         return view
@@ -63,6 +74,7 @@ class NAHomeViewController: NABaseViewController {
 extension NAHomeViewController: NAHomeViewModel {
     func setLoading() {
         titleLabel.isHidden = true
+        searchView.isHidden = true
         tableView.isHidden = true
         
         let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
@@ -91,6 +103,7 @@ extension NAHomeViewController: NAHomeViewModel {
         skeletonTableView = nil
         
         titleLabel.isHidden = false
+        searchView.isHidden = false
         tableView.isHidden = false
     }
     
@@ -140,7 +153,7 @@ extension NAHomeViewController: NANewsViewCellDelegate {
 
 extension NAHomeViewController: ViewCode {
     func buildHierarchy() {
-        view.addSubviews([titleLabel, tableView], constraints: true)
+        view.addSubviews([titleLabel, searchView, tableView], constraints: true)
     }
     
     func setupConstraints() {
@@ -149,8 +162,13 @@ extension NAHomeViewController: ViewCode {
             .leading(16)
             .trailing(16)
         
+        searchView.nac
+            .top(titleLabel.bottomAnchor)
+            .leading(8)
+            .trailing(8)
+        
         tableView.nac
-            .top(titleLabel.bottomAnchor, 32)
+            .top(searchView.bottomAnchor, 24)
             .leading()
             .trailing()
             .bottom()
@@ -163,4 +181,8 @@ extension NAHomeViewController: ViewCode {
         tableView.register(NANewsViewCell.self, forCellReuseIdentifier: NANewsViewCell.reuseIdentifier)
         tableView.backgroundColor = NAColor.body1.uiColor
     }
+}
+
+#Preview("NAHomeViewController") {
+    NAHomeViewController(presenter: NAHomePresenter(coordinator: NAHomeCoordinator(), interactor: NAHomeInteractor()))
 }
