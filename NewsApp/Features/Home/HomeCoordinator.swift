@@ -34,8 +34,23 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
         navigator?.pushViewController(viewController, animated: true)
     }
     
+    func initWithNewNavigator() -> UINavigationController {
+        let newNavigator = UINavigationController()
+        newNavigator.viewControllers = [initViewController()]
+        navigator = newNavigator
+        return newNavigator
+    }
+    
     func navigateToDetails(news: NewsItem) {
         guard let navigator else { return }
         router.showNewsDetails(navigator: navigator, newsDetails: news)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func initViewController() -> NAHomeViewController {
+        let interactor = NAHomeInteractor()
+        let presenter = NAHomePresenter(coordinator: self, interactor: interactor)
+        return NAHomeViewController(presenter: presenter)
     }
 }

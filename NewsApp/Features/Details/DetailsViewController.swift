@@ -104,7 +104,7 @@ extension NADetailsViewController: NADetailsViewModel {
         authorLabel.text = newsDetails.author
         publishedDateLabel.text = newsDetails.publishedAt
         titleLabel.text = newsDetails.title
-        contentLabel.text = newsDetails.content
+        contentLabel.text = "\(newsDetails.description!) \n\(newsDetails.content ?? " ")"
         
         presenter.verifyNewsIsSaved(key: newsDetails.id)
     }
@@ -162,15 +162,16 @@ extension NADetailsViewController: ViewCode {
             .height(60)
         
         authorLabel.nac
-            .bottom(bannerView.bottomAnchor)
+            .centerY(publishedDateLabel.centerYAnchor)
             .leading(20)
+            .trailing(82)
         
         publishedDateLabel.nac
             .bottom(bannerView.bottomAnchor)
             .trailing(20)
         
         scrollView.nac
-            .top(bannerView.bottomAnchor)
+            .top(bannerView.bottomAnchor, 8)
             .leading(view.leadingAnchor)
             .trailing(view.trailingAnchor)
             .bottom(view.safeAreaLayoutGuide.bottomAnchor)

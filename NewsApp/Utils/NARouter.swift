@@ -23,7 +23,8 @@ public final class NARouter: NARouterProtocol {
     // MARK: Methods
     
     func showHome(navigator: UINavigationController?) {
-        let coordinator = NAHomeCoordinator(navigator: navigator)
+        let coordinator = NATabBarCoordinator()
+        coordinator.navigator = navigator
         coordinator.start()
     }
     
