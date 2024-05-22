@@ -8,7 +8,7 @@
 import UIKit
 
 final class NADetailsPresenter: NADetailsPresenterInterface {
-
+    
     // MARK: Properties
     
     let coordinator: NADetailsCoordinatorInterface
@@ -39,5 +39,39 @@ final class NADetailsPresenter: NADetailsPresenterInterface {
     
     func navigateToHome() {
         coordinator.navigateToHome()
+    }
+    
+    func bookmarkAction(_ sender: UIBarButtonItem) {
+        let source = UserDefaults.standard
+        
+        if sender.image == UIImage(systemName: "bookmark") {
+            CoreDataManager.shared.saveNews(news: news) { result in
+                switch result {
+                case .success:
+                    source.set(true, forKey: self.news.id)
+                    self.viewModel?.setNewsSaveSucceeded(key: self.news.id)
+                case .failure(let error):
+                    self.viewModel?.setErrorAlert(error.message)
+                }
+            }
+            return
+        }
+        
+        CoreDataManager.shared.deleteNews(byId: self.news.id) { result in
+            switch result {
+            case .success:
+                source.set(false, forKey: self.news.id)
+                self.viewModel?.setNewsRemoveSucceeded(key: self.news.id)
+            case .failure(let error):
+                self.viewModel?.setErrorAlert(error.message)
+            }
+        }
+    }
+    
+    func verifyNewsIsSaved(key: String) {
+        let source = UserDefaults.standard
+        let isSaved = source.bool(forKey: key)
+        
+        viewModel?.setupNavigationView(isSaved)
     }
 }

@@ -17,4 +17,3 @@ class ViewController: UIViewController {
         router.showHome(navigator: navigationController)
     }
 }
-

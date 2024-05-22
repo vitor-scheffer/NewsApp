@@ -1,19 +1,20 @@
 //
-//  HomeViewController.swift
+//  SavedNewsViewController.swift
 //  NewsApp
 //
-//  Created by Vitor Boff on 16/05/24.
+//  Created by Vitor Boff on 22/05/24.
 //
 
 import UIKit
 
-class NAHomeViewController: NABaseViewController {
+class NASavedNewsViewController: NABaseViewController {
     
     // MARK: Properties
     
-    private let presenter: NAHomePresenterInterface
+    private let presenter: NASavedNewsPresenterInterface
     private var skeletonTitleView: NASkeletonView?
     private var skeletonTableView: NASkeletonView?
+    private var emptyList: NALabel?
     
     private var newsList: [NewsItem] = [] {
         didSet {
@@ -31,7 +32,7 @@ class NAHomeViewController: NABaseViewController {
         view.barTintColor = NAColor.body1.uiColor
         view.layer.borderWidth = 1
         view.layer.borderColor = NAColor.body1.cgColor
-        view.placeholder = I18n.Home.search.text
+        view.placeholder = I18n.NewsSaved.search.text
         view.searchTextField.backgroundColor = NAColor.white.uiColor
         view.searchTextField.addElevation(elevation: .level1)
         return view
@@ -44,7 +45,7 @@ class NAHomeViewController: NABaseViewController {
 
     // MARK: Initializer
 
-    init(presenter: NAHomePresenterInterface) {
+    init(presenter: NASavedNewsPresenterInterface) {
         self.presenter = presenter
 
         super.init()
@@ -71,10 +72,11 @@ class NAHomeViewController: NABaseViewController {
     }
 }
 
-extension NAHomeViewController: NAHomeViewModel {
+extension NASavedNewsViewController: NASavedNewsViewModel {
     func setLoading() {
         titleLabel.isHidden = true
         searchView.isHidden = true
+        
         tableView.isHidden = true
         
         let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
@@ -99,8 +101,10 @@ extension NAHomeViewController: NAHomeViewModel {
     func removeLoading() {
         skeletonTitleView?.removeFromSuperview()
         skeletonTableView?.removeFromSuperview()
+        emptyList?.removeFromSuperview()
         skeletonTitleView = nil
         skeletonTableView = nil
+        emptyList = nil
         
         titleLabel.isHidden = false
         searchView.isHidden = false
@@ -115,12 +119,29 @@ extension NAHomeViewController: NAHomeViewModel {
         self.newsList = newsList
     }
     
+    func setNewsListEmpty() {
+        tableView.isHidden = true
+        
+        emptyList = NALabel(.description)
+        emptyList?.text = I18n.NewsSaved.empty.text
+        emptyList?.textAlignment = .center
+        
+        if let emptyList {
+            self.view.addSubview(emptyList, constraints: true)
+            
+            emptyList.nac
+                .centerY(self.view.safeAreaLayoutGuide.centerYAnchor)
+                .leading(16)
+                .trailing(16)
+        }
+    }
+    
     func setNewsFailed(error: String) {
         addAlert(title: I18n.APIError.title.text, message: error, cancelAction: I18n.APIError.ok.text)
     }
 }
 
-extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension NASavedNewsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsList.count
@@ -143,7 +164,7 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension NAHomeViewController: NANewsViewCellDelegate {
+extension NASavedNewsViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
         presenter.newsSelected(newsList[row])
     }
@@ -151,7 +172,7 @@ extension NAHomeViewController: NANewsViewCellDelegate {
 
 // MARK: ViewCode
 
-extension NAHomeViewController: ViewCode {
+extension NASavedNewsViewController: ViewCode {
     func buildHierarchy() {
         view.addSubviews([titleLabel, searchView, tableView], constraints: true)
     }
@@ -183,6 +204,6 @@ extension NAHomeViewController: ViewCode {
     }
 }
 
-#Preview("NAHomeViewController") {
-    NAHomeViewController(presenter: NAHomePresenter(coordinator: NAHomeCoordinator(), interactor: NAHomeInteractor()))
+#Preview("NASavedNewsViewController") {
+    NASavedNewsViewController(presenter: NASavedNewsPresenter(coordinator: NASavedNewsCoordinator(), interactor: NASavedNewsInteractor()))
 }

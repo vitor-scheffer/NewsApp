@@ -1,13 +1,13 @@
 //
-//  HomeCoordinator.swift
+//  SavedNewsCoordinator.swift
 //  NewsApp
 //
-//  Created by Vitor Boff on 16/05/24.
+//  Created by Vitor Boff on 22/05/24.
 //
 
 import UIKit
 
-public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
+public final class NASavedNewsCoordinator: NASavedNewsCoordinatorInterface {
 
     // MARK: Properties
 
@@ -24,12 +24,11 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
     // MARK: Methods
 
     func start() {
-        let interactor = NAHomeInteractor()
-        let presenter = NAHomePresenter(coordinator: self,
+        let interactor = NASavedNewsInteractor()
+        let presenter = NASavedNewsPresenter(coordinator: self,
                                         interactor: interactor)
-        let viewController = NAHomeViewController(presenter: presenter)
+        let viewController = NASavedNewsViewController(presenter: presenter)
         viewController.modalPresentationStyle = .fullScreen
-        viewController.title = I18n.General.appName.text
 
         navigator?.pushViewController(viewController, animated: true)
     }
@@ -48,9 +47,10 @@ public final class NAHomeCoordinator: NAHomeCoordinatorInterface {
     
     // MARK: - Private Methods
     
-    private func initViewController() -> NAHomeViewController {
-        let interactor = NAHomeInteractor()
-        let presenter = NAHomePresenter(coordinator: self, interactor: interactor)
-        return NAHomeViewController(presenter: presenter)
+    private func initViewController() -> NASavedNewsViewController {
+        let interactor = NASavedNewsInteractor()
+        let presenter = NASavedNewsPresenter(coordinator: self, interactor: interactor)
+        return NASavedNewsViewController(presenter: presenter)
     }
 }
+

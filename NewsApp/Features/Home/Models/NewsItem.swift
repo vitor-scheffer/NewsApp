@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public struct NewsItem : Equatable {
-    public let id: String?
+    public let id: String
     public let author: String?
     public let title: String
     public let description: String?
@@ -18,7 +18,7 @@ public struct NewsItem : Equatable {
     public let content: String?
     
     init(
-        id: String?,
+        id: String,
         author: String?,
         title: String,
         description: String?,
