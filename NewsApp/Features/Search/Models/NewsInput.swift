@@ -15,12 +15,14 @@ public struct NewsInput {
         self.query = query
         self.sortBy = sortBy.rawValue
     }
-    
+}
+
+extension NewsInput {
     func toDictionary() -> [String: String] {
         return [
-            "q": query,
-            "sortBy": sortBy,
-            "from": Date.yesterday.ISO8601Format(),
+            "q": self.query,
+            "sortBy": self.sortBy,
+            "from": Date.twoDaysAgo.ISO8601Format(),
             "searchIn": "title",
             "language": "en"
         ]

@@ -42,4 +42,3 @@ protocol NASavedNewsCoordinatorInterface: AnyObject {
     func start()
     func navigateToDetails(news: NewsItem)
 }
-

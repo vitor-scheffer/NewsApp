@@ -25,14 +25,21 @@ final class NATabBarCoordinator: NATabBarCoordinatorInterface {
                                                       image: UIImage(systemName: "house"),
                                                       tag: 0)
         
+        let searchNavigation = UINavigationController()
+        router.showSearch(navigator: searchNavigation)
+        router.tabBarNavigator = mainHomeTabbar
+        searchNavigation.tabBarItem = UITabBarItem(title: I18n.TabBar.search.text,
+                                                    image: UIImage(systemName: "magnifyingglass"),
+                                                    tag: 1)
+        
         let savedNavigation = UINavigationController()
         router.showSavedNews(navigator: savedNavigation)
         router.tabBarNavigator = mainHomeTabbar
         savedNavigation.tabBarItem = UITabBarItem(title: I18n.TabBar.saved.text,
                                                     image: UIImage(systemName: "bookmark"),
-                                                    tag: 1)
+                                                    tag: 2)
         
-        let tabBarViewController = [firstViewController, savedNavigation]
+        let tabBarViewController = [firstViewController, searchNavigation, savedNavigation]
         
         tabBar?.viewControllers = tabBarViewController
         navigator?.pushViewController(mainHomeTabbar, animated: true)
@@ -44,4 +51,3 @@ final class NATabBarCoordinator: NATabBarCoordinatorInterface {
         navigator?.popToRootViewController(animated: true)
     }
 }
-

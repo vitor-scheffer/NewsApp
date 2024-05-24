@@ -53,4 +53,3 @@ public final class NASavedNewsCoordinator: NASavedNewsCoordinatorInterface {
         return NASavedNewsViewController(presenter: presenter)
     }
 }
-

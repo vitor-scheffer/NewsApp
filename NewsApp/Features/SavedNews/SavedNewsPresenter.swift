@@ -88,4 +88,3 @@ extension NASavedNewsPresenter: NASavedNewsInteractorOutput {
         self.viewModel?.setNewsFailed(error: output)
     }
 }
-

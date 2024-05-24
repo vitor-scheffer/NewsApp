@@ -1,29 +1,29 @@
 //
-//  HomePresenter.swift
+//  SearchPresenter.swift
 //  NewsApp
 //
-//  Created by Vitor Boff on 16/05/24.
+//  Created by Vitor Boff on 24/05/24.
 //
 
 import UIKit
 import Dispatch
 
-final class NAHomePresenter: NAHomePresenterInterface {
+final class NASearchPresenter: NASearchPresenterInterface {
     
     // MARK: Properties
     
-    let coordinator: NAHomeCoordinatorInterface
-    let interactor: NAHomeInteractorInput
-    weak var viewModel: NAHomeViewModel?
+    let coordinator: NASearchCoordinatorInterface
+    let interactor: NASearchInteractorInput
+    weak var viewModel: NASearchViewModel?
     
     private var newsList: [NewsItem] = []
-    private var querySearched: QueryType?
+    private var querySearched: String?
     
     // MARK: Initalizer
     
     init(
-        coordinator: NAHomeCoordinatorInterface,
-        interactor: NAHomeInteractorInput
+        coordinator: NASearchCoordinatorInterface,
+        interactor: NASearchInteractorInput
     ) {
         self.coordinator = coordinator
         self.interactor = interactor
@@ -32,34 +32,26 @@ final class NAHomePresenter: NAHomePresenterInterface {
     
     // MARK: Methods
     
-    func setViewModel(_ viewModel: NAHomeViewModel) {
+    func setViewModel(_ viewModel: NASearchViewModel) {
         self.viewModel = viewModel
         viewModel.setHeaderTitle(I18n.General.appName.text)
-        viewModel.setResultsTitle(I18n.Home.results.text)
-        viewModel.setLoading(hasQuery: false)
-        fetchNews()
+        viewModel.setSearchMessage(nil, message: I18n.Search.message.text)
     }
     
     func viewWillAppear(_ animated: Bool) {
         coordinator.navigator?.setNavigationBarHidden(true, animated: true)
     }
     
-    func fetchNews() {
-        clearNewsList()
-        
-        interactor.fetchNews()
-    }
-    
     func newsSelected(_ input: NewsItem) {
         coordinator.navigateToDetails(news: input)
     }
     
-    func fetchNewsByQuery(_ input: QueryType) {
-        viewModel?.setLoading(hasQuery: true)
+    func fetchNewsByQuery(_ input: String) {
+        viewModel?.setLoading()
         clearNewsList()
         
         self.querySearched = input
-        let newsInput = CategoryInput(queryBy: input, sortBy: .relevancy)
+        let newsInput = NewsInput(query: input, sortBy: .relevancy)
         interactor.fetchNewsByQuery(newsInput)
     }
     
@@ -68,10 +60,10 @@ final class NAHomePresenter: NAHomePresenterInterface {
     }
 }
 
-// MARK: - NAHomeInteractorOutput
+// MARK: - NASearchInteractorOutput
 
-extension NAHomePresenter: NAHomeInteractorOutput {
-    func fetchNewsSucceeded(_ output: NewsOutput, hasQuery: Bool) {
+extension NASearchPresenter: NASearchInteractorOutput {
+    func fetchNewsSucceeded(_ output: NewsOutput) {
         let group = DispatchGroup()
         
         output.articles.forEach { article in
@@ -100,19 +92,22 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         }
         
         group.notify(queue: .main) {
-            switch hasQuery {
-            case true:
-                guard let queryText = self.querySearched else { return }
-                self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: queryText)
-            default:
-                self.viewModel?.setNewsSuccess(newsList: self.newsList)
-            }
+            guard let queryText = self.querySearched else { return }
+            self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: queryText)
             
             self.viewModel?.removeLoading()
         }
     }
     
+    
     func fetchNewsFailed(_ output: String) {
         self.viewModel?.setNewsFailed(error: output)
+    }
+    
+    func fetchNewsSucceededWithEmptyList() {
+        self.viewModel?.removeLoading()
+        
+        guard let queryText = self.querySearched else { return }
+        self.viewModel?.setSearchMessage(queryText, message: I18n.Search.empty.text)
     }
 }

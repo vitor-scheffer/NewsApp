@@ -1,19 +1,20 @@
 //
-//  HomeViewController.swift
+//  SearchViewController.swift
 //  NewsApp
 //
-//  Created by Vitor Boff on 16/05/24.
+//  Created by Vitor Boff on 24/05/24.
 //
 
 import UIKit
 
-class NAHomeViewController: NABaseViewController {
+class NASearchViewController: NABaseViewController {
     
     // MARK: Properties
     
-    private let presenter: NAHomePresenterInterface
+    private let presenter: NASearchPresenterInterface
     private var skeletonTitleView: NASkeletonView?
     private var skeletonTableView: NASkeletonView?
+    private var emptyList: NALabel?
     
     private var newsList: [NewsItem] = [] {
         didSet {
@@ -31,9 +32,13 @@ class NAHomeViewController: NABaseViewController {
         return view
     }()
     
-    private lazy var categoryView = {
-        let view = UIView()
-        view.backgroundColor = NAColor.body1.uiColor
+    private var searchView = {
+        let view = UISearchBar()
+        view.barTintColor = NAColor.body1.uiColor
+        view.layer.borderWidth = 1
+        view.layer.borderColor = NAColor.body1.cgColor
+        view.placeholder = I18n.TabBar.search.text
+        view.searchTextField.backgroundColor = NAColor.white.uiColor
         return view
     }()
     
@@ -44,7 +49,7 @@ class NAHomeViewController: NABaseViewController {
 
     // MARK: Initializer
 
-    init(presenter: NAHomePresenterInterface) {
+    init(presenter: NASearchPresenterInterface) {
         self.presenter = presenter
 
         super.init()
@@ -75,12 +80,12 @@ class NAHomeViewController: NABaseViewController {
     }
 }
 
-extension NAHomeViewController: NAHomeViewModel {
-    func setLoading(hasQuery: Bool) {
-        titleLabel.isHidden = hasQuery ? false : true
-        categoryView.isHidden = hasQuery ? false : true
+extension NASearchViewController: NASearchViewModel {
+    func setLoading() {
         resultTitleLabel.isHidden = true
         tableView.isHidden = true
+        emptyList?.removeFromSuperview()
+        emptyList = nil
         
         let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
         let skeletonTableView = NASkeletonView([.newsList], quantity: 4)
@@ -88,17 +93,9 @@ extension NAHomeViewController: NAHomeViewModel {
         view.addSubviews([skeletonTitleView, skeletonTableView], constraints: true)
         
         skeletonTitleView.nac
+            .top(searchView.bottomAnchor, 32)
             .leading(16)
             .trailing(16)
-        
-        switch hasQuery {
-        case true:
-            skeletonTitleView.nac
-                .top(categoryView.bottomAnchor, 32)
-        default:
-            skeletonTitleView.nac
-                .top(view.safeAreaLayoutGuide.topAnchor, 24)
-        }
         
         skeletonTableView.nac
             .top(skeletonTitleView.bottomAnchor, 32)
@@ -115,8 +112,6 @@ extension NAHomeViewController: NAHomeViewModel {
         skeletonTitleView = nil
         skeletonTableView = nil
         
-        titleLabel.isHidden = false
-        categoryView.isHidden = false
         resultTitleLabel.isHidden = false
         tableView.isHidden = false
         
@@ -127,18 +122,28 @@ extension NAHomeViewController: NAHomeViewModel {
         titleLabel.text = text
     }
     
-    func setResultsTitle(_ text: String) {
-        resultTitleLabel.text = text
-    }
-    
-    func setNewsSuccess(newsList: [NewsItem]) {
-        resultTitleLabel.text = I18n.Home.results.text
+    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String) {
+        resultTitleLabel.text = I18n.Home.resultsQuery.text(with: querySearched)
         self.newsList = newsList
     }
     
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: QueryType) {
-//        categoryView.selected = querySearched
-        self.newsList = newsList
+    func setSearchMessage(_ querySearched: String?, message: String) {
+        if let querySearched { resultTitleLabel.text = I18n.Home.resultsQuery.text(with: querySearched) }
+        
+        tableView.isHidden = true
+        
+        emptyList = NALabel(.description)
+        emptyList?.text = message
+        emptyList?.textAlignment = .center
+        
+        if let emptyList {
+            self.view.addSubview(emptyList, constraints: true)
+            
+            emptyList.nac
+                .centerY(self.view.safeAreaLayoutGuide.centerYAnchor)
+                .leading(16)
+                .trailing(16)
+        }
     }
     
     func setNewsFailed(error: String) {
@@ -146,7 +151,7 @@ extension NAHomeViewController: NAHomeViewModel {
     }
 }
 
-extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension NASearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsList.count
@@ -169,18 +174,13 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//extension NAHomeViewController: CategoryViewDelegate {
-//    func didTapCategoryBtn(_ category: QueryType?) {
-//        if let category {
-//            presenter.fetchNewsByQuery(category)
-//            return
-//        }
-//        
-//        presenter.fetchNews()
-//    }
-//}
+extension NASearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let inputSearch = searchBar.text {presenter.fetchNewsByQuery(inputSearch)}
+    }
+}
 
-extension NAHomeViewController: NANewsViewCellDelegate {
+extension NASearchViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
         presenter.newsSelected(newsList[row])
     }
@@ -188,9 +188,9 @@ extension NAHomeViewController: NANewsViewCellDelegate {
 
 // MARK: ViewCode
 
-extension NAHomeViewController: ViewCode {
+extension NASearchViewController: ViewCode {
     func buildHierarchy() {
-        view.addSubviews([titleLabel, categoryView, resultTitleLabel, tableView], constraints: true)
+        view.addSubviews([titleLabel, searchView, resultTitleLabel, tableView], constraints: true)
     }
     
     func setupConstraints() {
@@ -199,14 +199,13 @@ extension NAHomeViewController: ViewCode {
             .leading(16)
             .trailing(16)
         
-        categoryView.nac
+        searchView.nac
             .top(titleLabel.bottomAnchor)
             .leading(8)
             .trailing(8)
-            .height(10)
         
         resultTitleLabel.nac
-            .top(categoryView.bottomAnchor, 32)
+            .top(searchView.bottomAnchor, 32)
             .leading(16)
             .trailing(16)
         
@@ -218,7 +217,7 @@ extension NAHomeViewController: ViewCode {
     }
     
     func applyAdditionalChanges() {
-//        categoryView.delegate = self
+        searchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -227,6 +226,6 @@ extension NAHomeViewController: ViewCode {
     }
 }
 
-#Preview("NAHomeViewController") {
-    NAHomeViewController(presenter: NAHomePresenter(coordinator: NAHomeCoordinator(), interactor: NAHomeInteractor()))
+#Preview("NASearchViewController") {
+    NASearchViewController(presenter: NASearchPresenter(coordinator: NASearchCoordinator(), interactor: NASearchInteractor()))
 }

@@ -32,7 +32,7 @@ class NASavedNewsViewController: NABaseViewController {
         view.barTintColor = NAColor.body1.uiColor
         view.layer.borderWidth = 1
         view.layer.borderColor = NAColor.body1.cgColor
-        view.placeholder = I18n.NewsSaved.search.text
+        view.placeholder = I18n.TabBar.search.text
         view.searchTextField.backgroundColor = NAColor.white.uiColor
         view.searchTextField.addElevation(elevation: .level1)
         return view

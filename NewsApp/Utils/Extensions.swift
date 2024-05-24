@@ -31,6 +31,19 @@ extension String {
         
         return formattedDate
     }
+    
+    func generateID() -> String {
+        let source = UserDefaults.standard
+        
+        if let storageID = source.string(forKey: self) {
+            return storageID
+        }
+        
+        let generatedID = UUID().uuidString
+        source.set(generatedID, forKey: self)
+        
+        return generatedID
+    }
 }
 
 public extension UIViewController {
@@ -291,9 +304,13 @@ extension UIColor {
 
 extension Date {
     static var yesterday: Date { return Date().dayBefore }
+    static var twoDaysAgo: Date { return Date().twoDaysBefore }
     static var tomorrow:  Date { return Date().dayAfter }
     var dayBefore: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var twoDaysBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -2, to: noon)!
     }
     var dayAfter: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: noon)!

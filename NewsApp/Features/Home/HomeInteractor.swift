@@ -39,7 +39,7 @@ final class NAHomeInteractor: NAHomeInteractorInput {
         }
     }
     
-    func fetchNewsByQuery(_ input: NewsInput) {
+    func fetchNewsByQuery(_ input: CategoryInput) {
         api?.requestObject(endpoint: NAPaths.urlEverything,
                            method: .get,
                            headers: nil,
@@ -47,10 +47,6 @@ final class NAHomeInteractor: NAHomeInteractorInput {
                            type: NewsOutput.self) { [weak self] result in
             switch result {
             case .success(let result):
-                if result.articles.isEmpty {
-                    self?.output?.fetchNewsSucceededWithEmptyList()
-                    return
-                }
                 self?.output?.fetchNewsSucceeded(result, hasQuery: true)
                 
             case .failure(let result):
