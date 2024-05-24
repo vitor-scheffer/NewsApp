@@ -24,17 +24,29 @@ final public class NewsApi: NewsApiProtocol {
         endpoint: String,
         method: HttpMethod,
         headers: HttpHeaders?,
+        parameters: [String: String]?,
         type: T.Type,
         completion: @escaping CompletionCallback<T>) {
-        
-            guard let url = URL(string: NewsBaseUrl.baseUrl + endpoint + NewsBaseUrl.secretKey) else {
-            completion(.failure(.generic))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-            request.httpMethod = method.rawValue
             
+            guard var urlComponents = URLComponents(string: NewsBaseUrl.baseUrl + endpoint) else {
+                NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
+                completion(.failure(.generic))
+                return
+            }
+
+            if let parameters = parameters {
+                urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+            }
+
+            guard let url = URL(string: urlComponents.url!.description + NewsBaseUrl.secretKey) else {
+                NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
+                completion(.failure(.generic))
+                return
+            }
+
+            var request = URLRequest(url: url)
+                request.httpMethod = method.rawValue
+
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, let httpResponse = response as? HTTPURLResponse, error == nil else {
                     NALogger.log(.failed(url: NewsBaseUrl.baseUrl + endpoint))
@@ -43,9 +55,9 @@ final public class NewsApi: NewsApiProtocol {
                     }
                     return
                 }
-                
+
                 let statusCode = httpResponse.statusCode
-                
+
                 switch statusCode {
                 case 200...299:
                     let decoder = JSONDecoder()
@@ -76,7 +88,7 @@ final public class NewsApi: NewsApiProtocol {
                     }
                 }
             }
-        
+
         task.resume()
-    }
+        }
 }

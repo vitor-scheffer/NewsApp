@@ -28,6 +28,7 @@ protocol NASavedNewsPresenterInterface: AnyObject {
 protocol NASavedNewsInteractorOutput: AnyObject {
     func fetchNewsSucceeded(_ output: [News])
     func fetchNewsFailed(_ output: String)
+    func fetchNewsSucceededWithEmptyList()
 }
 
 protocol NASavedNewsInteractorInput: AnyObject {

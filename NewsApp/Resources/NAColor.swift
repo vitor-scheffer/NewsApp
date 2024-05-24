@@ -25,7 +25,7 @@ public struct NAColor: Equatable {
     }
     
     public static var body1: NAColor {
-        NAColor(uiColor: UIColor(hex: "#f4f4f4"))
+        NAColor(uiColor: UIColor(hex: "#E6E6E6"))
     }
     
     public static var gray: NAColor {

@@ -30,6 +30,9 @@
 "NAhome.author" = "By: %@";
 "NAhome.publishedAt" = "published at: %@";
 "NAhome.search.news" = "Search for news";
+"NAHome.results.title" = "Top Readlines";
+"NAHome.results.query.title" = "Results for: %@";
+"NAHome.search.empty" = "Your search did not find any matching news";
 
 "NAdetails.save.success" = "News saved succesfully.";
 "NAdetails.delete.success" = "News removed succesfully.";

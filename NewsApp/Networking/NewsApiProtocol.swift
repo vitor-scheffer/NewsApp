@@ -14,6 +14,7 @@ public protocol NewsApiProtocol: AnyObject {
     func requestObject<T: Decodable>(endpoint: String,
                                      method: HttpMethod,
                                      headers: HttpHeaders?,
+                                     parameters: [String: String]?,
                                      type: T.Type,
                                      completion: @escaping CompletionCallback<T>)
 }

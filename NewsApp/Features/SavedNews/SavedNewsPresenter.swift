@@ -42,6 +42,8 @@ final class NASavedNewsPresenter: NASavedNewsPresenterInterface {
     }
     
     func fetchNews() {
+        self.newsList = []
+        
         interactor.fetchNews()
     }
     
@@ -53,15 +55,12 @@ final class NASavedNewsPresenter: NASavedNewsPresenterInterface {
 // MARK: - NASavedNewsInteractorOutput
 
 extension NASavedNewsPresenter: NASavedNewsInteractorOutput {
+    func fetchNewsSucceededWithEmptyList() {
+        viewModel?.removeLoading()
+        viewModel?.setNewsListEmpty()
+    }
+    
     func fetchNewsSucceeded(_ output: [News]) {
-        self.newsList = []
-        
-        if output.isEmpty {
-            viewModel?.removeLoading()
-            viewModel?.setNewsListEmpty()
-            return
-        }
-        
         output.forEach { data in
             guard let id = data.id,
                   let title = data.title,
@@ -84,7 +83,6 @@ extension NASavedNewsPresenter: NASavedNewsInteractorOutput {
             }
         }
     }
-    
     
     func fetchNewsFailed(_ output: String) {
         self.viewModel?.setNewsFailed(error: output)

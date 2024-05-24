@@ -27,6 +27,10 @@ final class NASavedNewsInteractor: NASavedNewsInteractorInput {
         CoreDataManager.shared.fetchNews() { result in
             switch result {
             case .success(let newsDetails):
+                if newsDetails.isEmpty {
+                    self.output?.fetchNewsSucceededWithEmptyList()
+                    return
+                }
                 self.output?.fetchNewsSucceeded(newsDetails)
             case .failure(let error):
                 self.output?.fetchNewsFailed(error.message)

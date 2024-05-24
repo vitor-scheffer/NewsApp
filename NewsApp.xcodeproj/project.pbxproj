@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E500C2702BFFDCE400027FB9 /* NewsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E500C26F2BFFDCE400027FB9 /* NewsInput.swift */; };
 		E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE3FE2BF593E400A0EB6C /* AppDelegate.swift */; };
 		E5ECE4012BF593E400A0EB6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4002BF593E400A0EB6C /* SceneDelegate.swift */; };
 		E5ECE4032BF593E400A0EB6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ECE4022BF593E400A0EB6C /* ViewController.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E500C26F2BFFDCE400027FB9 /* NewsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInput.swift; sourceTree = "<group>"; };
 		E5ECE3FB2BF593E400A0EB6C /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5ECE3FE2BF593E400A0EB6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5ECE4002BF593E400A0EB6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				E5ECE44D2BF682F100A0EB6C /* NewsOutput.swift */,
 				E5ECE45E2BF7A11300A0EB6C /* Article.swift */,
 				E5ECE4622BF7C6B800A0EB6C /* NewsItem.swift */,
+				E500C26F2BFFDCE400027FB9 /* NewsInput.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				E5ECE4E12BFE5B0800A0EB6C /* SavedNewsCoordinator.swift in Sources */,
 				E5ECE4432BF6820D00A0EB6C /* HomeCoordinator.swift in Sources */,
 				E5ECE46D2BF864FC00A0EB6C /* DetailsCoordinator.swift in Sources */,
+				E500C2702BFFDCE400027FB9 /* NewsInput.swift in Sources */,
 				E5ECE4DD2BFE5AE300A0EB6C /* SavedNewsPresenter.swift in Sources */,
 				E5ECE3FF2BF593E400A0EB6C /* AppDelegate.swift in Sources */,
 				E5ECE4412BF5A93300A0EB6C /* NARouterProtocol.swift in Sources */,

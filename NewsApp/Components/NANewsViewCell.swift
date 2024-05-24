@@ -21,7 +21,6 @@ final class NANewsViewCell: UITableViewCell {
         let view = UIView()
         view.backgroundColor = NAColor.white.uiColor
         view.layer.cornerRadius = 8
-        view.addElevation(elevation: .level1, cornerRadius: 8)
         return view
     }()
     

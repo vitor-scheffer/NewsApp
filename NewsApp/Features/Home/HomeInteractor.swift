@@ -27,10 +27,31 @@ final class NAHomeInteractor: NAHomeInteractorInput {
         api?.requestObject(endpoint: NAPaths.urlTopHeadlines,
                            method: .get,
                            headers: nil,
+                           parameters: nil,
                            type: NewsOutput.self) { [weak self] result in
             switch result {
             case .success(let result):
-                self?.output?.fetchNewsSucceeded(result)
+                self?.output?.fetchNewsSucceeded(result, hasQuery: false)
+                
+            case .failure(let result):
+                self?.output?.fetchNewsFailed(result.message)
+            }
+        }
+    }
+    
+    func fetchNewsByQuery(_ input: NewsInput) {
+        api?.requestObject(endpoint: NAPaths.urlEverything,
+                           method: .get,
+                           headers: nil,
+                           parameters: input.toDictionary(),
+                           type: NewsOutput.self) { [weak self] result in
+            switch result {
+            case .success(let result):
+                if result.articles.isEmpty {
+                    self?.output?.fetchNewsSucceededWithEmptyList()
+                    return
+                }
+                self?.output?.fetchNewsSucceeded(result, hasQuery: true)
                 
             case .failure(let result):
                 self?.output?.fetchNewsFailed(result.message)

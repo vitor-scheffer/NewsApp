@@ -17,6 +17,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
     weak var viewModel: NAHomeViewModel?
     
     private var newsList: [NewsItem] = []
+    private var querySearched: String?
     
     // MARK: Initalizer
     
@@ -34,15 +35,19 @@ final class NAHomePresenter: NAHomePresenterInterface {
     func setViewModel(_ viewModel: NAHomeViewModel) {
         self.viewModel = viewModel
         viewModel.setHeaderTitle(I18n.General.appName.text)
-        viewModel.setLoading()
-        fetchNews()
+        viewModel.setResultsTitle(I18n.Home.results.text)
     }
     
     func viewWillAppear(_ animated: Bool) {
+        viewModel?.setLoading(hasQuery: false)
         coordinator.navigator?.setNavigationBarHidden(true, animated: true)
+        
+        fetchNews()
     }
     
     func fetchNews() {
+        clearNewsList()
+        
         interactor.fetchNews()
     }
     
@@ -50,11 +55,21 @@ final class NAHomePresenter: NAHomePresenterInterface {
         coordinator.navigateToDetails(news: input)
     }
     
+    func fetchNewsByQuery(_ input: String) {
+        viewModel?.setLoading(hasQuery: true)
+        clearNewsList()
+        
+        self.querySearched = input
+        let newsInput = NewsInput(query: input, sortBy: .relevancy)
+        interactor.fetchNewsByQuery(newsInput)
+    }
+    
     private func isPresentable(article: Article) -> Bool {
         return !article.title.contains("[Removed]")
         && article.author != nil
         && article.author != ""
         && article.description != nil
+        && article.urlToImage != nil
     }
     
     private func generateID(forKey: String) -> String {
@@ -69,12 +84,16 @@ final class NAHomePresenter: NAHomePresenterInterface {
         
         return generatedID
     }
+    
+    private func clearNewsList() {
+        self.newsList = []
+    }
 }
 
 // MARK: - NAHomeInteractorOutput
 
 extension NAHomePresenter: NAHomeInteractorOutput {
-    func fetchNewsSucceeded(_ output: NewsOutput) {
+    func fetchNewsSucceeded(_ output: NewsOutput, hasQuery: Bool) {
         let group = DispatchGroup()
         
         output.articles.forEach { article in
@@ -103,7 +122,14 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         }
         
         group.notify(queue: .main) {
-            self.viewModel?.setNewsSuccess(newsList: self.newsList)
+            switch hasQuery {
+            case true:
+                guard let queryText = self.querySearched else { return }
+                self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: queryText)
+            default:
+                self.viewModel?.setNewsSuccess(newsList: self.newsList)
+            }
+            
             self.viewModel?.removeLoading()
         }
     }
@@ -111,5 +137,10 @@ extension NAHomePresenter: NAHomeInteractorOutput {
     
     func fetchNewsFailed(_ output: String) {
         self.viewModel?.setNewsFailed(error: output)
+    }
+    
+    func fetchNewsSucceededWithEmptyList() {
+        self.viewModel?.removeLoading()
+        self.viewModel?.setSearchEmptyList()
     }
 }
