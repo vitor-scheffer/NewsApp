@@ -37,7 +37,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
         viewModel.setHeaderTitle(I18n.General.appName.text)
         viewModel.setResultsTitle(I18n.Home.results.text)
         viewModel.setLoading(hasQuery: false)
-        fetchNews()
+        interactor.fetchNews()
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -47,6 +47,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
     func fetchNews() {
         clearNewsList()
         
+        viewModel?.setLoading(hasQuery: true)
         interactor.fetchNews()
     }
     
@@ -102,8 +103,21 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         group.notify(queue: .main) {
             switch hasQuery {
             case true:
-                guard let queryText = self.querySearched else { return }
-                self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: queryText)
+                guard let querySelected = self.querySearched else { return }
+                var resultText: String
+                
+                switch querySelected {
+                case.sports:
+                    resultText = "Sports"
+                case .stocks:
+                    resultText = "Stocks"
+                case .entertainment:
+                    resultText = "Entertainment"
+                default:
+                    resultText = "Top Headlines"
+                }
+                
+                self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: resultText)
             default:
                 self.viewModel?.setNewsSuccess(newsList: self.newsList)
             }

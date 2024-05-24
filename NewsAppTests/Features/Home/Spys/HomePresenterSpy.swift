@@ -30,4 +30,12 @@ final class NAHomePresenterSpy: NAHomePresenterInterface {
         self.newsSelectedCalled = true
         self.news = input
     }
+    
+    func fetchNewsByQuery(_ input: NewsApp.QueryType) {
+        
+    }
+    
+    func fetchNews() {
+        
+    }
 }

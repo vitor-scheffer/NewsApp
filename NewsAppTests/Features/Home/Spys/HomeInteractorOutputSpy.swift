@@ -22,4 +22,8 @@ final class NAHomeInteractorOutputSpy: NAHomeInteractorOutput {
         self.fetchNewsFailedCalled = true
         self.messageError = output
     }
+    
+    func fetchNewsSucceeded(_ output: NewsApp.NewsOutput, hasQuery: Bool) {
+        
+    }
 }

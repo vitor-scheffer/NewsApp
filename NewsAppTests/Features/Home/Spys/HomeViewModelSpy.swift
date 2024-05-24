@@ -32,11 +32,19 @@ final class NAHomeViewModelSpy: NAHomeViewModel {
         self.messageError = error
     }
     
-    func setLoading() {
+    func setLoading(hasQuery: Bool) {
         self.setLoadingCalled = true
     }
     
     func removeLoading() {
         self.removeLoadingCalled = true
+    }
+    
+    func setResultsTitle(_ text: String) {
+        
+    }
+    
+    func setNewsByQuerySuccess(newsList: [NewsApp.NewsItem], querySearched: NewsApp.QueryType) {
+    
     }
 }

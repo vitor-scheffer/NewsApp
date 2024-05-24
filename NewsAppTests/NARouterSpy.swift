@@ -26,4 +26,8 @@ final class NARouterSpy: NARouterProtocol {
         self.showNewsDetailsCalled = true
         self.newsDetails = newsDetails
     }
+    
+    func showSearch(navigator: UINavigationController?) {
+        
+    }
 }

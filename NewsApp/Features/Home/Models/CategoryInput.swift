@@ -29,6 +29,7 @@ extension CategoryInput {
 }
 
 public enum QueryType: String {
+    case topHeadlines = "TopHeadlines"
     case sports = "NBA"
     case entertainment = "Hollywood"
     case stocks = "Stocks"

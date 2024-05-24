@@ -11,7 +11,7 @@ protocol NAHomeViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
     func setResultsTitle(_ text: String)
     func setNewsSuccess(newsList: [NewsItem])
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: QueryType)
+    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String)
     func setNewsFailed(error: String)
     func setLoading(hasQuery: Bool)
     func removeLoading()

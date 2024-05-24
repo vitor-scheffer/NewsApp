@@ -20,7 +20,9 @@ final public class NewsApiStub: NewsApiProtocol {
     }
     
     public func requestObject<T>(endpoint: String,
-                                 method: HttpMethod, headers: HttpHeaders?,
+                                 method: HttpMethod, 
+                                 headers: HttpHeaders?,
+                                 parameters: [String: String]?,
                                  type: T.Type,
                                  completion: @escaping CompletionCallback<T>) where T : Decodable {
         

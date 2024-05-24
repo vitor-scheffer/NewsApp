@@ -27,13 +27,12 @@ class NAHomeViewController: NABaseViewController {
     }()
     
     private lazy var resultTitleLabel = {
-        let view = NALabel(.title2)
+        let view = NALabel(.title3)
         return view
     }()
     
     private lazy var categoryView = {
-        let view = UIView()
-        view.backgroundColor = NAColor.body1.uiColor
+        let view = NACategoryView()
         return view
     }()
     
@@ -136,8 +135,8 @@ extension NAHomeViewController: NAHomeViewModel {
         self.newsList = newsList
     }
     
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: QueryType) {
-//        categoryView.selected = querySearched
+    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String) {
+        resultTitleLabel.text = querySearched
         self.newsList = newsList
     }
     
@@ -169,16 +168,16 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//extension NAHomeViewController: CategoryViewDelegate {
-//    func didTapCategoryBtn(_ category: QueryType?) {
-//        if let category {
-//            presenter.fetchNewsByQuery(category)
-//            return
-//        }
-//        
-//        presenter.fetchNews()
-//    }
-//}
+extension NAHomeViewController: NACategoryViewDelegate {
+    func didTapCategoryBtn(_ category: QueryType) {
+        switch category {
+        case .topHeadlines:
+            presenter.fetchNews()
+        default:
+            presenter.fetchNewsByQuery(category)
+        }
+    }
+}
 
 extension NAHomeViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
@@ -200,13 +199,12 @@ extension NAHomeViewController: ViewCode {
             .trailing(16)
         
         categoryView.nac
-            .top(titleLabel.bottomAnchor)
-            .leading(8)
-            .trailing(8)
-            .height(10)
+            .top(titleLabel.bottomAnchor, 24)
+            .leading()
+            .trailing()
         
         resultTitleLabel.nac
-            .top(categoryView.bottomAnchor, 32)
+            .top(categoryView.bottomAnchor, 12)
             .leading(16)
             .trailing(16)
         
@@ -218,7 +216,7 @@ extension NAHomeViewController: ViewCode {
     }
     
     func applyAdditionalChanges() {
-//        categoryView.delegate = self
+        categoryView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
