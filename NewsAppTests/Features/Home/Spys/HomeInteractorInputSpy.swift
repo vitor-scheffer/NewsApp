@@ -12,12 +12,16 @@ final class NAHomeInteractorInputSpy: NAHomeInteractorInput {
     var output: NAHomeInteractorOutput?
     
     var fetchNewsCalled = false
+    var fetchNewsByQueryCalled = false
+    var categoryInput: CategoryInput?
+    
     
     func fetchNews() {
         self.fetchNewsCalled = true
     }
     
-    func fetchNewsByQuery(_ input: NewsApp.CategoryInput) {
-        
+    func fetchNewsByQuery(_ input: CategoryInput) {
+        self.fetchNewsByQueryCalled = true
+        self.categoryInput = input
     }
 }

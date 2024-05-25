@@ -18,7 +18,7 @@ public struct NewsInput {
 }
 
 extension NewsInput {
-    func toDictionary() -> [String: String] {
+    func toDictionary() -> Dictionary<String, String> {
         return [
             "q": self.query,
             "sortBy": self.sortBy,

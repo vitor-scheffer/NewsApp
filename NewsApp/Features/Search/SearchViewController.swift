@@ -16,7 +16,7 @@ class NASearchViewController: NABaseViewController {
     private var skeletonTableView: NASkeletonView?
     private var emptyList: NALabel?
     
-    private var newsList: [NewsItem] = [] {
+    private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
         }
@@ -78,6 +78,10 @@ class NASearchViewController: NABaseViewController {
         setupView()
         presenter.setViewModel(self)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.endEditing(true)
+    }
 }
 
 extension NASearchViewController: NASearchViewModel {
@@ -114,21 +118,19 @@ extension NASearchViewController: NASearchViewModel {
         
         resultTitleLabel.isHidden = false
         tableView.isHidden = false
-        
-        self.view.endEditing(true)
     }
     
     func setHeaderTitle(_ text: String) {
         titleLabel.text = text
     }
     
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String) {
-        resultTitleLabel.text = I18n.Home.resultsQuery.text(with: querySearched)
+    func setNewsByQuerySuccess(newsList: Array<NewsItem>, querySearched: String) {
+        resultTitleLabel.text = I18n.Search.resultsQuery.text(with: querySearched)
         self.newsList = newsList
     }
     
     func setSearchMessage(_ querySearched: String?, message: String) {
-        if let querySearched { resultTitleLabel.text = I18n.Home.resultsQuery.text(with: querySearched) }
+        if let querySearched { resultTitleLabel.text = I18n.Search.resultsQuery.text(with: querySearched) }
         
         tableView.isHidden = true
         

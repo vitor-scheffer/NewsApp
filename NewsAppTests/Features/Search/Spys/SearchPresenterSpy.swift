@@ -1,26 +1,25 @@
 //
-//  HomePresenterSpy.swift
+//  SearchPresenterSpy.swift
 //  NewsAppTests
 //
-//  Created by Vitor Boff on 18/05/24.
+//  Created by Vitor Boff on 25/05/24.
 //
 
 @testable import NewsApp
 
-final class NAHomePresenterSpy: NAHomePresenterInterface {
-    var coordinator: NAHomeCoordinatorInterface = NAHomeCoordinatorSpy()
-    var interactor: NAHomeInteractorInput = NAHomeInteractorInputSpy()
-    var viewModel: NAHomeViewModel?
+final class NASearchPresenterSpy: NASearchPresenterInterface {
+    var coordinator: NASearchCoordinatorInterface = NASearchCoordinatorSpy()
+    var interactor: NASearchInteractorInput = NASearchInteractorInputSpy()
+    var viewModel: NASearchViewModel?
     
     var setViewModelCalled = false
     var viewWillAppearCalled = false
     var newsSelectedCalled = false
     var fetchNewsByQueryCalled = false
-    var fetchNewsCalled = false
     var news: NewsItem?
-    var query: QueryType?
+    var query: String?
     
-    func setViewModel(_ viewModel: any NAHomeViewModel) {
+    func setViewModel(_ viewModel: any NASearchViewModel) {
         self.setViewModelCalled = true
         self.viewModel = viewModel
     }
@@ -34,12 +33,8 @@ final class NAHomePresenterSpy: NAHomePresenterInterface {
         self.news = input
     }
     
-    func fetchNewsByQuery(_ input: QueryType) {
+    func fetchNewsByQuery(_ input: String) {
         self.fetchNewsByQueryCalled = true
         self.query = input
-    }
-    
-    func fetchNews() {
-        self.fetchNewsCalled = true
     }
 }

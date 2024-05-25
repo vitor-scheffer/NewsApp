@@ -16,7 +16,7 @@ final class NASearchPresenter: NASearchPresenterInterface {
     let interactor: NASearchInteractorInput
     weak var viewModel: NASearchViewModel?
     
-    private var newsList: [NewsItem] = []
+    private var newsList: Array<NewsItem> = []
     private var querySearched: String?
     
     // MARK: Initalizer

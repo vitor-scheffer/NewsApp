@@ -9,7 +9,7 @@ import UIKit
 
 protocol NASearchViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String)
+    func setNewsByQuerySuccess(newsList: Array<NewsItem>, querySearched: String)
     func setSearchMessage(_ querySearched: String?, message: String)
     func setNewsFailed(error: String)
     func setLoading()

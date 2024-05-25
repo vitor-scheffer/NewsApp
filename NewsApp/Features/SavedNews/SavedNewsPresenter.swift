@@ -15,7 +15,7 @@ final class NASavedNewsPresenter: NASavedNewsPresenterInterface {
     let interactor: NASavedNewsInteractorInput
     weak var viewModel: NASavedNewsViewModel?
     
-    private var newsList: [NewsItem] = []
+    private var newsList: Array<NewsItem> = []
     
     // MARK: Initalizer
     
@@ -50,6 +50,16 @@ final class NASavedNewsPresenter: NASavedNewsPresenterInterface {
     func newsSelected(_ input: NewsItem) {
         coordinator.navigateToDetails(news: input)
     }
+    
+    func fetchSearch(_ forText: String) {
+        if forText.isEmpty {
+            viewModel?.setNewsSuccess(newsList: self.newsList)
+            return
+        }
+        
+        let newsListFiltered = newsList.filter { $0.title.localizedCaseInsensitiveContains(forText) }
+        viewModel?.setNewsSuccess(newsList: newsListFiltered)
+    }
 }
 
 // MARK: - NASavedNewsInteractorOutput
@@ -60,7 +70,7 @@ extension NASavedNewsPresenter: NASavedNewsInteractorOutput {
         viewModel?.setNewsListEmpty()
     }
     
-    func fetchNewsSucceeded(_ output: [News]) {
+    func fetchNewsSucceeded(_ output: Array<News>) {
         output.forEach { data in
             guard let id = data.id,
                   let title = data.title,

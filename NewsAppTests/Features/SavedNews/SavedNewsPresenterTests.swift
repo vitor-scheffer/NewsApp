@@ -1,14 +1,14 @@
 //
-//  HomePresenterTests.swift
+//  SavedNewsPresenterTests.swift
 //  NewsAppTests
 //
-//  Created by Vitor Boff on 18/05/24.
+//  Created by Vitor Boff on 25/05/24.
 //
 
 import XCTest
 @testable import NewsApp
 
-final class NAHomePresenterTests: XCTestCase {
+final class NASavedNewsPresenterTests: XCTestCase {
     func testInitWhenDoesntSetViewModel() {
         let (_, _, interactorSpy, viewModelSpy) = makeSUT()
 
@@ -18,12 +18,19 @@ final class NAHomePresenterTests: XCTestCase {
     }
 
     func testSetViewModelShouldSetValuesCorrectly() {
-        let (sut, _, interactorSpy, viewModelSpy) = makeSUT()
+        let (sut, _, _, viewModelSpy) = makeSUT()
 
         sut.setViewModel(viewModelSpy)
 
         XCTAssertTrue(viewModelSpy.setHeaderTitleCalled)
         XCTAssertEqual(viewModelSpy.headerText, "NewsApp")
+    }
+    
+    func testViewWillAppearShouldFetchNews() {
+        let (sut, _, interactorSpy, _) = makeSUT()
+
+        sut.viewWillAppear(true)
+        
         XCTAssertTrue(interactorSpy.fetchNewsCalled)
     }
     
@@ -35,15 +42,14 @@ final class NAHomePresenterTests: XCTestCase {
         XCTAssertTrue(interactorSpy.fetchNewsCalled)
     }
     
-    func testFetchNewsSuccessShouldNotSetNewsSuccessByQuery() {
+    func testFetchNewsSucceededShouldSetNewsSuccess() {
         let (sut, _, _, viewModelSpy) = makeSUT()
-        let expected = anyNewsOutput()
-                
+
         sut.setViewModel(viewModelSpy)
-        sut.fetchNewsSucceeded(expected, hasQuery: false)
-        
-        XCTAssertFalse(viewModelSpy.setNewsByQuerySuccessCalled)
-        XCTAssertNil(viewModelSpy.querySearched)
+        sut.fetchNewsSucceededWithEmptyList()
+
+        XCTAssertTrue(viewModelSpy.setNewsListEmptyCalled)
+        XCTAssertNil(viewModelSpy.newsList)
     }
     
     func testFetchNewsFailedShouldSetNewsFailed() {
@@ -54,14 +60,6 @@ final class NAHomePresenterTests: XCTestCase {
 
         XCTAssertTrue(viewModelSpy.setNewsFailedCalled)
         XCTAssertEqual(viewModelSpy.messageError, "any")
-    }
-    
-    func testFetchNewsByQueryShouldCallInteractorFetchNewsByQuery() {
-        let (sut, _, interactor, _) = makeSUT()
-
-        sut.fetchNewsByQuery(.topHeadlines)
-
-        XCTAssertTrue(interactor.fetchNewsByQueryCalled)
     }
     
     func testNewsSelectedShouldNavigateToDetails() {
@@ -77,15 +75,15 @@ final class NAHomePresenterTests: XCTestCase {
 
 // MARK: - Helpers
 
-extension NAHomePresenterTests {
-    private func makeSUT() -> (sut: NAHomePresenter,
-                               coordinatorSpy: NAHomeCoordinatorSpy,
-                               interactorSpy: NAHomeInteractorInputSpy,
-                               viewModelSpy: NAHomeViewModelSpy) {
-        let coordinatorSpy = NAHomeCoordinatorSpy()
-        let interactorSpy = NAHomeInteractorInputSpy()
-        let viewModelSpy = NAHomeViewModelSpy()
-        let sut = NAHomePresenter(coordinator: coordinatorSpy, interactor: interactorSpy)
+extension NASavedNewsPresenterTests {
+    private func makeSUT() -> (sut: NASavedNewsPresenter,
+                               coordinatorSpy: NASavedNewsCoordinatorSpy,
+                               interactorSpy: NASavedNewsInteractorInputSpy,
+                               viewModelSpy: NASavedNewsViewModelSpy) {
+        let coordinatorSpy = NASavedNewsCoordinatorSpy()
+        let interactorSpy = NASavedNewsInteractorInputSpy()
+        let viewModelSpy = NASavedNewsViewModelSpy()
+        let sut = NASavedNewsPresenter(coordinator: coordinatorSpy, interactor: interactorSpy)
 
         return (sut, coordinatorSpy, interactorSpy, viewModelSpy)
     }

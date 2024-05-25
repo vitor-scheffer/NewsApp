@@ -24,7 +24,7 @@ final public class NewsApi: NewsApiProtocol {
         endpoint: String,
         method: HttpMethod,
         headers: HttpHeaders?,
-        parameters: [String: String]?,
+        parameters: Dictionary<String, String>?,
         type: T.Type,
         completion: @escaping CompletionCallback<T>) {
             

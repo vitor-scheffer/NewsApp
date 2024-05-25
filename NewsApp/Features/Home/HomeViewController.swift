@@ -15,7 +15,7 @@ class NAHomeViewController: NABaseViewController {
     private var skeletonTitleView: NASkeletonView?
     private var skeletonTableView: NASkeletonView?
     
-    private var newsList: [NewsItem] = [] {
+    private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
         }
@@ -52,10 +52,6 @@ class NAHomeViewController: NABaseViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 
     // MARK: Life Cycle
@@ -118,8 +114,6 @@ extension NAHomeViewController: NAHomeViewModel {
         categoryView.isHidden = false
         resultTitleLabel.isHidden = false
         tableView.isHidden = false
-        
-        self.view.endEditing(true)
     }
     
     func setHeaderTitle(_ text: String) {
@@ -130,12 +124,12 @@ extension NAHomeViewController: NAHomeViewModel {
         resultTitleLabel.text = text
     }
     
-    func setNewsSuccess(newsList: [NewsItem]) {
+    func setNewsSuccess(newsList: Array<NewsItem>) {
         resultTitleLabel.text = I18n.Home.results.text
         self.newsList = newsList
     }
     
-    func setNewsByQuerySuccess(newsList: [NewsItem], querySearched: String) {
+    func setNewsByQuerySuccess(newsList: Array<NewsItem>, querySearched: String) {
         resultTitleLabel.text = querySearched
         self.newsList = newsList
     }

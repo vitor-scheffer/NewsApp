@@ -9,7 +9,7 @@ import UIKit
 
 protocol NASavedNewsViewModel: AnyObject {
     func setHeaderTitle(_ text: String)
-    func setNewsSuccess(newsList: [NewsItem])
+    func setNewsSuccess(newsList: Array<NewsItem>)
     func setNewsListEmpty()
     func setNewsFailed(error: String)
     func setLoading()
@@ -23,16 +23,17 @@ protocol NASavedNewsPresenterInterface: AnyObject {
     func setViewModel(_ viewModel: NASavedNewsViewModel)
     func viewWillAppear(_ animated: Bool)
     func newsSelected(_ input: NewsItem)
+    func fetchSearch(_ forText: String)
 }
 
 protocol NASavedNewsInteractorOutput: AnyObject {
-    func fetchNewsSucceeded(_ output: [News])
+    func fetchNewsSucceeded(_ output: Array<News>)
     func fetchNewsFailed(_ output: String)
     func fetchNewsSucceededWithEmptyList()
 }
 
 protocol NASavedNewsInteractorInput: AnyObject {
-    var api: NewsApiProtocol? { get set }
+    var api: CoreDataManagerProtocol? { get set }
     var output: NASavedNewsInteractorOutput? { get set }
     func fetchNews()
 }

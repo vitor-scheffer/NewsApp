@@ -17,10 +17,10 @@ public final class NACategoryView: UIView {
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
     private let categories: Array<String> = [
-        "Top Headlines",
-        "Sports",
-        "Entertainment",
-        "Stocks"
+        I18n.Home.results.text,
+        I18n.Home.sports.text,
+        I18n.Home.entertainment.text,
+        I18n.Home.stocks.text
     ]
     
     public var selected: QueryType? {
@@ -41,13 +41,13 @@ public final class NACategoryView: UIView {
         
         switch selected {
         case .sports:
-            expectedTitle = "Sports"
+            expectedTitle = I18n.Home.sports.text
         case .entertainment:
-            expectedTitle = "Entertainment"
+            expectedTitle = I18n.Home.entertainment.text
         case .stocks:
-            expectedTitle = "Stocks"
+            expectedTitle = I18n.Home.stocks.text
         default:
-            expectedTitle = "Top Headlines"
+            expectedTitle = I18n.Home.results.text
         }
         
         for case let button as UIButton in stackView.arrangedSubviews {
@@ -75,11 +75,11 @@ public final class NACategoryView: UIView {
         guard let title = sender.titleLabel?.text else { return }
         
         switch title {
-        case "Sports":
+        case I18n.Home.sports.text:
             selected = .sports
-        case "Entertainment":
+        case I18n.Home.entertainment.text:
             selected = .entertainment
-        case "Stocks":
+        case I18n.Home.stocks.text:
             selected = .stocks
         default:
             selected = .topHeadlines

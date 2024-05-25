@@ -16,7 +16,7 @@ final class NAHomePresenter: NAHomePresenterInterface {
     let interactor: NAHomeInteractorInput
     weak var viewModel: NAHomeViewModel?
     
-    private var newsList: [NewsItem] = []
+    private var newsList: Array<NewsItem> = []
     private var querySearched: QueryType?
     
     // MARK: Initalizer
@@ -108,13 +108,13 @@ extension NAHomePresenter: NAHomeInteractorOutput {
                 
                 switch querySelected {
                 case.sports:
-                    resultText = "Sports"
+                    resultText = I18n.Home.sports.text
                 case .stocks:
-                    resultText = "Stocks"
+                    resultText = I18n.Home.stocks.text
                 case .entertainment:
-                    resultText = "Entertainment"
+                    resultText = I18n.Home.entertainment.text
                 default:
-                    resultText = "Top Headlines"
+                    resultText = I18n.Home.results.text
                 }
                 
                 self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: resultText)

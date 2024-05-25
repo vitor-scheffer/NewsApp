@@ -18,7 +18,7 @@ public struct CategoryInput {
 }
 
 extension CategoryInput {
-    func toDictionary() -> [String: String] {
+    func toDictionary() -> Dictionary<String, String> {
         return [
             "q": self.queryBy,
             "sortBy": self.sortBy,

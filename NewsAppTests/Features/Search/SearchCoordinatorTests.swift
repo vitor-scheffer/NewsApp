@@ -1,26 +1,26 @@
 //
-//  NewsAppTests.swift
+//  SearchCoordinatorTests.swift
 //  NewsAppTests
 //
-//  Created by Vitor Boff on 15/05/24.
+//  Created by Vitor Boff on 25/05/24.
 //
 
 import XCTest
 @testable import NewsApp
 
-final class NAHomeCoordinatorTests: XCTestCase {
+final class NASearchCoordinatorTests: XCTestCase {
     func testInitShouldSetNavigatorCorrectly() {
         let (sut, fakeNavigator, _) = makeSUT()
 
         XCTAssertEqual(sut.navigator, fakeNavigator)
     }
 
-    func testStartFirstViewControllerShouldBeNAHomeViewController() {
+    func testStartFirstViewControllerShouldBeNASearchViewController() {
         let (sut, _, _) = makeSUT()
 
         sut.start()
 
-        XCTAssertNotNil(sut.navigator?.viewControllers.first as? NAHomeViewController)
+        XCTAssertNotNil(sut.navigator?.viewControllers.first as? NASearchViewController)
     }
 
     func testNavigateToDetailsShouldCallShowNewsDetails() {
@@ -31,18 +31,19 @@ final class NAHomeCoordinatorTests: XCTestCase {
 
         XCTAssertTrue(routerSpy.showNewsDetailsCalled)
         XCTAssertEqual(routerSpy.navigator, fakeNavigator)
+        
     }
 }
 
 // MARK: - Helpers
 
-extension NAHomeCoordinatorTests {
-    private func makeSUT() -> (sut: NAHomeCoordinator,
+extension NASearchCoordinatorTests {
+    private func makeSUT() -> (sut: NASearchCoordinator,
                                fakeNavigator: UINavigationController,
                                routerSpy: NARouterSpy) {
         let fakeNavigator = UINavigationController()
         let routerSpy = NARouterSpy()
-        let sut = NAHomeCoordinator(navigator: fakeNavigator, router: routerSpy)
+        let sut = NASearchCoordinator(navigator: fakeNavigator, router: routerSpy)
 
         return (sut, fakeNavigator, routerSpy)
     }

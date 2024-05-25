@@ -12,6 +12,7 @@ final public class NewsApiStub: NewsApiProtocol {
     
     public var url: String?
     public var method: HttpMethod?
+    public var parameters: Dictionary<String, String>?
     
     public let status: CompletionStatus<Decodable>
     
@@ -22,12 +23,13 @@ final public class NewsApiStub: NewsApiProtocol {
     public func requestObject<T>(endpoint: String,
                                  method: HttpMethod, 
                                  headers: HttpHeaders?,
-                                 parameters: [String: String]?,
+                                 parameters: Dictionary<String, String>?,
                                  type: T.Type,
                                  completion: @escaping CompletionCallback<T>) where T : Decodable {
         
         self.url = NewsBaseUrl.baseUrl + endpoint + NewsBaseUrl.secretKey
         self.method = method
+        self.parameters = parameters
         
         switch status {
         case .success(let result):

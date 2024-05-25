@@ -31,14 +31,17 @@
 "NAhome.author" = "By: %@";
 "NAhome.publishedAt" = "published at: %@";
 "NAhome.search.news" = "Search for news";
-"NAhome.results.title" = "Top Readlines";
-"NAhome.results.query.title" = "Results for: %@";
+"NAhome.results.title" = "Top Headlines";
+"NAhome.results.sports" = "Sports";
+"NAhome.results.entertainment" = "Entertainment";
+"NAhome.results.stocks" = "Stocks";
 
 "NAdetails.save.success" = "News saved succesfully.";
 "NAdetails.delete.success" = "News removed succesfully.";
 
 "NAsearch.message" = "Search for specific news";
 "NAsearch.empty" = "Your search did not find any matching news";
+"NAsearch.results.query.title" = "Results for: %@";
 
 "NAnews.saved.empty" = "You still don't have saved news";
 "NAnews.saved.search.news" = "Search for saved news";

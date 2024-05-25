@@ -12,11 +12,10 @@ class NASavedNewsViewController: NABaseViewController {
     // MARK: Properties
     
     private let presenter: NASavedNewsPresenterInterface
-    private var skeletonTitleView: NASkeletonView?
     private var skeletonTableView: NASkeletonView?
     private var emptyList: NALabel?
     
-    private var newsList: [NewsItem] = [] {
+    private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
         }
@@ -34,7 +33,6 @@ class NASavedNewsViewController: NABaseViewController {
         view.layer.borderColor = NAColor.body1.cgColor
         view.placeholder = I18n.TabBar.search.text
         view.searchTextField.backgroundColor = NAColor.white.uiColor
-        view.searchTextField.addElevation(elevation: .level1)
         return view
     }()
     
@@ -51,6 +49,9 @@ class NASavedNewsViewController: NABaseViewController {
         super.init()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
@@ -70,39 +71,31 @@ class NASavedNewsViewController: NABaseViewController {
         setupView()
         presenter.setViewModel(self)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.endEditing(true)
+    }
 }
 
 extension NASavedNewsViewController: NASavedNewsViewModel {
     func setLoading() {
-        titleLabel.isHidden = true
-        searchView.isHidden = true
-        
         tableView.isHidden = true
         
-        let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
         let skeletonTableView = NASkeletonView([.newsList], quantity: 4)
         
-        view.addSubviews([skeletonTitleView, skeletonTableView], constraints: true)
-        
-        skeletonTitleView.nac
-            .top(view.safeAreaLayoutGuide.topAnchor, 24)
-            .leading(16)
-            .trailing(16)
+        view.addSubview(skeletonTableView, constraints: true)
         
         skeletonTableView.nac
-            .top(skeletonTitleView.bottomAnchor, 32)
+            .top(searchView.bottomAnchor, 24)
             .leading(16)
             .trailing(16)
         
-        self.skeletonTitleView = skeletonTitleView
         self.skeletonTableView = skeletonTableView
     }
     
     func removeLoading() {
-        skeletonTitleView?.removeFromSuperview()
         skeletonTableView?.removeFromSuperview()
         emptyList?.removeFromSuperview()
-        skeletonTitleView = nil
         skeletonTableView = nil
         emptyList = nil
         
@@ -115,7 +108,7 @@ extension NASavedNewsViewController: NASavedNewsViewModel {
         titleLabel.text = text
     }
     
-    func setNewsSuccess(newsList: [NewsItem]) {
+    func setNewsSuccess(newsList: Array<NewsItem>) {
         self.newsList = newsList
     }
     
@@ -164,6 +157,12 @@ extension NASavedNewsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 
+extension NASavedNewsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.fetchSearch(searchText)
+    }
+}
+
 extension NASavedNewsViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
         presenter.newsSelected(newsList[row])
@@ -196,6 +195,7 @@ extension NASavedNewsViewController: ViewCode {
     }
     
     func applyAdditionalChanges() {
+        searchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none

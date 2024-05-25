@@ -74,7 +74,9 @@ public final class I18n {
         case author = "NAhome.author"
         case search = "NAhome.search.news"
         case results = "NAhome.results.title"
-        case resultsQuery = "NAhome.results.query.title"
+        case sports = "NAhome.results.sports"
+        case entertainment = "NAhome.results.entertainment"
+        case stocks = "NAhome.results.stocks"
 
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")
@@ -129,6 +131,7 @@ public final class I18n {
     public enum Search: String, I18nProtocol {
         case message = "NAsearch.message"
         case empty = "NAsearch.empty"
+        case resultsQuery = "NAsearch.results.query.title"
         
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")
