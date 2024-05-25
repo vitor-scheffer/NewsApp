@@ -31,6 +31,7 @@ public final class I18n {
     
     public enum TabBar: String, I18nProtocol {
         case home = "NAtab.bar.home"
+        case search = "NAtab.bar.search"
         case saved = "NAtab.bar.saved"
 
         public var text: String {
@@ -72,6 +73,10 @@ public final class I18n {
     public enum Home: String, I18nProtocol {
         case author = "NAhome.author"
         case search = "NAhome.search.news"
+        case results = "NAhome.results.title"
+        case sports = "NAhome.results.sports"
+        case entertainment = "NAhome.results.entertainment"
+        case stocks = "NAhome.results.stocks"
 
         public var text: String {
             return NSLocalizedString(self.rawValue.localized, comment: "")
@@ -122,5 +127,20 @@ public final class I18n {
             String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
         }
     }
+    
+    public enum Search: String, I18nProtocol {
+        case message = "NAsearch.message"
+        case empty = "NAsearch.empty"
+        case resultsQuery = "NAsearch.results.query.title"
+        
+        public var text: String {
+            return NSLocalizedString(self.rawValue.localized, comment: "")
+        }
+        
+        public func text(with complement: String...) -> String {
+            String(format: NSLocalizedString(self.text, comment: "%@"), arguments: complement)
+        }
+    }
 }
+
 

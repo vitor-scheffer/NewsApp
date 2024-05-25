@@ -52,7 +52,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
-    func fetchNews(completion: @escaping (Result<[News], CoreDataError>) -> Void) {
+    func fetchNews(completion: @escaping (Result<Array<News>, CoreDataError>) -> Void) {
         let request: NSFetchRequest<News> = News.fetchRequest()
         
         do {

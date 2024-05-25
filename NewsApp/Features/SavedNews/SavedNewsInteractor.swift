@@ -11,12 +11,12 @@ final class NASavedNewsInteractor: NASavedNewsInteractorInput {
     
     // MARK: Properties
     
-    var api: NewsApiProtocol?
+    var api: CoreDataManagerProtocol?
     weak var output: NASavedNewsInteractorOutput?
     
     // MARK: Initializer
     
-    init(api: NewsApiProtocol = NewsApi.shared, output: NASavedNewsInteractorOutput? = nil) {
+    init(api: CoreDataManagerProtocol = CoreDataManager.shared, output: NASavedNewsInteractorOutput? = nil) {
         self.api = api
         self.output = output
     }
@@ -24,9 +24,13 @@ final class NASavedNewsInteractor: NASavedNewsInteractorInput {
     // MARK: Methods
     
     func fetchNews() {
-        CoreDataManager.shared.fetchNews() { result in
+        api?.fetchNews() { result in
             switch result {
             case .success(let newsDetails):
+                if newsDetails.isEmpty {
+                    self.output?.fetchNewsSucceededWithEmptyList()
+                    return
+                }
                 self.output?.fetchNewsSucceeded(newsDetails)
             case .failure(let error):
                 self.output?.fetchNewsFailed(error.message)
@@ -34,4 +38,3 @@ final class NASavedNewsInteractor: NASavedNewsInteractorInput {
         }
     }
 }
-

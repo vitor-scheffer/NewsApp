@@ -12,7 +12,7 @@ import UIKit
 protocol CoreDataManagerProtocol {
     func saveNews(news: NewsItem, completion: @escaping (Result<Void, CoreDataError>) -> Void)
     func deleteNews(byId id: String, completion: @escaping (Result<Void, CoreDataError>) -> Void)
-    func fetchNews(completion: @escaping (Result<[News], CoreDataError>) -> Void)
+    func fetchNews(completion: @escaping (Result<Array<News>, CoreDataError>) -> Void)
     func fetchNews(byId id: String, completion: @escaping (Result<News?, CoreDataError>) -> Void)
 }
 

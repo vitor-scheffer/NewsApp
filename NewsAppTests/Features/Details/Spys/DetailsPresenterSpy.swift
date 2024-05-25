@@ -5,6 +5,7 @@
 //  Created by Vitor Boff on 18/05/24.
 //
 
+import UIKit
 @testable import NewsApp
 
 final class NADetailsPresenterSpy: NADetailsPresenterInterface {
@@ -26,5 +27,13 @@ final class NADetailsPresenterSpy: NADetailsPresenterInterface {
     
     func navigateToHome() {
         self.navigateToHomeCalled = true
+    }
+    
+    func verifyNewsIsSaved(key: String) {
+        
+    }
+    
+    func bookmarkAction(_ sender: UIBarButtonItem) {
+        
     }
 }

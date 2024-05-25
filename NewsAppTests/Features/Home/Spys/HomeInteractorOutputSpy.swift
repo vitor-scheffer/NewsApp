@@ -12,14 +12,16 @@ final class NAHomeInteractorOutputSpy: NAHomeInteractorOutput {
     var fetchNewsFailedCalled = false
     var newsList: NewsOutput?
     var messageError: String?
-    
-    func fetchNewsSucceeded(_ output: NewsOutput) {
-        self.fetchNewsSucceededCalled = true
-        self.newsList = output
-    }
+    var hasQuery: Bool?
     
     func fetchNewsFailed(_ output: String) {
         self.fetchNewsFailedCalled = true
         self.messageError = output
+    }
+    
+    func fetchNewsSucceeded(_ output: NewsOutput, hasQuery: Bool) {
+        self.fetchNewsSucceededCalled = true
+        self.newsList = output
+        self.hasQuery = hasQuery
     }
 }

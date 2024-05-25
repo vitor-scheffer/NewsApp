@@ -8,12 +8,13 @@
 import Foundation
 import UIKit
 
-public typealias HttpHeaders = [String: String]
+public typealias HttpHeaders = Dictionary<String, String>
 
 public protocol NewsApiProtocol: AnyObject {
     func requestObject<T: Decodable>(endpoint: String,
                                      method: HttpMethod,
                                      headers: HttpHeaders?,
+                                     parameters: Dictionary<String, String>?,
                                      type: T.Type,
                                      completion: @escaping CompletionCallback<T>)
 }

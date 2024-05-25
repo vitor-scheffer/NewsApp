@@ -31,7 +31,6 @@ final class NAHomeCoordinatorTests: XCTestCase {
 
         XCTAssertTrue(routerSpy.showNewsDetailsCalled)
         XCTAssertEqual(routerSpy.navigator, fakeNavigator)
-        
     }
 }
 

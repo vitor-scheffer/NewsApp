@@ -16,7 +16,8 @@ final class NAHomePresenter: NAHomePresenterInterface {
     let interactor: NAHomeInteractorInput
     weak var viewModel: NAHomeViewModel?
     
-    private var newsList: [NewsItem] = []
+    private var newsList: Array<NewsItem> = []
+    private var querySearched: QueryType?
     
     // MARK: Initalizer
     
@@ -34,8 +35,9 @@ final class NAHomePresenter: NAHomePresenterInterface {
     func setViewModel(_ viewModel: NAHomeViewModel) {
         self.viewModel = viewModel
         viewModel.setHeaderTitle(I18n.General.appName.text)
-        viewModel.setLoading()
-        fetchNews()
+        viewModel.setResultsTitle(I18n.Home.results.text)
+        viewModel.setLoading(hasQuery: false)
+        interactor.fetchNews()
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -43,6 +45,9 @@ final class NAHomePresenter: NAHomePresenterInterface {
     }
     
     func fetchNews() {
+        clearNewsList()
+        
+        viewModel?.setLoading(hasQuery: true)
         interactor.fetchNews()
     }
     
@@ -50,36 +55,29 @@ final class NAHomePresenter: NAHomePresenterInterface {
         coordinator.navigateToDetails(news: input)
     }
     
-    private func isPresentable(article: Article) -> Bool {
-        return !article.title.contains("[Removed]")
-        && article.author != nil
-        && article.author != ""
-        && article.description != nil
+    func fetchNewsByQuery(_ input: QueryType) {
+        viewModel?.setLoading(hasQuery: true)
+        clearNewsList()
+        
+        self.querySearched = input
+        let newsInput = CategoryInput(queryBy: input, sortBy: .relevancy)
+        interactor.fetchNewsByQuery(newsInput)
     }
     
-    private func generateID(forKey: String) -> String {
-        let source = UserDefaults.standard
-        
-        if let storageID = source.string(forKey: forKey) {
-            return storageID
-        }
-        
-        let generatedID = UUID().uuidString
-        source.set(generatedID, forKey: forKey)
-        
-        return generatedID
+    private func clearNewsList() {
+        self.newsList = []
     }
 }
 
 // MARK: - NAHomeInteractorOutput
 
 extension NAHomePresenter: NAHomeInteractorOutput {
-    func fetchNewsSucceeded(_ output: NewsOutput) {
+    func fetchNewsSucceeded(_ output: NewsOutput, hasQuery: Bool) {
         let group = DispatchGroup()
         
         output.articles.forEach { article in
             
-            if isPresentable(article: article) {
+            if article.isPresentable() {
                 group.enter()
                 ImageManager().fetchImage(url: article.urlToImage) { [weak self] image in
                     guard let self = self else { return }
@@ -87,7 +85,7 @@ extension NAHomePresenter: NAHomeInteractorOutput {
                     let formattedDate = article.publishedAt.isoFormatter()
                     
                     let news = NewsItem(
-                        id: generateID(forKey: article.title),
+                        id: article.title.generateID(),
                         author: I18n.Home.author.text(with: article.author!),
                         title: article.title,
                         description: article.description,
@@ -103,11 +101,30 @@ extension NAHomePresenter: NAHomeInteractorOutput {
         }
         
         group.notify(queue: .main) {
-            self.viewModel?.setNewsSuccess(newsList: self.newsList)
+            switch hasQuery {
+            case true:
+                guard let querySelected = self.querySearched else { return }
+                var resultText: String
+                
+                switch querySelected {
+                case.sports:
+                    resultText = I18n.Home.sports.text
+                case .stocks:
+                    resultText = I18n.Home.stocks.text
+                case .entertainment:
+                    resultText = I18n.Home.entertainment.text
+                default:
+                    resultText = I18n.Home.results.text
+                }
+                
+                self.viewModel?.setNewsByQuerySuccess(newsList: self.newsList, querySearched: resultText)
+            default:
+                self.viewModel?.setNewsSuccess(newsList: self.newsList)
+            }
+            
             self.viewModel?.removeLoading()
         }
     }
-    
     
     func fetchNewsFailed(_ output: String) {
         self.viewModel?.setNewsFailed(error: output)

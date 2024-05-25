@@ -16,8 +16,11 @@ final class NAHomeInteractorTests: XCTestCase {
         sut.fetchNews()
 
         XCTAssertTrue(outputSpy.fetchNewsSucceededCalled)
+        XCTAssertNotNil(outputSpy.newsList)
+        XCTAssertEqual(outputSpy.newsList, expected)
         XCTAssertTrue(apiStub.url!.contains("/top-headlines?country=us"))
         XCTAssertEqual(apiStub.method, .get)
+        XCTAssertNil(apiStub.parameters)
     }
     
     func testFetchNewsWhenReturnsError() {
@@ -27,9 +30,25 @@ final class NAHomeInteractorTests: XCTestCase {
         
         XCTAssertTrue(outputSpy.fetchNewsFailedCalled)
         XCTAssertNil(outputSpy.newsList)
-        XCTAssertEqual(outputSpy.messageError, "Don't worry! We're already trying to solve this mistake, try again later.")
+        XCTAssertEqual(outputSpy.messageError, "Don't worry! We're already trying to solve this mistake, try again later")
         XCTAssertTrue(apiStub.url!.contains("/top-headlines?country=us"))
         XCTAssertEqual(apiStub.method!, .get)
+        XCTAssertNil(apiStub.parameters)
+    }
+    
+    func testFetchNewsByQueryWhenReturnsSuccess() {
+        let expected = anyNewsOutput()
+        let (sut, apiStub, outputSpy) = makeSUT(status: .success(expected))
+        
+        sut.fetchNewsByQuery(anyCategoryInput())
+
+        XCTAssertTrue(outputSpy.fetchNewsSucceededCalled)
+        XCTAssertNotNil(outputSpy.newsList)
+        XCTAssertEqual(outputSpy.newsList, expected)
+        XCTAssertEqual(outputSpy.hasQuery, true)
+        XCTAssertTrue(apiStub.url!.contains("/everything?"))
+        XCTAssertEqual(apiStub.method, .get)
+        XCTAssertNotNil(apiStub.parameters)
     }
 }
 

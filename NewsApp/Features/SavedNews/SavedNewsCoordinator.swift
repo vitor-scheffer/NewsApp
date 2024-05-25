@@ -33,24 +33,8 @@ public final class NASavedNewsCoordinator: NASavedNewsCoordinatorInterface {
         navigator?.pushViewController(viewController, animated: true)
     }
     
-    func initWithNewNavigator() -> UINavigationController {
-        let newNavigator = UINavigationController()
-        newNavigator.viewControllers = [initViewController()]
-        navigator = newNavigator
-        return newNavigator
-    }
-    
     func navigateToDetails(news: NewsItem) {
         guard let navigator else { return }
         router.showNewsDetails(navigator: navigator, newsDetails: news)
     }
-    
-    // MARK: - Private Methods
-    
-    private func initViewController() -> NASavedNewsViewController {
-        let interactor = NASavedNewsInteractor()
-        let presenter = NASavedNewsPresenter(coordinator: self, interactor: interactor)
-        return NASavedNewsViewController(presenter: presenter)
-    }
 }
-

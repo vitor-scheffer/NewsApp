@@ -11,4 +11,8 @@ class NAPaths {
     static var urlTopHeadlines: String {
         return "/top-headlines?country=us"
     }
+    
+    static var urlEverything: String {
+        return "/everything?"
+    }
 }

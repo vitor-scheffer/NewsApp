@@ -34,6 +34,12 @@ public final class NARouter: NARouterProtocol {
         coordinator.start()
     }
     
+    func showSearch(navigator: UINavigationController?) {
+        let coordinator = NASearchCoordinator()
+        coordinator.navigator = navigator
+        coordinator.start()
+    }
+    
     func showSavedNews(navigator: UINavigationController?) {
         let coordinator = NASavedNewsCoordinator()
         coordinator.navigator = navigator

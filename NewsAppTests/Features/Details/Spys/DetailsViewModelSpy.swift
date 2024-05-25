@@ -25,4 +25,20 @@ final class NADetailsViewModelSpy: NADetailsViewModel {
         self.setupLayoutCalled = true
         self.newsDetails = newsDetails
     }
+    
+    func setNewsSaveSucceeded(key: String) {
+        
+    }
+    
+    func setNewsRemoveSucceeded(key: String) {
+        
+    }
+    
+    func setErrorAlert(_ error: String) {
+        
+    }
+    
+    func setupNavigationView(_ isSaved: Bool) {
+        
+    }
 }

@@ -15,7 +15,7 @@ class NAHomeViewController: NABaseViewController {
     private var skeletonTitleView: NASkeletonView?
     private var skeletonTableView: NASkeletonView?
     
-    private var newsList: [NewsItem] = [] {
+    private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
         }
@@ -26,14 +26,13 @@ class NAHomeViewController: NABaseViewController {
         return view
     }()
     
-    private var searchView = {
-        let view = UISearchBar()
-        view.barTintColor = NAColor.body1.uiColor
-        view.layer.borderWidth = 1
-        view.layer.borderColor = NAColor.body1.cgColor
-        view.placeholder = I18n.Home.search.text
-        view.searchTextField.backgroundColor = NAColor.white.uiColor
-        view.searchTextField.addElevation(elevation: .level1)
+    private lazy var resultTitleLabel = {
+        let view = NALabel(.title3)
+        return view
+    }()
+    
+    private lazy var categoryView = {
+        let view = NACategoryView()
         return view
     }()
     
@@ -72,9 +71,10 @@ class NAHomeViewController: NABaseViewController {
 }
 
 extension NAHomeViewController: NAHomeViewModel {
-    func setLoading() {
-        titleLabel.isHidden = true
-        searchView.isHidden = true
+    func setLoading(hasQuery: Bool) {
+        titleLabel.isHidden = hasQuery ? false : true
+        categoryView.isHidden = hasQuery ? false : true
+        resultTitleLabel.isHidden = true
         tableView.isHidden = true
         
         let skeletonTitleView = NASkeletonView([.singleLine], height: 30)
@@ -83,9 +83,17 @@ extension NAHomeViewController: NAHomeViewModel {
         view.addSubviews([skeletonTitleView, skeletonTableView], constraints: true)
         
         skeletonTitleView.nac
-            .top(view.safeAreaLayoutGuide.topAnchor, 24)
             .leading(16)
             .trailing(16)
+        
+        switch hasQuery {
+        case true:
+            skeletonTitleView.nac
+                .top(categoryView.bottomAnchor, 32)
+        default:
+            skeletonTitleView.nac
+                .top(view.safeAreaLayoutGuide.topAnchor, 24)
+        }
         
         skeletonTableView.nac
             .top(skeletonTitleView.bottomAnchor, 32)
@@ -103,7 +111,8 @@ extension NAHomeViewController: NAHomeViewModel {
         skeletonTableView = nil
         
         titleLabel.isHidden = false
-        searchView.isHidden = false
+        categoryView.isHidden = false
+        resultTitleLabel.isHidden = false
         tableView.isHidden = false
     }
     
@@ -111,7 +120,17 @@ extension NAHomeViewController: NAHomeViewModel {
         titleLabel.text = text
     }
     
-    func setNewsSuccess(newsList: [NewsItem]) {
+    func setResultsTitle(_ text: String) {
+        resultTitleLabel.text = text
+    }
+    
+    func setNewsSuccess(newsList: Array<NewsItem>) {
+        resultTitleLabel.text = I18n.Home.results.text
+        self.newsList = newsList
+    }
+    
+    func setNewsByQuerySuccess(newsList: Array<NewsItem>, querySearched: String) {
+        resultTitleLabel.text = querySearched
         self.newsList = newsList
     }
     
@@ -143,6 +162,17 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+extension NAHomeViewController: NACategoryViewDelegate {
+    func didTapCategoryBtn(_ category: QueryType) {
+        switch category {
+        case .topHeadlines:
+            presenter.fetchNews()
+        default:
+            presenter.fetchNewsByQuery(category)
+        }
+    }
+}
+
 extension NAHomeViewController: NANewsViewCellDelegate {
     func didTapView(row: Int) {
         presenter.newsSelected(newsList[row])
@@ -153,7 +183,7 @@ extension NAHomeViewController: NANewsViewCellDelegate {
 
 extension NAHomeViewController: ViewCode {
     func buildHierarchy() {
-        view.addSubviews([titleLabel, searchView, tableView], constraints: true)
+        view.addSubviews([titleLabel, categoryView, resultTitleLabel, tableView], constraints: true)
     }
     
     func setupConstraints() {
@@ -162,19 +192,25 @@ extension NAHomeViewController: ViewCode {
             .leading(16)
             .trailing(16)
         
-        searchView.nac
-            .top(titleLabel.bottomAnchor)
-            .leading(8)
-            .trailing(8)
+        categoryView.nac
+            .top(titleLabel.bottomAnchor, 24)
+            .leading()
+            .trailing()
+        
+        resultTitleLabel.nac
+            .top(categoryView.bottomAnchor, 12)
+            .leading(16)
+            .trailing(16)
         
         tableView.nac
-            .top(searchView.bottomAnchor, 24)
+            .top(resultTitleLabel.bottomAnchor, 12)
             .leading()
             .trailing()
             .bottom()
     }
     
     func applyAdditionalChanges() {
+        categoryView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none

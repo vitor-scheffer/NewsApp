@@ -14,6 +14,7 @@ final class NARouterSpy: NARouterProtocol {
     
     var showHomeCalled = false
     var showNewsDetailsCalled = false
+    var showSearchCalled = false
     var newsDetails: NewsItem?
     
     func showHome(navigator: UINavigationController?) {
@@ -25,5 +26,10 @@ final class NARouterSpy: NARouterProtocol {
         self.navigator = navigator
         self.showNewsDetailsCalled = true
         self.newsDetails = newsDetails
+    }
+    
+    func showSearch(navigator: UINavigationController?) {
+        self.navigator = navigator
+        self.showSearchCalled = true
     }
 }

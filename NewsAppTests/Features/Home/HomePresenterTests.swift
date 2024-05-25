@@ -35,6 +35,17 @@ final class NAHomePresenterTests: XCTestCase {
         XCTAssertTrue(interactorSpy.fetchNewsCalled)
     }
     
+    func testFetchNewsSuccessShouldNotSetNewsSuccessByQuery() {
+        let (sut, _, _, viewModelSpy) = makeSUT()
+        let expected = anyNewsOutput()
+                
+        sut.setViewModel(viewModelSpy)
+        sut.fetchNewsSucceeded(expected, hasQuery: false)
+        
+        XCTAssertFalse(viewModelSpy.setNewsByQuerySuccessCalled)
+        XCTAssertNil(viewModelSpy.querySearched)
+    }
+    
     func testFetchNewsFailedShouldSetNewsFailed() {
         let (sut, _, _, viewModelSpy) = makeSUT()
 
@@ -45,9 +56,17 @@ final class NAHomePresenterTests: XCTestCase {
         XCTAssertEqual(viewModelSpy.messageError, "any")
     }
     
+    func testFetchNewsByQueryShouldCallInteractorFetchNewsByQuery() {
+        let (sut, _, interactor, _) = makeSUT()
+
+        sut.fetchNewsByQuery(.topHeadlines)
+
+        XCTAssertTrue(interactor.fetchNewsByQueryCalled)
+    }
+    
     func testNewsSelectedShouldNavigateToDetails() {
         let (sut, coordinator, _, _) = makeSUT()
-        var expected = anyNewsDetails()
+        let expected = anyNewsDetails()
 
         sut.newsSelected(expected)
 
