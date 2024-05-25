@@ -319,3 +319,10 @@ extension Date {
         return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
     }
 }
+
+extension UITableView {
+    func scrollToTopCell() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+}

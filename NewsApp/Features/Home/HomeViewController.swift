@@ -18,6 +18,7 @@ class NAHomeViewController: NABaseViewController {
     private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
+            tableView.scrollToTopCell()
         }
     }
     
@@ -151,10 +152,13 @@ extension NAHomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
 
-        cell.delegate = self
-        cell.setup(news: newsList[indexPath.row], indexPath: indexPath)
+        cell.setup(news: newsList[indexPath.row])
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.newsSelected(newsList[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -170,12 +174,6 @@ extension NAHomeViewController: NACategoryViewDelegate {
         default:
             presenter.fetchNewsByQuery(category)
         }
-    }
-}
-
-extension NAHomeViewController: NANewsViewCellDelegate {
-    func didTapView(row: Int) {
-        presenter.newsSelected(newsList[row])
     }
 }
 

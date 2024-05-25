@@ -19,6 +19,7 @@ class NASearchViewController: NABaseViewController {
     private var newsList: Array<NewsItem> = [] {
         didSet {
             tableView.reloadData()
+            tableView.scrollToTopCell()
         }
     }
     
@@ -28,7 +29,7 @@ class NASearchViewController: NABaseViewController {
     }()
     
     private lazy var resultTitleLabel = {
-        let view = NALabel(.title2)
+        let view = NALabel(.title3)
         return view
     }()
     
@@ -165,10 +166,13 @@ extension NASearchViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
 
-        cell.delegate = self
-        cell.setup(news: newsList[indexPath.row], indexPath: indexPath)
+        cell.setup(news: newsList[indexPath.row])
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.newsSelected(newsList[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -179,12 +183,6 @@ extension NASearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension NASearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let inputSearch = searchBar.text {presenter.fetchNewsByQuery(inputSearch)}
-    }
-}
-
-extension NASearchViewController: NANewsViewCellDelegate {
-    func didTapView(row: Int) {
-        presenter.newsSelected(newsList[row])
     }
 }
 
