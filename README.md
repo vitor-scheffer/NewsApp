@@ -12,7 +12,7 @@ https://github.com/vitor-scheffer/NewsApp/assets/103120313/fc28d151-5e3d-4051-a3
 
 <h1 align="center">Cenário erro home</h1>
 
-https://github.com/vitor-scheffer/NewsApp/assets/103120313/75f8c8ba-a685-452e-8b21-601583387955
+https://github.com/vitor-scheffer/NewsApp/assets/103120313/0246dbb3-9081-4c62-9d34-e5560bdb551c
 
 # 🛠️ Tecnologias
 
