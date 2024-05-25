@@ -1,10 +1,9 @@
+<h1 align="center">News App 🗞️ </h1>
 <div align="center">
   <div style="display: flex">
     <img align="center" style="width: 100%" src="https://github.com/vitor-scheffer/NewsApp/assets/103120313/9ad34c57-5892-4ece-9476-10460dab51a4" />
   </div>
 </div>
-
-<h1 align="center">News App 🗞️ </h1>
 
 # 🛠️ Tecnologias
 
@@ -16,13 +15,14 @@
 - ```Persistência de dados com CoreData e UserDefaults```
 
 # 📝 Funcionalidades
-- **Home**: tenha acesso as mais recentes noticias correspondentes as categorias:
-  - **Top Headlines**: Principais manchetes do dia.
-  - **Sports**: Noticias sobre esportes em geral.
-  - **Entertainment**: Noticias sobre entretenimento.
-  - **Stocks**: Notícias sobre bolsa de valores e ações.
-- **Search**: busque por uma notícia específica digitando no campo de busca.
-- **Saved News**: tenha acesso a suas notícias salvas.
+- ```Home:``` Tenha acesso as mais recentes noticias correspondentes as categorias:
+  - ```Top Headlines:``` Principais manchetes do dia.
+  - ```Sports:``` Noticias sobre esportes em geral.
+  - ```Entertainment:``` Noticias sobre entretenimento.
+  - ```Stocks:``` Notícias sobre bolsa de valores e ações.
+- ```Details:``` Tenha todos os detalhes da sua notícia.
+- ```Search:``` Busque por uma notícia específica digitando no campo de busca.
+- ```Saved News:``` Tenha acesso a suas notícias salvas.
 
 # 🏠 Home
 
