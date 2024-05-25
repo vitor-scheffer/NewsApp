@@ -7,15 +7,8 @@
 
 import UIKit
 
-protocol NANewsViewCellDelegate: AnyObject {
-    func didTapView(row: Int)
-}
-
 final class NANewsViewCell: UITableViewCell {
     static var reuseIdentifier: String { String(describing: self) }
-    
-    private var indexPath: IndexPath?
-    weak var delegate: NANewsViewCellDelegate?
     
     private lazy var newsView = {
         let view = UIView()
@@ -55,7 +48,7 @@ final class NANewsViewCell: UITableViewCell {
         return view
     }()
 
-    func setup(news: NewsItem, indexPath: IndexPath) {
+    func setup(news: NewsItem) {
         setupView()
         
         viewImage.backgroundColor = NAColor.black.uiColor
@@ -63,14 +56,6 @@ final class NANewsViewCell: UITableViewCell {
         titleLabel.text = news.title
         descriptionLabel.text = news.description
         authorLabel.text = news.author
-        
-        self.indexPath = indexPath
-    }
-    
-    @objc private func didTapView() {
-        guard let indexPath = self.indexPath else { return }
-        
-        delegate?.didTapView(row: indexPath.row)
     }
 }
 
@@ -106,9 +91,6 @@ extension NANewsViewCell: ViewCode {
     func applyAdditionalChanges() {
         contentView.backgroundColor = NAColor.body1.uiColor
         selectionStyle = .none
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
-        newsView.addGestureRecognizer(gesture)
         
         let space = UIView()
         space.backgroundColor = NAColor.white.uiColor

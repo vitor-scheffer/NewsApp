@@ -146,10 +146,13 @@ extension NASavedNewsViewController: UITableViewDataSource, UITableViewDelegate 
             return UITableViewCell()
         }
 
-        cell.delegate = self
-        cell.setup(news: newsList[indexPath.row], indexPath: indexPath)
+        cell.setup(news: newsList[indexPath.row])
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.newsSelected(newsList[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -160,12 +163,6 @@ extension NASavedNewsViewController: UITableViewDataSource, UITableViewDelegate 
 extension NASavedNewsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter.fetchSearch(searchText)
-    }
-}
-
-extension NASavedNewsViewController: NANewsViewCellDelegate {
-    func didTapView(row: Int) {
-        presenter.newsSelected(newsList[row])
     }
 }
 
