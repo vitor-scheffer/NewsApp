@@ -15,14 +15,14 @@
 - ```Persistência de dados com CoreData e UserDefaults```
 
 # 📝 Funcionalidades
-- ```Home:``` tenha acesso as mais recentes noticias correspondentes as categorias:
+- ```Home:``` Tenha acesso as mais recentes noticias correspondentes as categorias:
   - ```Top Headlines:``` Principais manchetes do dia.
   - ```Sports:``` Noticias sobre esportes em geral.
   - ```Entertainment:``` Noticias sobre entretenimento.
   - ```Stocks:``` Notícias sobre bolsa de valores e ações.
-- ```Details:``` tenha todos os detalhes da sua notícia.
-- ```Search:``` busque por uma notícia específica digitando no campo de busca.
-- ```Saved News:``` tenha acesso a suas notícias salvas.
+- ```Details:``` Tenha todos os detalhes da sua notícia.
+- ```Search:``` Busque por uma notícia específica digitando no campo de busca.
+- ```Saved News:``` Tenha acesso a suas notícias salvas.
 
 # 🏠 Home
 
