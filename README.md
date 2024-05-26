@@ -1,7 +1,7 @@
 <h1 align="center">News App 🗞️ </h1>
 <div align="center">
   <div style="display: flex">
-    <img align="center" style="width: 100%" src="https://github.com/vitor-scheffer/NewsApp/assets/103120313/9ad34c57-5892-4ece-9476-10460dab51a4" />
+    <img align="center" style="width: 100%" src="https://github.com/vitor-scheffer/NewsApp/assets/103120313/fdf4777d-e547-4bf4-8eb3-4970b103be11" />
   </div>
 </div>
 
