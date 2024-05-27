@@ -36,5 +36,3 @@ final public class ImageManager {
         task.resume()
     }
 }
-
-

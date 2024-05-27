@@ -1,99 +1,12 @@
 //
-//  Extensions.swift
+//  UIViewExtension.swift
 //  NewsApp
 //
-//  Created by Vitor Boff on 15/05/24.
+//  Created by Vitor Boff on 27/05/24.
 //
 
 import Foundation
 import UIKit
-
-extension String {
-    var localized: String { NSLocalizedString(self, bundle: .main, comment: "") }
-    
-    func localized(with arguments: String...) -> String {
-        return String(format: self.localized, arguments: arguments)
-    }
-    
-    func isoFormatter() -> String {
-        let formatter = ISO8601DateFormatter()
-        
-        guard let date = formatter.date(from: self) else {
-            return ""
-        }
-        
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd',' yyyy"
-        dateFormatter.locale = Locale(identifier: "en-US")
-    
-        let formattedDate = dateFormatter.string(from: date)
-        
-        return formattedDate
-    }
-    
-    func generateID() -> String {
-        let source = UserDefaults.standard
-        
-        if let storageID = source.string(forKey: self) {
-            return storageID
-        }
-        
-        let generatedID = UUID().uuidString
-        source.set(generatedID, forKey: self)
-        
-        return generatedID
-    }
-}
-
-public extension UIViewController {
-    func addAlert(title: String, message: String, cancelAction: String) {
-        let controller = UIAlertController(title: title,
-                                           message: message,
-                                           preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: cancelAction, style: .cancel))
-        
-        self.present(controller, animated: true)
-    }
-}
-
-public enum NAElevation {
-    case none
-    case level1
-    case level2
-    case level3
-    case level4
-    
-    var shadowOpacity: Float {
-        switch self {
-        case .none: return .zero
-        case .level1: return 0.16
-        case .level2: return 0.08
-        case .level3: return 0.08
-        case .level4: return 0.08
-        }
-    }
-    
-    var shadowOffset: CGFloat {
-        switch self {
-        case .none: return 0
-        case .level1: return 4
-        case .level2: return 4
-        case .level3: return 8
-        case .level4: return 16
-        }
-    }
-    
-    var shawdowRadius: CGFloat {
-        switch self {
-        case .none: return 0
-        case .level1: return 8
-        case .level2: return 16
-        case .level3: return 24
-        case .level4: return 32
-        }
-    }
-}
 
 public extension UIView {
     func addSubviews(_ subviews: UIView...) {
@@ -280,49 +193,5 @@ public extension UIView {
             heightAnchor.constraint(equalToConstant: height),
             widthAnchor.constraint(equalToConstant: width)
         ])
-    }
-}
-
-extension UIColor {
-    convenience init(hex: String, alpha: CGFloat = 1.0) {
-        var hexValue = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
-
-        if hexValue.hasPrefix("#") {
-            hexValue.remove(at: hexValue.startIndex)
-        }
-
-        var rgbValue: UInt64 = 0
-        Scanner(string: hexValue).scanHexInt64(&rgbValue)
-
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
-    }
-}
-
-extension Date {
-    static var yesterday: Date { return Date().dayBefore }
-    static var twoDaysAgo: Date { return Date().twoDaysBefore }
-    static var tomorrow:  Date { return Date().dayAfter }
-    var dayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
-    }
-    var twoDaysBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -2, to: noon)!
-    }
-    var dayAfter: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
-    }
-    var noon: Date {
-        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
-    }
-}
-
-extension UITableView {
-    func scrollToTopCell() {
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 }
