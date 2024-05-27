@@ -10,12 +10,11 @@
 "NAok.understood" = "Ok";
 "NAsaved" = "Saved";
 "NAremoved" = "Removed";
+"NAsecret.key" = "&apiKey=%@";
 
 "NAtab.bar.home" = "Home";
 "NAtab.bar.search" = "Search";
 "NAtab.bar.saved" = "Saved News";
-
-"NAsecret.key" = "&apiKey=%@";
 
 "NAerror.title" = "Oh! Something went wrong!";
 "NAerror.message" = "Don't worry! We're already trying to solve this mistake, try again later";
