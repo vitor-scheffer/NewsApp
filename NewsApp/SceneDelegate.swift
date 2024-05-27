@@ -13,16 +13,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        guard let _ = (scene as? UIWindowScene) else { return }
-        
-        let controller = UINavigationController(rootViewController: ViewController())
-        
-        if let windowScene = scene as? UIWindowScene {
-            self.window = UIWindow(windowScene: windowScene)
-            self.window?.rootViewController = controller
-            self.window?.makeKeyAndVisible()
-        }
+        guard let windowScene = scene as? UIWindowScene else { return }
+            
+            let controller = createRootViewController()
+            setupWindow(with: windowScene, rootViewController: controller)
+            
+            let router = NARouter.shared
+            router.showHome(navigator: controller)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,6 +50,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    private func createRootViewController() -> UINavigationController {
+        return UINavigationController(rootViewController: NATabBarController())
+    }
 
+    private func setupWindow(with windowScene: UIWindowScene, rootViewController: UIViewController) {
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+        self.window = window
+    }
 }
-

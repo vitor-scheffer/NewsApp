@@ -29,6 +29,7 @@ class NADetailsViewController: NABaseViewController {
     
     private lazy var scrollView = {
         let view = UIScrollView()
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     
