@@ -323,6 +323,7 @@
 		E500C2E12C04C12E00027FB9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				E5ECE4092BF593E700A0EB6C /* LaunchScreen.storyboard */,
 				E5ECE45B2BF7017B00A0EB6C /* NABaseViewController.swift */,
 			);
 			path = Base;
@@ -443,7 +444,6 @@
 				E5ECE42F2BF5A33100A0EB6C /* Features */,
 				E5ECE3FE2BF593E400A0EB6C /* AppDelegate.swift */,
 				E5ECE4002BF593E400A0EB6C /* SceneDelegate.swift */,
-				E5ECE4092BF593E700A0EB6C /* LaunchScreen.storyboard */,
 				E5ECE40C2BF593E700A0EB6C /* Info.plist */,
 				E5ECE45D2BF7974100A0EB6C /* Config.xcconfig */,
 			);
